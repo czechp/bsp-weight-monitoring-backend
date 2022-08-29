@@ -3,4 +3,4 @@ GIT_REPO=https://github.com/czechp/bsp-weight-monitoring-backend.git
 git clone $GIT_REPO /JavaProject
 cd JavaProject
 mvn clean install package -DskipTests
-java -jar /JavaProject/core/target/core-0.0.1-SNAPSHOT.jar
+java -jar --spring.datasource.username=weight-monitoring --spring.datasource.password=weight-monitoring123 /JavaProject/core/target/bsp-weight-monitoring.jar
