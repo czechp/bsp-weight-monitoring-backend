@@ -24,7 +24,7 @@ public class AccountConfiguration {
     AccountConfiguration() {
         this.adminActivation = false;
         this.enableToken = generateUniqueToken();
-        this.emailConfirmed = false;
+        this.emailConfirmed = true;
         this.newPasswordToken = generateUniqueToken();
         this.newPasswordTokenExpiration = LocalDateTime.now();
     }
