@@ -8,10 +8,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @EnableAspectJAutoProxy
-public class PczBackendTemplate {
+public class BspWeightMonitoring {
 
     public static void main(String[] args) {
-        SpringApplication.run(PczBackendTemplate.class, args);
+        SpringApplication.run(BspWeightMonitoring.class, args);
     }
 
 }

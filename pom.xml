@@ -15,10 +15,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>app.web.pcz-backend-template</groupId>
-    <artifactId>pcz-backend-template</artifactId>
+    <groupId>pl.bispol.weight-monitoring</groupId>
+    <artifactId>bsp-weight-monitoring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>pcz-backend-template</name>
+    <name>bsp-weight-monitoring</name>
 
 
     <description>Backend template</description>
