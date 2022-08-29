@@ -60,7 +60,7 @@ class AccountUseCaseCreateImplTest {
         assertEquals(accountToCreate.getUsername(), newAccount.getUsername());
         assertEquals(accountToCreate.getEmail(), newAccount.getEmail());
         assertNotNull(newAccount.getAccountConfiguration().getEnableToken());
-        assertFalse(newAccount.getAccountConfiguration().isEmailConfirmed());
+        assertTrue(newAccount.getAccountConfiguration().isEmailConfirmed());
         assertFalse(newAccount.getAccountConfiguration().isAdminActivation());
     }
 
