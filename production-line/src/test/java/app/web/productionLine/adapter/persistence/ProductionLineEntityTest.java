@@ -15,6 +15,7 @@ class ProductionLineEntityTest {
         //when
         final var productionLineEntity = ProductionLineFactory.toEntity(productionLine);
         //then
-        assertEquals(lineName, productionLineEntity.getLineName());
+        assertEquals(productionLine.getLineName(), productionLineEntity.getLineName());
+        assertEquals(productionLine.getId(), productionLineEntity.getId());
     }
 }

@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public
-class ProductionLineEntity {
+public class ProductionLineEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
