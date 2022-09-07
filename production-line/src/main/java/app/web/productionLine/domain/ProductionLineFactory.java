@@ -1,6 +1,7 @@
 package app.web.productionLine.domain;
 
 import app.web.productionLine.adapter.persistence.ProductionLineEntity;
+import app.web.productionLine.application.dto.ProductionLineQueryDto;
 
 public class ProductionLineFactory {
     public static ProductionLine create(String lineName) {
@@ -18,7 +19,13 @@ public class ProductionLineFactory {
     public static ProductionLine toDomain(ProductionLineEntity productionLineEntity) {
         return new ProductionLine(productionLineEntity.getId(),
                 productionLineEntity.getLineName(),
-                productionLineEntity.getCreationTimestamp()
-        );
+                productionLineEntity.getCreationTimestamp());
+    }
+
+    public static ProductionLineQueryDto toDto(ProductionLineEntity productionLineEntity) {
+        return new ProductionLineQueryDto(productionLineEntity.getId(),
+                productionLineEntity.getLineName(),
+                productionLineEntity.getCreationTimestamp());
+
     }
 }
