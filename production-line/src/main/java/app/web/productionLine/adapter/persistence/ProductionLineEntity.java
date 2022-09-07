@@ -23,4 +23,20 @@ public class ProductionLineEntity {
 
     @CreationTimestamp
     private LocalDateTime creationTimestamp;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductionLineEntity that = (ProductionLineEntity) o;
+
+        return new org.apache.commons.lang3.builder.EqualsBuilder().append(id, that.id).append(lineName, that.lineName).append(creationTimestamp, that.creationTimestamp).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new org.apache.commons.lang3.builder.HashCodeBuilder(17, 37).append(id).append(lineName).append(creationTimestamp).toHashCode();
+    }
 }
