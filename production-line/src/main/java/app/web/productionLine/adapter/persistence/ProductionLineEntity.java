@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(setterPrefix = "with")
 public class ProductionLineEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
