@@ -1,4 +1,4 @@
-package app.web.productionLine;
+package app.web.productionLine.adapter.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
