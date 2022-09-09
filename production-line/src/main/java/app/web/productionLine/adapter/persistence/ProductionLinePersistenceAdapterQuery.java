@@ -2,6 +2,7 @@ package app.web.productionLine.adapter.persistence;
 
 import app.web.exception.NotFoundException;
 import app.web.productionLine.application.dto.ProductionLineQueryDto;
+import app.web.productionLine.application.port.query.ProductionLinePortExistByName;
 import app.web.productionLine.application.query.ProductionLineQuery;
 import app.web.productionLine.domain.ProductionLineFactory;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class ProductionLinePersistenceAdapterQuery implements ProductionLineQuery {
+class ProductionLinePersistenceAdapterQuery implements ProductionLineQuery, ProductionLinePortExistByName {
     private final ProductionLineRepository productionLineRepository;
 
     @Override
@@ -29,5 +30,10 @@ class ProductionLinePersistenceAdapterQuery implements ProductionLineQuery {
                 .stream()
                 .map(ProductionLineFactory::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean existsByName(String lineName) {
+        return productionLineRepository.existsByLineName(lineName);
     }
 }
