@@ -2,6 +2,7 @@ package app.web.productionLine.adapter.persistence;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ public class ProductionLineEntity {
     private long id;
 
     @Column(unique = true)
+    @Length(min = 3)
     private String lineName;
 
     @CreationTimestamp
