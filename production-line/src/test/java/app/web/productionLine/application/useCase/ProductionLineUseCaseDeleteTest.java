@@ -1,5 +1,6 @@
 package app.web.productionLine.application.useCase;
 
+import app.web.productionLine.application.port.crud.ProductionLinePortDeleteById;
 import app.web.productionLine.application.port.crud.ProductionLinePortFindById;
 import app.web.productionLine.domain.ProductionLineTestCasesProvider;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,7 @@ class ProductionLineUseCaseDeleteTest {
         Mockito.when(productionLinePortFindById.findProductionLineById(anyLong())).thenReturn(Optional.of(ProductionLineTestCasesProvider.getProductionLineToDelete()));
         final var deletedProductionLine = productionLineUseCaseDelete.deleteById(productionLineId);
         //then
-        Mockito.verify(productionLinePortDeleteById.deleteProductionLineById(anyLong()));
+        Mockito.verify(productionLinePortDeleteById, Mockito.times(1))
+                .deleteProductionLineById(anyLong());
     }
 }
