@@ -1,7 +1,7 @@
 package app.web.productionLine.application.useCase;
 
 import app.web.productionLine.application.port.crud.ProductionLinePortDeleteById;
-import app.web.productionLine.application.port.crud.ProductionLinePortFindById;
+import app.web.productionLine.application.port.crud.ProductionLinePortFindByIdOrException;
 import app.web.productionLine.application.port.event.ProductionLineEventPortDelete;
 import app.web.productionLine.domain.ProductionLineTestCasesProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ import static org.mockito.ArgumentMatchers.*;
 @ExtendWith(MockitoExtension.class)
 class ProductionLineUseCaseDeleteByIdTest {
     @Mock
-    ProductionLinePortFindById productionLinePortFindById;
+    ProductionLinePortFindByIdOrException productionLinePortFindByIdOrException;
     @Mock
     ProductionLinePortDeleteById productionLinePortDeleteById;
     @Mock
@@ -29,7 +29,7 @@ class ProductionLineUseCaseDeleteByIdTest {
     @BeforeEach
     void init() {
         this.productionLineUseCaseDeleteById = new ProductionLineUseCaseDeleteImpl(
-                productionLinePortFindById,
+                productionLinePortFindByIdOrException,
                 productionLinePortDeleteById,
                 productionLineEventPortDelete
         );
@@ -40,7 +40,7 @@ class ProductionLineUseCaseDeleteByIdTest {
         //given
         final var productionLineId = 1L;
         //when
-        Mockito.when(productionLinePortFindById.findProductionLineById(anyLong())).thenReturn(Optional.of(ProductionLineTestCasesProvider.getProductionLineToDelete()));
+        Mockito.when(productionLinePortFindByIdOrException.findProductionLineByIdOrException(anyLong())).thenReturn(Optional.of(ProductionLineTestCasesProvider.getProductionLineToDelete()));
         final var deletedProductionLine = productionLineUseCaseDeleteById.deleteById(productionLineId);
         //then
         Mockito.verify(productionLinePortDeleteById, Mockito.times(1))
