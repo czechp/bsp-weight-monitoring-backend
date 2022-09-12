@@ -40,7 +40,8 @@ class ProductionLineUseCaseDeleteByIdTest {
         //given
         final var productionLineId = 1L;
         //when
-        Mockito.when(productionLinePortFindByIdOrException.findProductionLineByIdOrException(anyLong())).thenReturn(Optional.of(ProductionLineTestCasesProvider.getProductionLineToDelete()));
+        Mockito.when(productionLinePortFindByIdOrException.findProductionLineByIdOrException(anyLong()))
+                .thenReturn(ProductionLineTestCasesProvider.getProductionLineToDelete());
         final var deletedProductionLine = productionLineUseCaseDeleteById.deleteById(productionLineId);
         //then
         Mockito.verify(productionLinePortDeleteById, Mockito.times(1))
