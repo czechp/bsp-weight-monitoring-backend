@@ -1,9 +1,9 @@
 package app.web.account.application.service;
 
-import app.web.exception.NotEnoughPrivilegesException;
 import app.web.account.application.port.AccountPortFindByUsername;
 import app.web.configuration.security.SecurityAuthenticator;
 import app.web.configuration.security.dto.SecurityLoginQueryDto;
+import app.web.exception.NotEnoughPrivilegesException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

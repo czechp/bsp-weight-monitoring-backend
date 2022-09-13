@@ -3,8 +3,6 @@ package app.web.productionLine.adapter.rest;
 import app.web.productionLine.application.dto.ProductionLineCreateDto;
 import app.web.productionLine.application.useCase.ProductionLineUseCaseCreate;
 import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +21,7 @@ class ProductionLineRestAdapterCreate {
     @PostMapping()
     @Secured({"ROLE_ADMIN"})
     @ResponseStatus(HttpStatus.CREATED)
-    void createProductionLine(@RequestBody @Valid ProductionLineCreateDto dto){
+    void createProductionLine(@RequestBody @Valid ProductionLineCreateDto dto) {
         productionLineUseCaseCreate.createProductionLine(dto);
     }
 

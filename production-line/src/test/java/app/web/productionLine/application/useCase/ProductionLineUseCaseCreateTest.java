@@ -51,6 +51,6 @@ class ProductionLineUseCaseCreateTest {
         //when
         Mockito.when(productionLinePortExistsByName.existsByName(anyString())).thenReturn(true);
         //then
-        assertThrows(ConditionsNotFulFiledException.class, ()->productionLineUseCaseCreate.createProductionLine(productionLineCreateDto));
+        assertThrows(ConditionsNotFulFiledException.class, () -> productionLineUseCaseCreate.createProductionLine(productionLineCreateDto));
     }
 }
