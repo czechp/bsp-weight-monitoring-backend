@@ -1,11 +1,11 @@
 package app.web.account.application.service;
 
-import app.web.exception.NotFoundException;
 import app.web.account.adapter.persistence.AccountRole;
 import app.web.account.application.port.AccountPortFindById;
 import app.web.account.application.port.AccountPortSave;
 import app.web.account.application.useCase.AccountUseCaseAssignRole;
 import app.web.account.domain.Account;
+import app.web.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

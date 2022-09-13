@@ -26,7 +26,7 @@ class ProductionLinePersistenceAdapter implements ProductionLinePortSave,
     public ProductionLine findProductionLineByIdOrException(long lineId) {
         return productionLineRepository.findById(lineId)
                 .map(ProductionLineFactory::toDomain)
-                .orElseThrow(()->new NotFoundException("Linia z id: " + lineId + " nie istnieje"));
+                .orElseThrow(() -> new NotFoundException("Linia z id: " + lineId + " nie istnieje"));
     }
 
     @Override

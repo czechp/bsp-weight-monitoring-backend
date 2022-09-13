@@ -1,9 +1,9 @@
 package app.web.account.application.query;
 
-import app.web.exception.NotFoundException;
 import app.web.account.application.dto.AccountUserDetailsDto;
 import app.web.account.application.port.AccountPortQuery;
 import app.web.configuration.security.SecurityCurrentUser;
+import app.web.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

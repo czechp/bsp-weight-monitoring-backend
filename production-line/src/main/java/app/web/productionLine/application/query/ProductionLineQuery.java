@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ProductionLineQuery {
     ProductionLineQueryDto findProductionLineById(long id);
+
     List<ProductionLineQueryDto> findAllProductionLines(Pageable pageable);
 }

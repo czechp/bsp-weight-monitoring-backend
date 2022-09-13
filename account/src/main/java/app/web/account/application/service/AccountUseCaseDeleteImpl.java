@@ -1,15 +1,15 @@
 package app.web.account.application.service;
 
-import app.web.account.application.useCase.AccountUseCaseDelete;
-import app.web.exception.NotEnoughPrivilegesException;
-import app.web.exception.NotFoundException;
 import app.web.account.adapter.persistence.AccountRole;
 import app.web.account.application.port.AccountPortDelete;
 import app.web.account.application.port.AccountPortEmitDeleteEvent;
 import app.web.account.application.port.AccountPortFindById;
 import app.web.account.application.port.AccountPortFindByUsername;
+import app.web.account.application.useCase.AccountUseCaseDelete;
 import app.web.account.domain.Account;
 import app.web.configuration.security.SecurityCurrentUser;
+import app.web.exception.NotEnoughPrivilegesException;
+import app.web.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

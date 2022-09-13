@@ -1,6 +1,5 @@
 package app.web.account.application.service;
 
-import app.web.exception.NotFoundException;
 import app.web.account.adapter.persistence.AccountRole;
 import app.web.account.application.port.AccountPortDelete;
 import app.web.account.application.port.AccountPortEmitDeleteEvent;
@@ -9,6 +8,7 @@ import app.web.account.application.port.AccountPortFindByUsername;
 import app.web.account.application.useCase.AccountUseCaseDelete;
 import app.web.account.domain.Account;
 import app.web.configuration.security.SecurityCurrentUser;
+import app.web.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
