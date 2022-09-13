@@ -4,7 +4,9 @@ import app.web.productionLine.application.port.event.ProductionLineEventPortDele
 import app.web.productionLine.event.ProductionLineEventDelete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Service;
 
+@Service
 class ProductionLineEventAdapterDelete implements ProductionLineEventPortDelete {
     @Autowired
     ApplicationEventPublisher applicationEventPublisher;
