@@ -29,7 +29,7 @@ class WeightModuleFactoryTest {
     }
 
     @Test
-    void toWeightModuleDomainModuleStatusTest(){
+    void toWeightModuleDomainModuleStatusTest() {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //when
@@ -41,7 +41,7 @@ class WeightModuleFactoryTest {
     }
 
     @Test
-    void toWeightModuleDomainProductionInfoTest(){
+    void toWeightModuleDomainProductionInfoTest() {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //given
