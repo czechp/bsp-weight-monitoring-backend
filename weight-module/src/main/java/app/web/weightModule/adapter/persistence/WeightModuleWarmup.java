@@ -35,7 +35,7 @@ class WeightModuleWarmup {
                         100.0f,
                         123_000,
                         75.0f
-                        )
+                )
         );
 
         weightModules.forEach(weightModuleJpaRepository::save);

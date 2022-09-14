@@ -20,12 +20,12 @@ abstract class WeightModuleSuperEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     protected ProductionLineSimpleEntity productionLineSimpleEntity;
 
-    protected  float productUpRangeWeight;
-    protected  float productDownRangeWeight;
-    protected  int currentDosingDevice;
-    protected  float currentMeasure;
-    protected  boolean status;
-    protected  float totalMaterialWeight;
+    protected float productUpRangeWeight;
+    protected float productDownRangeWeight;
+    protected int currentDosingDevice;
+    protected float currentMeasure;
+    protected boolean status;
+    protected float totalMaterialWeight;
     protected long totalProductPcs;
     protected float correctProductPercent;
 }
