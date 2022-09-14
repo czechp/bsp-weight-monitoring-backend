@@ -8,6 +8,7 @@
         <module>account</module>
         <module>common</module>
         <module>production-line</module>
+        <module>weight-module</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
