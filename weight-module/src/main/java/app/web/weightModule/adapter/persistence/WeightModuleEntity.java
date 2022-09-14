@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
+public
 class WeightModuleEntity extends WeightModuleSuperEntity {
     public WeightModuleEntity(long id,
                               ProductionLineSimpleEntity productionLineSimpleEntity,
