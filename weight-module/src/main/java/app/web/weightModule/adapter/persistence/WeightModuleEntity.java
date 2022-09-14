@@ -1,8 +1,6 @@
 package app.web.weightModule.adapter.persistence;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,6 +10,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
+public
 class WeightModuleEntity extends WeightModuleSuperEntity {
     public WeightModuleEntity(long id,
                               ProductionLineSimpleEntity productionLineSimpleEntity,
