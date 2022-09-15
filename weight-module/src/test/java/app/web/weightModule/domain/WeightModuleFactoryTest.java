@@ -41,7 +41,7 @@ class WeightModuleFactoryTest {
     }
 
     @Test
-    void toWeightModuleDomainProductionInfoTest() {
+    void toWeightModuleDomainProductionIndicatorsTest() {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //given
@@ -51,5 +51,6 @@ class WeightModuleFactoryTest {
         assertEquals(weightModuleEntity.getTotalProductPcs(), weightModule.getProductionInfo().getTotalProductPcs());
         assertEquals(weightModuleEntity.getCorrectProductPercent(), weightModule.getProductionInfo().getCorrectProductPercent());
     }
+
 
 }

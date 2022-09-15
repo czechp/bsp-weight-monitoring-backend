@@ -13,7 +13,7 @@ class WeightModuleFactory {
                 weightModuleEntity.isStatus()
         );
 
-        final ProductionInfoVO productionInfo = new ProductionInfoVO(
+        final ProductionIndicatorsVO productionInfo = new ProductionIndicatorsVO(
                 weightModuleEntity.getTotalMaterialWeight(),
                 weightModuleEntity.getTotalProductPcs(),
                 weightModuleEntity.getCorrectProductPercent()

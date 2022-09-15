@@ -10,12 +10,12 @@ abstract class WeightModuleAbstract {
     private long id;
     private ProductInfoVO productInfo;
     private ModuleStatusVO moduleStatus;
-    private ProductionInfoVO productionInfo;
+    private ProductionIndicatorsVO productionInfo;
 
     public WeightModuleAbstract(long id,
                                 ProductInfoVO productInfo,
                                 ModuleStatusVO moduleStatus,
-                                ProductionInfoVO productionInfo) {
+                                ProductionIndicatorsVO productionInfo) {
         this.id = id;
         this.productInfo = productInfo;
         this.moduleStatus = moduleStatus;
