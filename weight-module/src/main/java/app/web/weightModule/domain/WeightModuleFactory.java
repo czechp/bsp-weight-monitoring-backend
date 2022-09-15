@@ -4,7 +4,7 @@ import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleEntity;
 import app.web.weightModule.application.dto.WeightModuleQueryDto;
 
-class WeightModuleFactory {
+public class WeightModuleFactory {
     public static WeightModule toWeightModuleDomain(WeightModuleEntity weightModuleEntity) {
         final ProductInfoVO productInfo = new ProductInfoVO(weightModuleEntity.getProductUpRangeWeight(),
                 weightModuleEntity.getProductDownRangeWeight());
