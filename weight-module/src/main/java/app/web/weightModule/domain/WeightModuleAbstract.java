@@ -8,17 +8,23 @@ import lombok.Setter;
 @Setter(value = AccessLevel.PROTECTED)
 abstract class WeightModuleAbstract {
     private long id;
+    private long productionLineId;
+    private String productionLineName;
     private ProductInfoVO productInfo;
     private ModuleStatusVO moduleStatus;
-    private ProductionIndicatorsVO productionInfo;
+    private ProductionIndicatorsVO productionIndicators;
 
     public WeightModuleAbstract(long id,
+                                long productionLineId,
+                                String productionLineName,
                                 ProductInfoVO productInfo,
                                 ModuleStatusVO moduleStatus,
-                                ProductionIndicatorsVO productionInfo) {
+                                ProductionIndicatorsVO productionIndicators) {
         this.id = id;
+        this.productionLineId = productionLineId;
+        this.productionLineName = productionLineName;
         this.productInfo = productInfo;
         this.moduleStatus = moduleStatus;
-        this.productionInfo = productionInfo;
+        this.productionIndicators = productionIndicators;
     }
 }

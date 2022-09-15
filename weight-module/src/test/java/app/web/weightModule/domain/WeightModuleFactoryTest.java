@@ -11,7 +11,7 @@ class WeightModuleFactoryTest {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //when
-        final var weightModule = WeightModuleFactory.toDomain(weightModuleEntity);
+        final var weightModule = WeightModuleFactory.toWeightModuleDomain(weightModuleEntity);
         //then
         assertNotNull(weightModule);
     }
@@ -21,7 +21,7 @@ class WeightModuleFactoryTest {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //when
-        final var weightModule = WeightModuleFactory.toDomain(weightModuleEntity);
+        final var weightModule = WeightModuleFactory.toWeightModuleDomain(weightModuleEntity);
         //then
         assertNotNull(weightModule.getProductInfo());
         assertEquals(weightModuleEntity.getProductUpRangeWeight(), weightModule.getProductInfo().getUpRangeWeight());
@@ -33,7 +33,7 @@ class WeightModuleFactoryTest {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //when
-        final var weightModule = WeightModuleFactory.toDomain(weightModuleEntity);
+        final var weightModule = WeightModuleFactory.toWeightModuleDomain(weightModuleEntity);
         //then
         assertEquals(weightModuleEntity.getCurrentDosingDevice(), weightModule.getModuleStatus().getCurrentDosingDevice());
         assertEquals(weightModuleEntity.getCurrentMeasure(), weightModule.getModuleStatus().getCurrentMeasure());
@@ -45,12 +45,22 @@ class WeightModuleFactoryTest {
         //given
         final var weightModuleEntity = WeightModuleTestProvider.entity();
         //given
-        final var weightModule = WeightModuleFactory.toDomain(weightModuleEntity);
+        final var weightModule = WeightModuleFactory.toWeightModuleDomain(weightModuleEntity);
         //then
-        assertEquals(weightModuleEntity.getTotalMaterialWeight(), weightModule.getProductionInfo().getTotalMaterialWeight());
-        assertEquals(weightModuleEntity.getTotalProductPcs(), weightModule.getProductionInfo().getTotalProductPcs());
-        assertEquals(weightModuleEntity.getCorrectProductPercent(), weightModule.getProductionInfo().getCorrectProductPercent());
+        assertEquals(weightModuleEntity.getTotalMaterialWeight(), weightModule.getProductionIndicators().getTotalMaterialWeight());
+        assertEquals(weightModuleEntity.getTotalProductPcs(), weightModule.getProductionIndicators().getTotalProductPcs());
+        assertEquals(weightModuleEntity.getCorrectProductPercent(), weightModule.getProductionIndicators().getCorrectProductPercent());
     }
 
+    @Test
+    void toWeightModuleEntityTest() {
+        //given
+        final var entity = WeightModuleTestProvider.entity();
+        final var domain = WeightModuleFactory.toWeightModuleDomain(entity);
+        //when
+        final var convertedEntity = WeightModuleFactory.toWeightModuleEntity(domain);
+        //then
+        assertEquals(entity, convertedEntity);
+    }
 
 }
