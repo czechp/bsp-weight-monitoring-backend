@@ -5,6 +5,6 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-interface WeightModuleQuery {
+public interface WeightModuleQuery {
     List<WeightModuleQueryDto> findAllWeightModule(Pageable pageable);
 }

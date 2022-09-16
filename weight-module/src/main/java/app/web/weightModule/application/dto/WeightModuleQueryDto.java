@@ -9,9 +9,9 @@ public class WeightModuleQueryDto {
     private final long id;
     private final long productionLineId;
     private final String productionLineName;
-    private final ProductInfoQueryDto productInfoQueryDto;
-    private final ModuleStatusQueryDto moduleStatusQueryDto;
-    private final ProductionIndicatorsQueryDto productionIndicatorsQueryDto;
+    private final ProductInfoQueryDto productInfo;
+    private final ModuleStatusQueryDto moduleStatus;
+    private final ProductionIndicatorsQueryDto productionIndicators;
 
     @Data
     @AllArgsConstructor
