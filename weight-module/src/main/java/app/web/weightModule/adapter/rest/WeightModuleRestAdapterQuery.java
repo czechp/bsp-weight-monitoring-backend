@@ -21,4 +21,10 @@ class WeightModuleRestAdapterQuery {
     List<WeightModuleQueryDto> findAllWeightModules(Pageable pageable) {
         return weightModuleQuery.findAllWeightModule(pageable);
     }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    WeightModuleQueryDto findByIdWeightModule(@PathVariable(name = "id") long moduleId) {
+        return weightModuleQuery.findByIdWeightModule(moduleId);
+    }
 }

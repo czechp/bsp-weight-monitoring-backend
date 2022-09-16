@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 
 @SpringBootTest
 @Transactional
@@ -34,5 +35,18 @@ class WeightModuleRestAdapterQueryTest {
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(1)));
+    }
+
+    @Test
+    @WithMockUser
+    void findByIdWeightModule() throws Exception {
+        //given
+        final var id = 1L;
+        final var requestBuilder = MockMvcRequestBuilders.get(URL + "/{id}", id);
+        //when
+        //then
+        mockMvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", is((int) id)));
     }
 }

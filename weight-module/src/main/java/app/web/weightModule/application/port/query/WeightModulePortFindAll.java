@@ -1,4 +1,4 @@
-package app.web.weightModule.application.port;
+package app.web.weightModule.application.port.query;
 
 import app.web.weightModule.domain.WeightModule;
 import org.springframework.data.domain.Pageable;

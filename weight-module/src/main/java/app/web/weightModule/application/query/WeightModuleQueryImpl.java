@@ -1,7 +1,8 @@
 package app.web.weightModule.application.query;
 
 import app.web.weightModule.application.dto.WeightModuleQueryDto;
-import app.web.weightModule.application.port.WeightModulePortFindAll;
+import app.web.weightModule.application.port.query.WeightModulePortFindAll;
+import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.domain.WeightModuleFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -14,12 +15,18 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 class WeightModuleQueryImpl implements WeightModuleQuery{
     private final WeightModulePortFindAll portFindAll;
+    private final WeightModulePortFindById portFindById;
 
     @Override
     public List<WeightModuleQueryDto> findAllWeightModule(Pageable pageable) {
         return portFindAll.findAllWeightModule(pageable)
                 .stream()
-                .map(WeightModuleFactory::toQueryDto)
+                .map(WeightModuleFactory::toWeightModuleQueryDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WeightModuleQueryDto findByIdWeightModule(long id) {
+        return WeightModuleFactory.toWeightModuleQueryDto(portFindById.findByIdWeightModuleOrThrowException(id));
     }
 }
