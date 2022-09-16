@@ -2,8 +2,9 @@ package app.web.weightModule.domain;
 
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleEntity;
+import app.web.weightModule.application.dto.WeightModuleQueryDto;
 
-class WeightModuleFactory {
+public class WeightModuleFactory {
     public static WeightModule toWeightModuleDomain(WeightModuleEntity weightModuleEntity) {
         final ProductInfoVO productInfo = new ProductInfoVO(weightModuleEntity.getProductUpRangeWeight(),
                 weightModuleEntity.getProductDownRangeWeight());
@@ -40,6 +41,28 @@ class WeightModuleFactory {
                 domain.getProductionIndicators().getTotalMaterialWeight(),
                 domain.getProductionIndicators().getTotalProductPcs(),
                 domain.getProductionIndicators().getCorrectProductPercent()
-                );
+        );
+    }
+
+    public static WeightModuleQueryDto toQueryDto(WeightModule domain) {
+        return new WeightModuleQueryDto(
+                domain.getId(),
+                domain.getProductionLineId(),
+                domain.getProductionLineName(),
+                new WeightModuleQueryDto.ProductInfoQueryDto(
+                        domain.getProductInfo().getUpRangeWeight(),
+                        domain.getProductInfo().getDownRangeWeight()
+                ),
+                new WeightModuleQueryDto.ModuleStatusQueryDto(
+                        domain.getModuleStatus().getCurrentDosingDevice(),
+                        domain.getModuleStatus().getCurrentMeasure(),
+                        domain.getModuleStatus().isStatus()
+                ),
+                new WeightModuleQueryDto.ProductionIndicatorsQueryDto(
+                        domain.getProductionIndicators().getTotalMaterialWeight(),
+                        domain.getProductionIndicators().getTotalProductPcs(),
+                        domain.getProductionIndicators().getCorrectProductPercent()
+                )
+        );
     }
 }

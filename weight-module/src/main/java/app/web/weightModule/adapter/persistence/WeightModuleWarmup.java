@@ -35,6 +35,17 @@ class WeightModuleWarmup {
                         100.0f,
                         123_000,
                         75.0f
+                ),
+                new WeightModuleEntity(0L,
+                        new ProductionLineSimpleEntity(2L, ""),
+                        15f,
+                        13f,
+                        12,
+                        14.3f,
+                        false,
+                        112.0f,
+                        321_000,
+                        50.0f
                 )
         );
 
