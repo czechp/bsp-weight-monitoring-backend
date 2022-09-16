@@ -1,6 +1,8 @@
 package app.web.weightModule.adapter.persistence;
 
-import app.web.weightModule.application.port.WeightModulePortFindAll;
+import app.web.exception.NotFoundException;
+import app.web.weightModule.application.port.query.WeightModulePortFindAll;
+import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleFactory;
 import lombok.AllArgsConstructor;
@@ -12,7 +14,10 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class WeightModulePersistenceAdapter implements WeightModulePortFindAll {
+class WeightModulePersistenceAdapter implements
+        WeightModulePortFindAll,
+        WeightModulePortFindById
+{
     private final WeightModuleJpaRepository jpaRepository;
 
     @Override
@@ -21,5 +26,12 @@ class WeightModulePersistenceAdapter implements WeightModulePortFindAll {
                 .map(WeightModuleFactory::toWeightModuleDomain)
                 .stream()
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WeightModule findByIdWeightModuleOrThrowException(long id) {
+        return jpaRepository.findById(id)
+                .map(WeightModuleFactory::toWeightModuleDomain)
+                .orElseThrow(()->new NotFoundException("Weight module with id: " + id + " does not exist"));
     }
 }

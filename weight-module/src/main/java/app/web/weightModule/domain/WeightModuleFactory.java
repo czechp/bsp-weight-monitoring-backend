@@ -44,7 +44,7 @@ public class WeightModuleFactory {
         );
     }
 
-    public static WeightModuleQueryDto toQueryDto(WeightModule domain) {
+    public static WeightModuleQueryDto toWeightModuleQueryDto(WeightModule domain) {
         return new WeightModuleQueryDto(
                 domain.getId(),
                 domain.getProductionLineId(),
