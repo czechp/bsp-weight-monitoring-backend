@@ -49,4 +49,17 @@ class WeightModuleRestAdapterQueryTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", is((int) id)));
     }
+
+    @Test
+    @WithMockUser
+    void findByProductionLineIdTest() throws Exception {
+        //given
+        final var productionLineId = 1L;
+        final var requestBuilder = MockMvcRequestBuilders.get(URL + "/production-line/{id}", productionLineId);
+        //when
+        //then
+        mockMvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(1)));
+    }
 }
