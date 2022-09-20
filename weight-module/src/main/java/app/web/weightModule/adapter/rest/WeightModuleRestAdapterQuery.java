@@ -27,4 +27,10 @@ class WeightModuleRestAdapterQuery {
     WeightModuleQueryDto findByIdWeightModule(@PathVariable(name = "id") long moduleId) {
         return weightModuleQuery.findByIdWeightModule(moduleId);
     }
+
+    @GetMapping("/production-line/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    List<WeightModuleQueryDto> findByProductionLineIdWeightModules(@PathVariable(name = "id") long productionLineId) {
+        return weightModuleQuery.findByProductionLineIdWeightModules(productionLineId);
+    }
 }
