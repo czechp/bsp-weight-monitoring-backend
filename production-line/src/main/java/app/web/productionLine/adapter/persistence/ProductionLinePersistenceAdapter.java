@@ -4,16 +4,20 @@ import app.web.exception.NotFoundException;
 import app.web.productionLine.application.port.crud.ProductionLinePortDeleteById;
 import app.web.productionLine.application.port.crud.ProductionLinePortFindByIdOrException;
 import app.web.productionLine.application.port.crud.ProductionLinePortSave;
+import app.web.productionLine.application.port.query.ProductionLinePortFindById;
 import app.web.productionLine.domain.ProductionLine;
 import app.web.productionLine.domain.ProductionLineFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 class ProductionLinePersistenceAdapter implements ProductionLinePortSave,
         ProductionLinePortFindByIdOrException,
-        ProductionLinePortDeleteById {
+        ProductionLinePortDeleteById,
+        ProductionLinePortFindById {
     private final ProductionLineRepository productionLineRepository;
 
     @Override
@@ -33,4 +37,11 @@ class ProductionLinePersistenceAdapter implements ProductionLinePortSave,
     public void deleteProductionLineById(long id) {
         productionLineRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<ProductionLine> findProductionLineById(long id) {
+        return productionLineRepository.findById(id)
+                .map(ProductionLineFactory::toDomain);
+    }
+
 }

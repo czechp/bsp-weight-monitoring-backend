@@ -1,6 +1,10 @@
 package app.web.weightModule.application.useCase;
 
+import app.web.productionLine.dto.ProductionLineFacadeDto;
+import app.web.weightModule.application.dto.WeightModuleCreateDto;
+import app.web.weightModule.application.port.crud.WeightModulePortSave;
 import app.web.weightModule.application.port.query.WeightModulePortFindByProductionLineId;
+import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,10 +41,10 @@ class WeightModuleUseCaseCreateTest {
         final var productionLineFacadeDto = new ProductionLineFacadeDto(productionLineId, productionLineName);
         //when
         Mockito.when(portFindProductionLineById.findProductionLineById(anyLong())).thenReturn(Optional.of(productionLineFacadeDto));
-        final var createdWeightModule =weightModuleUseCaseCreate.createWeighModule(weightModuleCreateDto);
+        final var createdWeightModule = weightModuleUseCaseCreate.createWeighModule(weightModuleCreateDto);
         //then
         assertNotNull(createdWeightModule);
-        assertEquals(productionLineId, createdWeightModule.getProductionLineId());
+        Mockito.verify(portSave, Mockito.times(1)).saveWeightModule(any());
     }
 
 }
