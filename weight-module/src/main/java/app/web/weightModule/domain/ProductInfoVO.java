@@ -6,6 +6,13 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 class ProductInfoVO {
-    private float upRangeWeight;
-    private float downRangeWeight;
+    private final float upRangeWeight;
+    private final float downRangeWeight;
+
+    ProductInfoVO() {
+        this.upRangeWeight = 0f;
+        this.downRangeWeight = 0f;
+    }
+
+
 }
