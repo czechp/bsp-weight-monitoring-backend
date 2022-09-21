@@ -63,4 +63,19 @@ class WeightModuleFactoryTest {
         assertEquals(entity, convertedEntity);
     }
 
+    @Test
+    void createWeightModuleTest() {
+        //given
+        final var productionLineId = 1L;
+        final var productionLineName = "Some production line name";
+        //when
+        WeightModule newWeightModule = WeightModuleFactory.createWeightModule(productionLineId, productionLineName);
+        //then
+        assertEquals(productionLineId, newWeightModule.getProductionLineId());
+        assertEquals(productionLineName, newWeightModule.getProductionLineName());
+        assertNotNull(newWeightModule.getProductInfo());
+        assertNotNull(newWeightModule.getModuleStatus());
+        assertNotNull(newWeightModule.getProductionIndicators());
+    }
+
 }
