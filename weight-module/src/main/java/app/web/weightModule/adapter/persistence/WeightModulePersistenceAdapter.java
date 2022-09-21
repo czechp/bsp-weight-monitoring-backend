@@ -1,6 +1,7 @@
 package app.web.weightModule.adapter.persistence;
 
 import app.web.exception.NotFoundException;
+import app.web.weightModule.application.port.crud.WeightModulePortSave;
 import app.web.weightModule.application.port.query.WeightModulePortFindAll;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.application.port.query.WeightModulePortFindByProductionLineId;
@@ -18,7 +19,8 @@ import java.util.stream.Collectors;
 class WeightModulePersistenceAdapter implements
         WeightModulePortFindAll,
         WeightModulePortFindById,
-        WeightModulePortFindByProductionLineId
+        WeightModulePortFindByProductionLineId,
+        WeightModulePortSave
 {
     private final WeightModuleJpaRepository jpaRepository;
 
@@ -43,5 +45,12 @@ class WeightModulePersistenceAdapter implements
                 .stream()
                 .map(WeightModuleFactory::toWeightModuleDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WeightModule saveWeightModule(WeightModule weightModule) {
+        final var weightModuleEntityToSave = WeightModuleFactory.toWeightModuleEntity(weightModule);
+        final var savedEntity = jpaRepository.save(weightModuleEntityToSave);
+        return WeightModuleFactory.toWeightModuleDomain(savedEntity);
     }
 }

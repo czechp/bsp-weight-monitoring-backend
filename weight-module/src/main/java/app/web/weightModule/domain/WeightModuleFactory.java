@@ -65,4 +65,8 @@ public class WeightModuleFactory {
                 )
         );
     }
+
+    public static WeightModule createWeightModule(long productionLineId, String productionLineName) {
+        return new WeightModule(productionLineId, productionLineName);
+    }
 }

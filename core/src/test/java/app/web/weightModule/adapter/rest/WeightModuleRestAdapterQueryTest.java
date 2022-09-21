@@ -34,7 +34,7 @@ class WeightModuleRestAdapterQueryTest {
         //then
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(1)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)));
     }
 
     @Test
