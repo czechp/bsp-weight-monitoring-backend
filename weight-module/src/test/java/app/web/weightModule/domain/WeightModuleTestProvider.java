@@ -17,4 +17,15 @@ public class WeightModuleTestProvider {
                 75.0f
         );
     }
+
+    public static WeightModule domain(){
+        return new WeightModule(
+                1L,
+                10L,
+                "Some production line",
+                new ProductInfoVO(),
+                new ModuleStatusVO(),
+                new ProductionIndicatorsVO()
+        );
+    }
 }
