@@ -1,5 +1,6 @@
 package app.web.weightModule.application.useCase;
 
+import app.web.exception.NotFoundException;
 import app.web.weightModule.application.port.crud.WeightModulePortRemove;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.domain.WeightModuleTestProvider;
@@ -11,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 
@@ -24,7 +26,7 @@ class WeightModuleUseCaseDeleteTest {
     WeightModuleUseCaseDelete useCaseDelete;
 
     @BeforeEach
-    void init(){
+    void init() {
         this.useCaseDelete = new WeightModuleUseCaseDeleteImpl(portFindById, portRemove);
     }
 
@@ -37,6 +39,18 @@ class WeightModuleUseCaseDeleteTest {
         Mockito.when(portFindById.findByIdWeightModuleOrThrowException(anyLong())).thenReturn(WeightModuleTestProvider.domain());
         final var removedWeightModule = useCaseDelete.deleteWeightModuleById(id);
         //then
-        Mockito.verify(portRemove.removeWeightModule(any()), Mockito.times(1));
+        Mockito.verify(portRemove, Mockito.times(1)).removeWeightModule(any());
+    }
+
+    @Test
+    @DisplayName("Weight module delete by id - not found")
+    void deleteWeightModuleByIdNotFoundTest() {
+        //given
+        final long id = 1L;
+        //when
+        Mockito.when(portFindById.findByIdWeightModuleOrThrowException(anyLong())).thenThrow(NotFoundException.class);
+        //then
+        assertThrows(NotFoundException.class, () -> useCaseDelete.deleteWeightModuleById(id));
+
     }
 }
