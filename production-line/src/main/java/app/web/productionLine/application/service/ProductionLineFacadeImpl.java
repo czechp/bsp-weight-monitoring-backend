@@ -13,6 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 class ProductionLineFacadeImpl implements ProductionLineFacade {
     private final ProductionLinePortFindById productionLinePortFindById;
+
     @Override
     public Optional<ProductionLineFacadeDto> findProductionLineById(long id) {
         return productionLinePortFindById.findProductionLineById(id)

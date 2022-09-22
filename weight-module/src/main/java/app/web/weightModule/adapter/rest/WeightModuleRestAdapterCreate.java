@@ -2,7 +2,6 @@ package app.web.weightModule.adapter.rest;
 
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.useCase.WeightModuleUseCaseCreate;
-import app.web.weightModule.domain.WeightModule;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -18,7 +17,7 @@ class WeightModuleRestAdapterCreate {
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Secured({"ROLE_ADMIN"})
-    void createWeightModule(@RequestBody WeightModuleCreateDto createDto){
+    void createWeightModule(@RequestBody WeightModuleCreateDto createDto) {
         useCaseCreate.createWeighModule(createDto);
     }
 }

@@ -1,6 +1,5 @@
 package app.web.weightModule.adapter.persistence;
 
-import app.web.weightModule.domain.WeightModule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

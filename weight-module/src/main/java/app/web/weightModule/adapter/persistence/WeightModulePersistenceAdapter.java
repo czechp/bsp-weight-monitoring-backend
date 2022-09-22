@@ -1,6 +1,7 @@
 package app.web.weightModule.adapter.persistence;
 
 import app.web.exception.NotFoundException;
+import app.web.weightModule.application.port.crud.WeightModulePortRemove;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
 import app.web.weightModule.application.port.query.WeightModulePortFindAll;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
@@ -20,8 +21,8 @@ class WeightModulePersistenceAdapter implements
         WeightModulePortFindAll,
         WeightModulePortFindById,
         WeightModulePortFindByProductionLineId,
-        WeightModulePortSave
-{
+        WeightModulePortSave,
+        WeightModulePortRemove {
     private final WeightModuleJpaRepository jpaRepository;
 
     @Override
@@ -36,7 +37,7 @@ class WeightModulePersistenceAdapter implements
     public WeightModule findByIdWeightModuleOrThrowException(long id) {
         return jpaRepository.findById(id)
                 .map(WeightModuleFactory::toWeightModuleDomain)
-                .orElseThrow(()->new NotFoundException("Weight module with id: " + id + " does not exist"));
+                .orElseThrow(() -> new NotFoundException("Weight module with id: " + id + " does not exist"));
     }
 
     @Override
@@ -52,5 +53,12 @@ class WeightModulePersistenceAdapter implements
         final var weightModuleEntityToSave = WeightModuleFactory.toWeightModuleEntity(weightModule);
         final var savedEntity = jpaRepository.save(weightModuleEntityToSave);
         return WeightModuleFactory.toWeightModuleDomain(savedEntity);
+    }
+
+    @Override
+    public WeightModule removeWeightModule(WeightModule weightModule) {
+        final var weightModuleEntity = WeightModuleFactory.toWeightModuleEntity(weightModule);
+        jpaRepository.delete(weightModuleEntity);
+        return weightModule;
     }
 }
