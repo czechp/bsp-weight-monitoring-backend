@@ -20,8 +20,8 @@ class ProductionLineUseCaseDeleteImpl implements ProductionLineUseCaseDeleteById
     @Transactional
     public ProductionLine deleteById(long id) {
         ProductionLine productionLine = portFindById.findProductionLineByIdOrException(id);
-        portDeleteById.deleteProductionLineById(productionLine.getId());
         eventPortDelete.emitDeleteEvent(productionLine.getId(), productionLine.getLineName());
+        portDeleteById.deleteProductionLineById(productionLine.getId());
         return productionLine;
     }
 }

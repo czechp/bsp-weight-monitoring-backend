@@ -45,6 +45,6 @@ class ProductionLineUseCaseDeleteByIdTest {
         //then
         Mockito.verify(productionLinePortDeleteById, Mockito.times(1))
                 .deleteProductionLineById(anyLong());
-        Mockito.verify(productionLineEventPortDelete, Mockito.timeout(1)).emitDeleteEvent(anyLong(), anyString());
+        Mockito.verify(productionLineEventPortDelete, Mockito.times(1)).emitDeleteEvent(anyLong(), anyString());
     }
 }
