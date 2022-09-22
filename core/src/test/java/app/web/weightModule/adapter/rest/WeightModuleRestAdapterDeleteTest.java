@@ -40,6 +40,6 @@ class WeightModuleRestAdapterDeleteTest {
         //then
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
-        assertThrows(NotFoundException.class, ()->portFindById.findByIdWeightModuleOrThrowException(weightModuleId));
+        assertThrows(NotFoundException.class, () -> portFindById.findByIdWeightModuleOrThrowException(weightModuleId));
     }
 }

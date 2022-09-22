@@ -22,8 +22,7 @@ class WeightModulePersistenceAdapter implements
         WeightModulePortFindById,
         WeightModulePortFindByProductionLineId,
         WeightModulePortSave,
-        WeightModulePortRemove
-{
+        WeightModulePortRemove {
     private final WeightModuleJpaRepository jpaRepository;
 
     @Override
@@ -38,7 +37,7 @@ class WeightModulePersistenceAdapter implements
     public WeightModule findByIdWeightModuleOrThrowException(long id) {
         return jpaRepository.findById(id)
                 .map(WeightModuleFactory::toWeightModuleDomain)
-                .orElseThrow(()->new NotFoundException("Weight module with id: " + id + " does not exist"));
+                .orElseThrow(() -> new NotFoundException("Weight module with id: " + id + " does not exist"));
     }
 
     @Override

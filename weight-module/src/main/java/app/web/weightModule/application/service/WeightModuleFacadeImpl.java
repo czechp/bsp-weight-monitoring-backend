@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 class WeightModuleFacadeImpl implements WeightModuleFacade {
     private final WeightModuleUseCaseDelete useCaseDelete;
+
     @Override
     public void deleteWeightModulesByProductionLineId(long productionLineId) {
         useCaseDelete.deleteWeightMoulesByProductionLineId(productionLineId);

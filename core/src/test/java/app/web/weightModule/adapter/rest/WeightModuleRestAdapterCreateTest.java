@@ -1,7 +1,6 @@
 package app.web.weightModule.adapter.rest;
 
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

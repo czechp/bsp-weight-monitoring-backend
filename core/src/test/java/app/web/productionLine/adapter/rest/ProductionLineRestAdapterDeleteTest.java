@@ -1,5 +1,7 @@
 package app.web.productionLine.adapter.rest;
 
+import app.web.weightModule.application.port.query.WeightModulePortFindByProductionLineId;
+import app.web.weightModule.domain.WeightModule;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,6 +13,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import javax.transaction.Transactional;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,6 +26,9 @@ class ProductionLineRestAdapterDeleteTest {
     private static final String URL = "/api/production-lines";
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    WeightModulePortFindByProductionLineId portFindByProductionLineId;
 
     @Test
     @WithMockUser(roles = "ADMIN")
@@ -31,6 +40,8 @@ class ProductionLineRestAdapterDeleteTest {
         //then
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
+        List<WeightModule> modulesAfterLineRemoving = portFindByProductionLineId.findByProductionLineIdWeightModules(productionLineId);
+        assertEquals(0, modulesAfterLineRemoving.size());
     }
 
     @Test
@@ -56,6 +67,5 @@ class ProductionLineRestAdapterDeleteTest {
         mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isForbidden());
     }
-
 
 }

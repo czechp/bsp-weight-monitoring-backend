@@ -3,7 +3,6 @@ package app.web.weightModule.application.useCase;
 import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
-import app.web.weightModule.application.port.query.WeightModulePortFindByProductionLineId;
 import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 

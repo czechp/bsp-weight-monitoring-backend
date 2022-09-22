@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class WeightModuleQueryImpl implements WeightModuleQuery{
+class WeightModuleQueryImpl implements WeightModuleQuery {
     private final WeightModulePortFindAll portFindAll;
     private final WeightModulePortFindById portFindById;
     private final WeightModulePortFindByProductionLineId portFindByProductionLineId;

@@ -35,7 +35,7 @@ class WeightModuleUseCaseDeleteTest {
 
     @BeforeEach
     void init() {
-        this.useCaseDelete = new WeightModuleUseCaseDeleteImpl(portFindById,portFindByProductionLineId, portRemove);
+        this.useCaseDelete = new WeightModuleUseCaseDeleteImpl(portFindById, portFindByProductionLineId, portRemove);
     }
 
     @Test

@@ -14,7 +14,7 @@ class WeightModuleRestAdapterDelete {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void removeWeightModule(@PathVariable(name = "id") long weightModuleId){
+    void removeWeightModule(@PathVariable(name = "id") long weightModuleId) {
         useCaseDelete.deleteWeightModuleById(weightModuleId);
     }
 }

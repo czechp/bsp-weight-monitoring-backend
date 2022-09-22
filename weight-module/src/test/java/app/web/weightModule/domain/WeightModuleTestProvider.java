@@ -18,7 +18,7 @@ public class WeightModuleTestProvider {
         );
     }
 
-    public static WeightModule domain(){
+    public static WeightModule domain() {
         return new WeightModule(
                 1L,
                 10L,
