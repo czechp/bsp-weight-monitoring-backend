@@ -16,5 +16,4 @@ public class WeightModuleUpdateDto {
     private float totalMaterialWeight = 0f;
     private long totalProductPcs = 0L;
     private float correctProductPercent = 0f;
-
 }
