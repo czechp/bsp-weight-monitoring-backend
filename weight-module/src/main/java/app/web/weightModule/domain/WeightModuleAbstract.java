@@ -1,5 +1,6 @@
 package app.web.weightModule.domain;
 
+import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,5 +35,11 @@ abstract class WeightModuleAbstract {
         this.productInfo = new ProductInfoVO();
         this.moduleStatus = new ModuleStatusVO();
         this.productionIndicators = new ProductionIndicatorsVO();
+    }
+
+    protected void updateBasicData(WeightModuleUpdateDto dto) {
+        this.setProductInfo(new ProductInfoVO(dto.getProductUpRangeWeight(), dto.getProductDownRangeWeight()));
+        this.setModuleStatus(new ModuleStatusVO(dto.getCurrentDosingDevice(), dto.getCurrentMeasure(), dto.isStatus()));
+        this.setProductionIndicators(new ProductionIndicatorsVO(dto.getTotalMaterialWeight(), dto.getTotalProductPcs(), dto.getCorrectProductPercent()));
     }
 }

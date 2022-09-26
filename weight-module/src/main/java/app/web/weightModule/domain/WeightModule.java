@@ -11,10 +11,9 @@ public class WeightModule extends WeightModuleAbstract {
         super(productionLineId, productionLineName);
     }
 
-    public WeightModule updateData(WeightModuleUpdateDto dto) {
-        this.setProductInfo(new ProductInfoVO(dto.getProductUpRangeWeight(), dto.getProductDownRangeWeight()));
-        this.setModuleStatus(new ModuleStatusVO(dto.getCurrentDosingDevice(), dto.getCurrentMeasure(), dto.isStatus()));
-        this.setProductionIndicators(new ProductionIndicatorsVO(dto.getTotalMaterialWeight(), dto.getTotalProductPcs(), dto.getCorrectProductPercent()));
+
+    public WeightModule updateData(WeightModuleUpdateDto weightModuleUpdateDto) {
+        super.updateBasicData(weightModuleUpdateDto);
         return this;
     }
 }
