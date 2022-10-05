@@ -26,6 +26,7 @@ class WeightModuleWarmup {
         LoggerInfo.showInfo(logger, "Warmup for WeightModule entity");
         final var weightModules = List.of(
                 new WeightModuleEntity(0L,
+                        0L,
                         new ProductionLineSimpleEntity(1L, ""),
                         13f,
                         11f,
@@ -37,6 +38,7 @@ class WeightModuleWarmup {
                         75.0f
                 ),
                 new WeightModuleEntity(0L,
+                        0L,
                         new ProductionLineSimpleEntity(2L, ""),
                         15f,
                         13f,

@@ -12,6 +12,7 @@ public class ProductionLineFactory {
     public static ProductionLineEntity toEntity(ProductionLine productionLine) {
         return new ProductionLineEntity(
                 productionLine.getId(),
+                productionLine.getVersion(),
                 productionLine.getLineName(),
                 productionLine.getCreationTimestamp()
         );
@@ -19,6 +20,7 @@ public class ProductionLineFactory {
 
     public static ProductionLine toDomain(ProductionLineEntity productionLineEntity) {
         return new ProductionLine(productionLineEntity.getId(),
+                productionLineEntity.getVersion(),
                 productionLineEntity.getLineName(),
                 productionLineEntity.getCreationTimestamp());
     }

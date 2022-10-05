@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class ProductionLine {
     private long id;
+    private long version;
     private String lineName;
     private LocalDateTime creationTimestamp;
 

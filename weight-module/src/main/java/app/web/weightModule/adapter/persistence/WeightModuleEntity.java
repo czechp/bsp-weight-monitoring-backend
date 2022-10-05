@@ -17,6 +17,7 @@ import javax.persistence.Table;
 public
 class WeightModuleEntity extends WeightModuleSuperEntity {
     public WeightModuleEntity(long id,
+                              long version,
                               ProductionLineSimpleEntity productionLineSimpleEntity,
                               float productUpRangeWeight,
                               float productDownRangeWeight,
@@ -27,6 +28,7 @@ class WeightModuleEntity extends WeightModuleSuperEntity {
                               long totalProductPcs,
                               float correctProductPercent) {
         super(id,
+                version,
                 productionLineSimpleEntity,
                 productUpRangeWeight,
                 productDownRangeWeight,
