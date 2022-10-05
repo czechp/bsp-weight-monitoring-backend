@@ -18,6 +18,8 @@ public class ProductionLineEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Version
+    private long version;
 
     @Column(unique = true)
     @Length(min = 3)

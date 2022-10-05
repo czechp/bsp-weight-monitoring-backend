@@ -41,7 +41,7 @@ class ProductionLineFactoryTest {
     @Test
     void mapToQueryDto() {
         //given
-        final var productionLineEntity = new ProductionLineEntity(1L, "New line", LocalDateTime.now());
+        final var productionLineEntity = new ProductionLineEntity(1L, 0L, "New line", LocalDateTime.now());
         //when
         final ProductionLineQueryDto dto = ProductionLineFactory.toDto(productionLineEntity);
         //then
