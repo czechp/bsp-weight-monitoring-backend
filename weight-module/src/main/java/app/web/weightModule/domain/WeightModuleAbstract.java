@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter(value = AccessLevel.PROTECTED)
 abstract class WeightModuleAbstract {
     private long id;
+    private long version;
     private long productionLineId;
     private String productionLineName;
     private ProductInfoVO productInfo;

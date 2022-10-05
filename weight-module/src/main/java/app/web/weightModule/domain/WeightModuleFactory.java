@@ -32,6 +32,7 @@ public class WeightModuleFactory {
     public static WeightModuleEntity toWeightModuleEntity(WeightModule domain) {
         return new WeightModuleEntity(
                 domain.getId(),
+                domain.getVersion(),
                 new ProductionLineSimpleEntity(domain.getProductionLineId(), domain.getProductionLineName()),
                 domain.getProductInfo().getUpRangeWeight(),
                 domain.getProductInfo().getDownRangeWeight(),

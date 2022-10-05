@@ -17,6 +17,9 @@ abstract class WeightModuleSuperEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
 
+    @Version
+    long version;
+
     @ManyToOne(fetch = FetchType.LAZY)
     protected ProductionLineSimpleEntity productionLineSimpleEntity;
 

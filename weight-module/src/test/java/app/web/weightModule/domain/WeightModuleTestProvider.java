@@ -6,6 +6,7 @@ import app.web.weightModule.adapter.persistence.WeightModuleEntity;
 public class WeightModuleTestProvider {
     static WeightModuleEntity entity() {
         return new WeightModuleEntity(0L,
+                0L,
                 new ProductionLineSimpleEntity(1L, ""),
                 13f,
                 11f,
