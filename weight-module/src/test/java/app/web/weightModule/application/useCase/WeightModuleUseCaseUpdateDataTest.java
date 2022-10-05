@@ -27,6 +27,7 @@ class WeightModuleUseCaseUpdateDataTest {
     WeightModulePortSave portSave;
 
     WeightModuleUseCaseUpdateData useCaseUpdateData;
+
     @BeforeEach
     void init() {
         this.useCaseUpdateData = new WeightModuleUseCaseUpdateDataImpl(portFindById, portSave);

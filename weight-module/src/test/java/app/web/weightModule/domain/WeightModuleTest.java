@@ -34,8 +34,6 @@ class WeightModuleTest {
         assertEquals(weightModuleUpdateDto.getCorrectProductPercent(), updatedWeightModule.getProductionIndicators().getCorrectProductPercent());
 
 
-
-
     }
 }
 

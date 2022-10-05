@@ -2,7 +2,6 @@ package app.web.weightModule.adapter.rest;
 
 import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleUpdateDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
