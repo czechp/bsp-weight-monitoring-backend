@@ -1,6 +1,7 @@
 package app.web.productionLine.adapter.persistence;
 
 import app.web.utilities.tools.LoggerInfo;
+import org.junit.jupiter.api.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -23,6 +24,7 @@ class ProductionLineWarmup {
     }
 
     @EventListener(ApplicationReadyEvent.class)
+    @Order(2)
     void init() {
         LoggerInfo.showInfo(logger, "Warmup for Production line entity");
         List<ProductionLineEntity> lines = createLines();
