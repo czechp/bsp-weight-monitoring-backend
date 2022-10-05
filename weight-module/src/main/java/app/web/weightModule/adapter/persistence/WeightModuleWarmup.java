@@ -1,6 +1,7 @@
 package app.web.weightModule.adapter.persistence;
 
 import app.web.utilities.tools.LoggerInfo;
+import org.junit.jupiter.api.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -22,6 +23,7 @@ class WeightModuleWarmup {
     }
 
     @EventListener(ApplicationReadyEvent.class)
+    @Order(3)
     void init() {
         LoggerInfo.showInfo(logger, "Warmup for WeightModule entity");
         final var weightModules = List.of(

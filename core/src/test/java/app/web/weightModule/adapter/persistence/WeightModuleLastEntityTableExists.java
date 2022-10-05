@@ -18,7 +18,7 @@ class WeightModuleLastEntityTableExists {
 
     @Test
     @DisplayName("Table exists")
-    void weightModuleLastEntityTableExists(){
+    void weightModuleLastEntityTableExists() {
         //given
         //when
         //then

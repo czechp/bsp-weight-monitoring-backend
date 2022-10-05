@@ -18,7 +18,9 @@ public class RandomValueGenerator {
         return random.nextFloat();
     }
 
-    public static boolean randomBoolean() {return random.nextBoolean();}
+    public static boolean randomBoolean() {
+        return random.nextBoolean();
+    }
 
     public static long randomLong() {
         return random.nextLong();

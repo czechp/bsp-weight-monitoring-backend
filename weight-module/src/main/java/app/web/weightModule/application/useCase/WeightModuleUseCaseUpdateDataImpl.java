@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 @Service
 @AllArgsConstructor
-class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData{
+class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData {
     private final WeightModulePortFindById portFindById;
     private final WeightModulePortSave portSave;
 
