@@ -14,12 +14,12 @@ import javax.transaction.Transactional;
 
 @Service
 @AllArgsConstructor
-@Transactional
 class WeightModuleUseCaseCreateImpl implements WeightModuleUseCaseCreate {
     private final WeightModulePortFindProductionLineById portFindProductionLineById;
     private final WeightModulePortSave portSave;
 
     @Override
+    @Transactional
     public WeightModule createWeighModule(WeightModuleCreateDto weightModuleCreateDto) {
         ProductionLineFacadeDto productionLine = portFindProductionLineById.findProductionLineById(weightModuleCreateDto.getProductionLineId())
                 .orElseThrow(() -> new NotFoundException("Linia produkcyjna z id: " + weightModuleCreateDto.getProductionLineId() + " nie istnieje"));
