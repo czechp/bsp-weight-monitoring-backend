@@ -22,6 +22,7 @@ public class WeightModuleFactory {
         );
 
         return new WeightModule(weightModuleEntity.getId(),
+                weightModuleEntity.getVersion(),
                 weightModuleEntity.getProductionLineSimpleEntity().getId(),
                 weightModuleEntity.getProductionLineSimpleEntity().getLineName(),
                 productInfo,

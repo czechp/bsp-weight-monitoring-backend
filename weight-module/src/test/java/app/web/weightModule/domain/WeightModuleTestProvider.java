@@ -22,6 +22,7 @@ public class WeightModuleTestProvider {
     public static WeightModule domain() {
         return new WeightModule(
                 1L,
+                0L,
                 10L,
                 "Some production line",
                 new ProductInfoVO(),
