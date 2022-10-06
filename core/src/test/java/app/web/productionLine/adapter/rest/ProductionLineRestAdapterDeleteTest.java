@@ -34,7 +34,7 @@ class ProductionLineRestAdapterDeleteTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     @Disabled
-    //TODO: enable it after implement removing in weight module last
+        //TODO: enable it after implement removing in weight module last
     void deleteProductionLineTest() throws Exception {
         //given
         final var productionLineId = 1L;
