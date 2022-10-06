@@ -1,6 +1,9 @@
 package app.web.weightModule.adapter.persistence;
 
+import app.web.exception.NotFoundException;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindAll;
+import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
+import app.web.weightModule.application.port.query.WeightModuleLastPortFindByProductionLineId;
 import app.web.weightModule.domain.WeightModuleLast;
 import app.web.weightModule.domain.WeightModuleLastFactory;
 import lombok.AllArgsConstructor;
@@ -12,7 +15,10 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class WeightModuleLastPersistenceAdapter implements WeightModuleLastPortFindAll {
+class WeightModuleLastPersistenceAdapter implements WeightModuleLastPortFindAll,
+        WeightModuleLastPortFindByIdOrThrow,
+        WeightModuleLastPortFindByProductionLineId
+{
     private final WeightModuleLastRepository repository;
 
     @Override
@@ -21,5 +27,21 @@ class WeightModuleLastPersistenceAdapter implements WeightModuleLastPortFindAll 
                 .stream()
                 .map(WeightModuleLastFactory::toDomain)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WeightModuleLast findByIdOrThrowException(long id) {
+        return repository.findById(id)
+                .map(WeightModuleLastFactory::toDomain)
+                .orElseThrow(()->new NotFoundException("Ostatni moduł ważący z id: " + id + " nie istnieje"));
+    }
+
+    @Override
+    public List<WeightModuleLast> findByProductionLineId(long id) {
+        return repository.findByProductionLineSimpleEntity_Id(id)
+                .stream()
+                .map(WeightModuleLastFactory::toDomain)
+                .collect(Collectors.toList());
+
     }
 }
