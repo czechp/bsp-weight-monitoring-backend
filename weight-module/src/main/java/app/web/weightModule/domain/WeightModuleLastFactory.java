@@ -13,7 +13,6 @@ public class WeightModuleLastFactory {
         ModuleLastInfoVO moduleLastInfo = new ModuleLastInfoVO(
                 entity.getIncorrectProductPcs(),
                 entity.getWeightDifference(),
-                productionIndicators.getCorrectProductPercent(),
                 entity.getCorrectToOverdosePercent(),
                 entity.getNotRefilledProductPcs(),
                 entity.getOverFilledProductPcs(),
@@ -70,9 +69,8 @@ public class WeightModuleLastFactory {
         );
 
         final var moduleLastInfoQuery = new WeightModuleLastQueryDto.ModuleLastInfoQuery(
-                domain.getModuleLastInfo().getIncorrectProductPcs(),
+            domain.getModuleLastInfo().getIncorrectProductPcs(),
                 domain.getModuleLastInfo().getWeightDifference(),
-                domain.getModuleLastInfo().getCorrectProductPercent(),
                 domain.getModuleLastInfo().getCorrectToOverdosePercent(),
                 domain.getModuleLastInfo().getNotRefilledProductPcs(),
                 domain.getModuleLastInfo().getOverFilledProductPcs(),

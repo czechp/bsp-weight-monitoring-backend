@@ -2,6 +2,7 @@ package app.web.weightModule.application.query;
 
 import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindAll;
+import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
 import app.web.weightModule.domain.WeightModuleLastFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -14,12 +15,17 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 class WeightModuleLastQueryImpl implements WeightModuleLastQuery {
     private final WeightModuleLastPortFindAll portFindAll;
-
+    private final WeightModuleLastPortFindByIdOrThrow portFindByIdOrThrow;
     @Override
     public List<WeightModuleLastQueryDto> findAllWeightModuleLast(Pageable pageable) {
         return portFindAll.findAllWeightModuleLast(pageable)
                 .stream()
                 .map(WeightModuleLastFactory::toQueryDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public WeightModuleLastQueryDto findByWeightModuleLastByIdOrThrow(long id) {
+        return WeightModuleLastFactory.toQueryDto(portFindByIdOrThrow.findByIdOrThrowException(id));
     }
 }

@@ -9,7 +9,6 @@ import lombok.Getter;
 class ModuleLastInfoVO {
     private long incorrectProductPcs;
     private float weightDifference;
-    private float correctProductPercent;
     private float correctToOverdosePercent;
     private long notRefilledProductPcs;
     private long overFilledProductPcs;

@@ -16,6 +16,8 @@ abstract class WeightModuleSuperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
+    @Version
+    long version;
     @ManyToOne(fetch = FetchType.LAZY)
     protected ProductionLineSimpleEntity productionLineSimpleEntity;
     protected float productUpRangeWeight;
@@ -26,7 +28,6 @@ abstract class WeightModuleSuperEntity {
     protected float totalMaterialWeight;
     protected long totalProductPcs;
     protected float correctProductPercent;
-    @Version
-    long version;
+
 
 }

@@ -1,6 +1,7 @@
 package app.web.weightModule.adapter.rest;
 
 import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
+import app.web.weightModule.application.dto.WeightModuleQueryDto;
 import app.web.weightModule.application.query.WeightModuleLastQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -20,5 +21,11 @@ class WeightModuleLastRestAdapterQuery {
     @ResponseStatus(HttpStatus.OK)
     List<WeightModuleLastQueryDto> findAllWeightModulesAll(Pageable pageable) {
         return query.findAllWeightModuleLast(pageable);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    WeightModuleLastQueryDto findWeightModuleLastById(@PathVariable(name = "id")long weightModuleLastId){
+        return query.findByWeightModuleLastByIdOrThrow(weightModuleLastId);
     }
 }
