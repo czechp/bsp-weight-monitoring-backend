@@ -2,6 +2,8 @@ package app.web.weightModule.domain;
 
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
+import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
+import app.web.weightModule.application.dto.WeightModuleQueryDto;
 
 class WeightModuleLastFactory {
     static WeightModuleLast toDomain(WeightModuleLastEntity entity) {
@@ -49,5 +51,42 @@ class WeightModuleLastFactory {
                 domain.getModuleLastInfo().getNotRefilledProductPcs(),
                 domain.getModuleLastInfo().getOverFilledProductPcs(),
                 domain.getModuleLastInfo().getOverFilledToNotRefilledPercent());
+    }
+
+    public static WeightModuleLastQueryDto toQueryDto(WeightModuleLast domain) {
+        final var productInfoQueryDto = new WeightModuleQueryDto.ProductInfoQueryDto(
+                domain.getProductInfo().getUpRangeWeight(),
+                domain.getProductInfo().getDownRangeWeight());
+
+        final var moduleStatusQueryDto = new WeightModuleQueryDto.ModuleStatusQueryDto(
+                domain.getModuleStatus().getCurrentDosingDevice(),
+                domain.getModuleStatus().getCurrentMeasure(),
+                domain.getModuleStatus().isStatus()
+        );
+        final var productionIndicatorsQueryDto = new WeightModuleQueryDto.ProductionIndicatorsQueryDto(
+                domain.getProductionIndicators().getTotalMaterialWeight(),
+                domain.getProductionIndicators().totalProductPcs,
+                domain.getProductionIndicators().getCorrectProductPercent()
+        );
+
+        final var moduleLastInfoQuery = new WeightModuleLastQueryDto.ModuleLastInfoQuery(
+                domain.getModuleLastInfo().getIncorrectProductPcs(),
+                domain.getModuleLastInfo().getWeightDifference(),
+                domain.getModuleLastInfo().getCorrectProductPercent(),
+                domain.getModuleLastInfo().getCorrectToOverdosePercent(),
+                domain.getModuleLastInfo().getNotRefilledProductPcs(),
+                domain.getModuleLastInfo().getOverFilledProductPcs(),
+                domain.getModuleLastInfo().getOverFilledToNotRefilledPercent()
+        );
+
+        return new WeightModuleLastQueryDto(
+                domain.getId(),
+                domain.getProductionLineId(),
+                domain.getProductionLineName(),
+                productInfoQueryDto,
+                moduleStatusQueryDto,
+                productionIndicatorsQueryDto,
+                moduleLastInfoQuery
+        );
     }
 }
