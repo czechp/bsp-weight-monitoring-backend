@@ -5,8 +5,8 @@ import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
 import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
 import app.web.weightModule.application.dto.WeightModuleQueryDto;
 
-class WeightModuleLastFactory {
-    static WeightModuleLast toDomain(WeightModuleLastEntity entity) {
+public class WeightModuleLastFactory {
+    public static WeightModuleLast toDomain(WeightModuleLastEntity entity) {
         ProductInfoVO productInfo = new ProductInfoVO(entity.getProductUpRangeWeight(), entity.getProductDownRangeWeight());
         ModuleStatusVO moduleStatus = new ModuleStatusVO(entity.getCurrentDosingDevice(), entity.getCurrentMeasure(), entity.isStatus());
         ProductionIndicatorsVO productionIndicators = new ProductionIndicatorsVO(entity.getTotalMaterialWeight(), entity.getTotalProductPcs(), entity.getCorrectProductPercent());
