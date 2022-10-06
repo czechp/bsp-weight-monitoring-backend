@@ -8,4 +8,5 @@ import java.util.List;
 public interface WeightModuleLastQuery {
     List<WeightModuleLastQueryDto> findAllWeightModuleLast(Pageable pageable);
     WeightModuleLastQueryDto findByWeightModuleLastByIdOrThrow(long id);
+    List<WeightModuleLastQueryDto> findByProductionLineId(long id);
 }

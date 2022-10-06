@@ -1,7 +1,6 @@
 package app.web.weightModule.adapter.rest;
 
 import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
-import app.web.weightModule.application.dto.WeightModuleQueryDto;
 import app.web.weightModule.application.query.WeightModuleLastQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +24,12 @@ class WeightModuleLastRestAdapterQuery {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    WeightModuleLastQueryDto findWeightModuleLastById(@PathVariable(name = "id")long weightModuleLastId){
+    WeightModuleLastQueryDto findWeightModuleLastById(@PathVariable(name = "id") long weightModuleLastId) {
         return query.findByWeightModuleLastByIdOrThrow(weightModuleLastId);
+    }
+
+    @GetMapping("/production-line/{id}")
+    List<WeightModuleLastQueryDto> findByProductionLineId(@PathVariable(name = "id")long productionLineId){
+        return query.findByProductionLineId(productionLineId);
     }
 }
