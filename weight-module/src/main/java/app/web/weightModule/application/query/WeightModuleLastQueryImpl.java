@@ -12,8 +12,9 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class WeightModuleLastQueryImpl implements WeightModuleLastQuery{
+class WeightModuleLastQueryImpl implements WeightModuleLastQuery {
     private final WeightModuleLastPortFindAll portFindAll;
+
     @Override
     public List<WeightModuleLastQueryDto> findAllWeightModuleLast(Pageable pageable) {
         return portFindAll.findAllWeightModuleLast(pageable)

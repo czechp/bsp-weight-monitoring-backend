@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter(AccessLevel.PACKAGE)
 public class WeightModuleLast extends WeightModuleAbstract {
     private final ModuleLastInfoVO moduleLastInfo;
+
     public WeightModuleLast(long id,
                             long version,
                             long productionLineId,

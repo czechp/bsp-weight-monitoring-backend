@@ -26,7 +26,7 @@ class WeightModuleLastFactoryTest {
 
     @Test
     @DisplayName("Convert to entity")
-    void toEntityTest(){
+    void toEntityTest() {
         //given
         WeightModuleLast domain = WeightModuleLastTestProvider.getDomain();
         //when
