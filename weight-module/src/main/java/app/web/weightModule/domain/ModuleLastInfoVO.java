@@ -11,7 +11,7 @@ class ModuleLastInfoVO {
     private float weightDifference;
     private float correctProductPercent;
     private float correctToOverdosePercent;
-    private float notRefilledProductPcs;
+    private long notRefilledProductPcs;
     private long overFilledProductPcs;
     private float overFilledToNotRefilledPercent;
 }

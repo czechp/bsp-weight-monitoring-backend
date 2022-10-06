@@ -9,8 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "weight_modules_last")
-@Getter(AccessLevel.PACKAGE)
+@Getter()
 @Setter(AccessLevel.PACKAGE)
+public
 class WeightModuleLastEntity extends WeightModuleSuperEntity {
     private long incorrectProductPcs;
     private float weightDifference;

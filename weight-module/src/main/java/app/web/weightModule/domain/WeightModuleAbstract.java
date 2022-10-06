@@ -17,6 +17,7 @@ abstract class WeightModuleAbstract {
     private ProductionIndicatorsVO productionIndicators;
 
     public WeightModuleAbstract(long id,
+                                long version,
                                 long productionLineId,
                                 String productionLineName,
                                 ProductInfoVO productInfo,
@@ -28,6 +29,7 @@ abstract class WeightModuleAbstract {
         this.productInfo = productInfo;
         this.moduleStatus = moduleStatus;
         this.productionIndicators = productionIndicators;
+        this.version = version;
     }
 
     public WeightModuleAbstract(long productionLineId, String productionLineName) {

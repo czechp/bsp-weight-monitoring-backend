@@ -4,8 +4,8 @@ import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
 
 class WeightModuleLastTestProvider {
-    static WeightModuleLastEntity toEntity(){
-        return new  WeightModuleLastEntity(
+    static WeightModuleLastEntity getEntity() {
+        return new WeightModuleLastEntity(
                 0L,
                 0L,
                 new ProductionLineSimpleEntity(1L, ""),
@@ -23,6 +23,27 @@ class WeightModuleLastTestProvider {
                 100_000L,
                 75_000,
                 33.4f
+        );
+    }
+
+    static WeightModuleLast getDomain() {
+        return new WeightModuleLast(
+                100L,
+                0L,
+                111L,
+                "Line name",
+                new ProductInfoVO(),
+                new ModuleStatusVO(),
+                new ProductionIndicatorsVO(),
+                new ModuleLastInfoVO(
+                        111L,
+                        -10f,
+                        84f,
+                        222L,
+                        333,
+                        444,
+                        66f
+                )
         );
     }
 }
