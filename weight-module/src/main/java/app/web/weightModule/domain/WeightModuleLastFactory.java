@@ -31,7 +31,7 @@ public class WeightModuleLastFactory {
         );
     }
 
-    static WeightModuleLastEntity toEntity(WeightModuleLast domain) {
+    public static WeightModuleLastEntity toEntity(WeightModuleLast domain) {
         return new WeightModuleLastEntity(
                 domain.getId(),
                 domain.getVersion(),
