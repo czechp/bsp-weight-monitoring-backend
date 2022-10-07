@@ -87,4 +87,8 @@ public class WeightModuleLastFactory {
                 moduleLastInfoQuery
         );
     }
+
+    public static WeightModuleLast create(long productionLineId, String productionLineName){
+        return  new WeightModuleLast(productionLineId, productionLineName);
+    }
 }
