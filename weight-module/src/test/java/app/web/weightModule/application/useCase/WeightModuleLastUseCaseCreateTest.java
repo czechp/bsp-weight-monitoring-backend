@@ -1,5 +1,7 @@
 package app.web.weightModule.application.useCase;
 
+import app.web.exception.ConditionsNotFulFiledException;
+import app.web.exception.NotFoundException;
 import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
@@ -17,6 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 
@@ -41,7 +44,7 @@ class WeightModuleLastUseCaseCreateTest {
 
     @Test
     @DisplayName("Create a new weight last module")
-    void createNewWeightModule() {
+    void createNewWeightModuleTest() {
         //given
         final var productionLineId = 1L;
         WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
@@ -54,6 +57,35 @@ class WeightModuleLastUseCaseCreateTest {
         //then
         assertNotNull(createWeightModule);
         Mockito.verify(portSave, Mockito.times(1)).save(any());
+    }
+
+
+    @Test
+    @DisplayName("Module already exists")
+    void createNewWeightModuleAlreadyExistsTest() {
+        //given
+        final var productionLineId = 1L;
+        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        ProductionLineFacadeDto productionLine = new ProductionLineFacadeDto(productionLineId, "Some name");
+        //when
+        Mockito.when(portExistByProductionLineId.existsByProductionLineId(anyLong())).thenReturn(true);
+        //then
+        assertThrows(ConditionsNotFulFiledException.class, () -> useCaseCreate.create(weightModuleCreateDto));
+    }
+
+
+    @Test
+    @DisplayName("Line not found")
+    void createNewWeightModuleLineNotFoundTest() {
+        //given
+        final var productionLineId = 1L;
+        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        //when
+        Mockito.when(portExistByProductionLineId.existsByProductionLineId(anyLong())).thenReturn(false);
+        Mockito.when(portFindProductionLineById.findProductionLineById(anyLong())).thenReturn(Optional.empty());
+
+        //then
+        assertThrows(NotFoundException.class, () -> useCaseCreate.create(weightModuleCreateDto));
 
     }
 }
