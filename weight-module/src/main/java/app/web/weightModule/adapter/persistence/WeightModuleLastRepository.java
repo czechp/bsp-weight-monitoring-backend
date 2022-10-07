@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 interface WeightModuleLastRepository extends JpaRepository<WeightModuleLastEntity, Long> {
     List<WeightModuleLastEntity> findByProductionLineSimpleEntity_Id(long id);
+
+    boolean existsByProductionLineSimpleEntity_Id(long productionLineId);
 }

@@ -4,7 +4,8 @@ import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WeightModuleLastFactoryTest {
 
@@ -38,5 +39,18 @@ class WeightModuleLastFactoryTest {
         assertEquals(domain.getModuleLastInfo().getNotRefilledProductPcs(), entity.getNotRefilledProductPcs());
         assertEquals(domain.getModuleLastInfo().getOverFilledToNotRefilledPercent(), entity.getOverFilledToNotRefilledPercent());
         assertEquals(domain.getModuleLastInfo().getOverFilledToNotRefilledPercent(), entity.getOverFilledToNotRefilledPercent());
+    }
+
+    @Test
+    @DisplayName("Create a new WeightModule")
+    void createNewWeightModuleLastTest() {
+        //given
+        final  var productionLineId = 1L;
+        final var productionLineName = "Some production line name";
+        //when
+        WeightModuleLast createdModule = WeightModuleLastFactory.create(productionLineId, productionLineName);
+        //then
+        assertEquals(productionLineId, createdModule.getProductionLineId());
+        assertEquals(productionLineName,  createdModule.getProductionLineName());
     }
 }

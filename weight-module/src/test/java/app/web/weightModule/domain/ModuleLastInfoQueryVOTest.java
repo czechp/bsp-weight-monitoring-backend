@@ -22,7 +22,6 @@ class ModuleLastInfoQueryVOTest {
         ModuleLastInfoVO moduleVO = new ModuleLastInfoVO(
                 incorrectProductPcs,
                 weightDifference,
-                correctProductPercent,
                 correctToOverdosePercent,
                 notRefilledProductPcs,
                 overFilledProductPcs,
@@ -31,7 +30,6 @@ class ModuleLastInfoQueryVOTest {
         //then
         assertEquals(incorrectProductPcs, moduleVO.getIncorrectProductPcs());
         assertEquals(weightDifference, moduleVO.getWeightDifference());
-        assertEquals(correctProductPercent, moduleVO.getCorrectProductPercent());
         assertEquals(correctToOverdosePercent, moduleVO.getCorrectToOverdosePercent());
         assertEquals(notRefilledProductPcs, moduleVO.getNotRefilledProductPcs());
         assertEquals(overFilledProductPcs, moduleVO.getOverFilledProductPcs());

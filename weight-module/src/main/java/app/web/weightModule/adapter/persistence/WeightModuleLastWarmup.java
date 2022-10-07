@@ -47,25 +47,6 @@ class WeightModuleLastWarmup {
                                 100_000L,
                                 75_000,
                                 33.4f
-                        ),
-                        new WeightModuleLastEntity(
-                                0L,
-                                0L,
-                                new ProductionLineSimpleEntity(2L, ""),
-                                21f,
-                                23f,
-                                17,
-                                22.4f,
-                                true,
-                                400.0f,
-                                550_000l,
-                                99.0f,
-                                240_000L,
-                                100.3f,
-                                60.0f,
-                                120_000L,
-                                90_000,
-                                99.4f
                         )
                 )
                 .forEach(repository::save);

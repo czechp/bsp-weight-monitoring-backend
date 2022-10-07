@@ -13,4 +13,8 @@ class ModuleLastInfoVO {
     private long notRefilledProductPcs;
     private long overFilledProductPcs;
     private float overFilledToNotRefilledPercent;
+
+    ModuleLastInfoVO() {
+
+    }
 }
