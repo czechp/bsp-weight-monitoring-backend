@@ -3,7 +3,7 @@ package app.web.weightModule.domain;
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
 
-class WeightModuleLastTestProvider {
+public class WeightModuleLastTestProvider {
     static WeightModuleLastEntity getEntity() {
         return new WeightModuleLastEntity(
                 0L,
@@ -26,7 +26,7 @@ class WeightModuleLastTestProvider {
         );
     }
 
-    static WeightModuleLast getDomain() {
+    public static WeightModuleLast getDomain() {
         return new WeightModuleLast(
                 100L,
                 0L,

@@ -1,6 +1,7 @@
 package app.web.weightModule.adapter.persistence;
 
 import app.web.exception.NotFoundException;
+import app.web.weightModule.application.port.crud.WeightModuleLastPortRemove;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
 import app.web.weightModule.application.port.query.WeightModuleLastPortExistByProductionLineId;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindAll;
@@ -21,7 +22,8 @@ class WeightModuleLastPersistenceAdapter implements WeightModuleLastPortFindAll,
         WeightModuleLastPortFindByIdOrThrow,
         WeightModuleLastPortFindByProductionLineId,
         WeightModuleLastPortSave,
-        WeightModuleLastPortExistByProductionLineId
+        WeightModuleLastPortExistByProductionLineId,
+        WeightModuleLastPortRemove
 {
     private final WeightModuleLastRepository repository;
 
@@ -58,5 +60,12 @@ class WeightModuleLastPersistenceAdapter implements WeightModuleLastPortFindAll,
     @Override
     public boolean existsByProductionLineId(long productionLineId) {
         return repository.existsByProductionLineSimpleEntity_Id(productionLineId);
+    }
+
+    @Override
+    public WeightModuleLast remove(WeightModuleLast moduleLast) {
+        final var entity = WeightModuleLastFactory.toEntity(moduleLast);
+        repository.delete(entity);
+        return moduleLast;
     }
 }
