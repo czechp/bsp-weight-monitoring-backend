@@ -39,4 +39,12 @@ class WeightModuleLastFactoryTest {
         assertEquals(domain.getModuleLastInfo().getOverFilledToNotRefilledPercent(), entity.getOverFilledToNotRefilledPercent());
         assertEquals(domain.getModuleLastInfo().getOverFilledToNotRefilledPercent(), entity.getOverFilledToNotRefilledPercent());
     }
+
+    @Test
+    @DisplayName("Create a new WeightModule")
+    void createNewWeightModuleLastTest(){
+        //given
+        //when
+        //then
+    }
 }

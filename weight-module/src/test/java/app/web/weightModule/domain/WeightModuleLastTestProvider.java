@@ -38,7 +38,6 @@ class WeightModuleLastTestProvider {
                 new ModuleLastInfoVO(
                         111L,
                         -10f,
-                        84f,
                         222L,
                         333,
                         444,
