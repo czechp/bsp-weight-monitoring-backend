@@ -7,5 +7,5 @@ import java.util.List;
 public interface WeightModuleUseCaseDelete {
     WeightModule deleteWeightModuleById(long id);
 
-    List<WeightModule> deleteWeightMoulesByProductionLineId(long productionLineId);
+
 }

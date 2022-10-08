@@ -25,13 +25,5 @@ class WeightModuleUseCaseDeleteImpl implements WeightModuleUseCaseDelete {
         portRemove.removeWeightModule(weightModule);
         return weightModule;
     }
-
-    @Override
-    @Transactional
-    public List<WeightModule> deleteWeightMoulesByProductionLineId(long productionLineId) {
-        return portFindByProductionLineId.findByProductionLineIdWeightModules(productionLineId)
-                .stream()
-                .map(portRemove::removeWeightModule)
-                .collect(Collectors.toList());
-    }
 }
+
