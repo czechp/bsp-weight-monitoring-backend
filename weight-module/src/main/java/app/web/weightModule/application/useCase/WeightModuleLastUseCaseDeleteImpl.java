@@ -6,6 +6,8 @@ import app.web.weightModule.domain.WeightModuleLast;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @AllArgsConstructor
 class WeightModuleLastUseCaseDeleteImpl implements WeightModuleLastUseCaseDelete {
@@ -13,6 +15,7 @@ class WeightModuleLastUseCaseDeleteImpl implements WeightModuleLastUseCaseDelete
     private final WeightModuleLastPortRemove portRemove;
 
     @Override
+    @Transactional
     public WeightModuleLast removeById(long moduleId) {
         WeightModuleLast module = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
         portRemove.remove(module);
