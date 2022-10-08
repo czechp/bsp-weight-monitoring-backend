@@ -62,20 +62,5 @@ class WeightModuleUseCaseDeleteTest {
 
     }
 
-    @Test
-    @DisplayName("Weight module delete by production line id")
-    void deleteWeightModuleByProductionLineIdTest() {
-        //given
-        final var productionLineId = 1L;
-        final var weightModules = IntStream.range(0, 10)
-                .boxed()
-                .map((number) -> WeightModuleTestProvider.domain())
-                .collect(Collectors.toList());
-        //when
-        Mockito.when(portFindByProductionLineId.findByProductionLineIdWeightModules(anyLong())).thenReturn(weightModules);
-        final var removeWeightModules = useCaseDelete.deleteWeightMoulesByProductionLineId(productionLineId);
-        //then
-        assertEquals(weightModules.size(), removeWeightModules.size());
-        Mockito.verify(portRemove, Mockito.times(weightModules.size())).removeWeightModule(any());
-    }
+
 }
