@@ -1,5 +1,7 @@
 package app.web.weightModule.domain;
 
+import app.web.weightModule.application.dto.WeightModuleLastUpdateDto;
+import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -23,5 +25,10 @@ public class WeightModuleLast extends WeightModuleAbstract {
     WeightModuleLast(long productionLineId, String productionLineName){
         super(productionLineId, productionLineName);
         this.moduleLastInfo = new ModuleLastInfoVO();
+    }
+
+    public WeightModuleLast updateData(WeightModuleUpdateDto updateDto, WeightModuleLastUpdateDto lastUpdateDto){
+
+        return this;
     }
 }
