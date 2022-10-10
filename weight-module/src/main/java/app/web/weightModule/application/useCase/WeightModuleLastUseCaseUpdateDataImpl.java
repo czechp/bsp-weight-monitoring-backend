@@ -15,7 +15,10 @@ class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUp
     private final WeightModuleLastPortSave portSave;
 
     @Override
-    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto moduleLastDto) {
-        return null;
+    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto moduleLastDataDto) {
+        WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
+        WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, moduleLastDataDto);
+        portSave.save(weightModuleLast);
+        return updatedWeightModuleLast;
     }
 }
