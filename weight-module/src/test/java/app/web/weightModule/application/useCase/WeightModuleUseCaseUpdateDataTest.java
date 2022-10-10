@@ -3,10 +3,12 @@ package app.web.weightModule.application.useCase;
 import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
+import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleTestProvider;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -37,16 +39,7 @@ class WeightModuleUseCaseUpdateDataTest {
     void updateWeightModuleDataTest() {
         //given
         final var weightModuleId = 1L;
-        final var weightModuleUpdateDto = new WeightModuleUpdateDto(
-                RandomValueGenerator.randomFloat(),
-                RandomValueGenerator.randomFloat(),
-                RandomValueGenerator.randomInt(),
-                RandomValueGenerator.randomFloat(),
-                RandomValueGenerator.randomBoolean(),
-                RandomValueGenerator.randomFloat(),
-                RandomValueGenerator.randomLong(),
-                RandomValueGenerator.randomFloat()
-        );
+        final var weightModuleUpdateDto = WeightModuleTestProvider.updateDto();
         //when
         Mockito.when(portFindById.findByIdWeightModuleOrThrowException(anyLong())).thenReturn(WeightModuleTestProvider.domain());
         WeightModule updatedWeightModule = useCaseUpdateData.updateWeightModuleData(weightModuleId, weightModuleUpdateDto);

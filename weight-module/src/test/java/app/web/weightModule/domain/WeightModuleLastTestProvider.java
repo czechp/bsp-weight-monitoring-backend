@@ -1,7 +1,9 @@
 package app.web.weightModule.domain;
 
+import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
+import app.web.weightModule.application.dto.WeightModuleLastUpdateDto;
 
 public class WeightModuleLastTestProvider {
     static WeightModuleLastEntity getEntity() {
@@ -26,7 +28,7 @@ public class WeightModuleLastTestProvider {
         );
     }
 
-    public static WeightModuleLast getDomain() {
+    public static WeightModuleLast domain() {
         return new WeightModuleLast(
                 100L,
                 0L,
@@ -43,6 +45,17 @@ public class WeightModuleLastTestProvider {
                         444,
                         66f
                 )
+        );
+    }
+
+    public static WeightModuleLastUpdateDto updateDto(){
+        return new WeightModuleLastUpdateDto(
+                RandomValueGenerator.randomInt(),
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomInt(),
+                RandomValueGenerator.randomInt(),
+                RandomValueGenerator.randomFloat()
         );
     }
 }

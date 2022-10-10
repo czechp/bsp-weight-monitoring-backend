@@ -1,7 +1,5 @@
 package app.web.weightModule.domain;
 
-import app.web.weightModule.application.dto.WeightModuleLastUpdateDto;
-import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,9 +19,9 @@ class WeightModuleLastTest {
     @DisplayName("Update data")
     void updateWeightModuleLastTest(){
         //given
-        final  var weightModuleLast = WeightModuleLastTestProvider.getDomain();
-        final var updateDto = provideUpdateDto();
-        final var lastUpdateDto = provideLastUpdateDto();
+        final  var weightModuleLast = WeightModuleLastTestProvider.domain();
+        final var updateDto = WeightModuleTestProvider.updateDto();
+        final var lastUpdateDto = WeightModuleLastTestProvider.updateDto();
         //when
         WeightModuleLast updatedModule = weightModuleLast.updateData(updateDto, lastUpdateDto);
         //then
@@ -36,20 +34,4 @@ class WeightModuleLastTest {
 
     }
 
-    private static WeightModuleLastUpdateDto provideLastUpdateDto() {
-        return new WeightModuleLastUpdateDto(123_000, -320.f, 34.0f, 100_000, 230_000, 32.f);
-    }
-
-    private static WeightModuleUpdateDto provideUpdateDto() {
-        return new WeightModuleUpdateDto(
-                10.0f,
-                13.0f,
-                11,
-                12f,
-                true,
-                232_000f,
-                321_000L,
-                32.1f
-        );
-    }
 }

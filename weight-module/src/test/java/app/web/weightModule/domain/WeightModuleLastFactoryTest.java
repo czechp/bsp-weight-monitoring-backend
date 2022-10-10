@@ -29,7 +29,7 @@ class WeightModuleLastFactoryTest {
     @DisplayName("Convert to entity")
     void toEntityTest() {
         //given
-        WeightModuleLast domain = WeightModuleLastTestProvider.getDomain();
+        WeightModuleLast domain = WeightModuleLastTestProvider.domain();
         //when
         WeightModuleLastEntity entity = WeightModuleLastFactory.toEntity(domain);
         //then
