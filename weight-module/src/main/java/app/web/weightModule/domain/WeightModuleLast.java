@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter(AccessLevel.PACKAGE)
 public class WeightModuleLast extends WeightModuleAbstract {
-    private final ModuleLastInfoVO moduleLastInfo;
+    private ModuleLastInfoVO moduleLastInfo;
 
     WeightModuleLast(long id,
                             long version,
@@ -28,6 +28,15 @@ public class WeightModuleLast extends WeightModuleAbstract {
     }
 
     public WeightModuleLast updateData(WeightModuleUpdateDto updateDto, WeightModuleLastUpdateDto lastUpdateDto){
+        super.updateBasicData(updateDto);
+        this.moduleLastInfo = new ModuleLastInfoVO(
+                lastUpdateDto.getIncorrectProductPcs(),
+                lastUpdateDto.getWeightDifference(),
+                lastUpdateDto.getCorrectToOverdosePercent(),
+                lastUpdateDto.getNotRefilledProductPcs(),
+                lastUpdateDto.getOverFilledProductPcs(),
+                lastUpdateDto.getOverFilledToNotRefilledPercent()
+        );
 
         return this;
     }
