@@ -1,8 +1,6 @@
 package app.web.adapter;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,9 +8,10 @@ import javax.persistence.*;
 @Table(name="weight_modules")
 @Getter
 @Setter(AccessLevel.PACKAGE)
+@AllArgsConstructor
+@NoArgsConstructor
 public class FirstModuleEntity {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
-        private String productionLineSimpleEntity_lineName;
 }
