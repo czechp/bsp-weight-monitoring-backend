@@ -3,6 +3,8 @@ package app.web.domain;
 abstract class DosingDevice {
     protected long id;
     protected long version;
+
+    protected ModuleType moduleType;
     protected int recordNumber;
     protected float lastMeasure;
     protected int amountBelowMeasures;
@@ -32,5 +34,8 @@ abstract class DosingDevice {
         this.averageMeasure = averageMeasure;
         this.correctMeasurePercent = correctMeasurePercent;
         this.totalMaterial = totalMaterial;
+        this.moduleType = setModuleType();
     }
+
+    abstract ModuleType setModuleType();
 }
