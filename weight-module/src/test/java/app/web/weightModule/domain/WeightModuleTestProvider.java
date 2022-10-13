@@ -1,7 +1,9 @@
 package app.web.weightModule.domain;
 
+import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleEntity;
+import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 
 public class WeightModuleTestProvider {
     static WeightModuleEntity entity() {
@@ -28,6 +30,19 @@ public class WeightModuleTestProvider {
                 new ProductInfoVO(),
                 new ModuleStatusVO(),
                 new ProductionIndicatorsVO()
+        );
+    }
+
+    public static WeightModuleUpdateDto updateDto(){
+        return new WeightModuleUpdateDto(
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomInt(),
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomBoolean(),
+                RandomValueGenerator.randomFloat(),
+                RandomValueGenerator.randomLong(),
+                RandomValueGenerator.randomFloat()
         );
     }
 }

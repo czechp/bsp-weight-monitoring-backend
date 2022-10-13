@@ -34,7 +34,7 @@ class WeightModuleLastUseCaseDeleteTest {
     void removeWeightModuleLastTest() {
         //given
         final var moduleId = 1L;
-        final var weightModuleToRemove = WeightModuleLastTestProvider.getDomain();
+        final var weightModuleToRemove = WeightModuleLastTestProvider.domain();
         //when
         Mockito.when(portFindByIdOrThrow.findByIdOrThrowException(anyLong())).thenReturn(weightModuleToRemove);
         final var removeModule = useCaseDelete.removeById(moduleId);
