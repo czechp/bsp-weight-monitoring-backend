@@ -18,10 +18,12 @@ import java.util.stream.IntStream;
 @Profile({"development", "test"})
 class DosingDeviceWarmup {
     private final Logger logger = LoggerFactory.getLogger(DosingDeviceWarmup.class);
-    private final DosingDeviceFirstEntityRepository firstRepository;
+    private final DosingDeviceFirstRepository firstRepository;
+    private final DosingDeviceLastRepository lastRepository;
 
-    DosingDeviceWarmup(DosingDeviceFirstEntityRepository firstRepository) {
+    DosingDeviceWarmup(DosingDeviceFirstRepository firstRepository, DosingDeviceLastRepository lastRepository) {
         this.firstRepository = firstRepository;
+        this.lastRepository = lastRepository;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -31,6 +33,11 @@ class DosingDeviceWarmup {
         LoggerInfo.showInfo(logger, "Warmup for Dosing device first entity");
         createDosingDeviceFirst()
                 .forEach(firstRepository::save);
+
+
+        LoggerInfo.showInfo(logger, "Warmup for Dosing device last entity");
+        createDosingDeviceLast()
+                .forEach(lastRepository::save);
 
     }
 
@@ -51,6 +58,27 @@ class DosingDeviceWarmup {
                         n * 6,
                         n * 7,
                         new FirstModuleEntity(1L)
+                ))
+                .collect(Collectors.toList());
+    }
+
+    List<DosingDeviceLastEntity> createDosingDeviceLast() {
+        return IntStream.range(0, 20)
+                .boxed()
+                .map(n -> n + 1)
+                .map(n -> new DosingDeviceLastEntity(
+                        0L,
+                        0L,
+                        "L-01",
+                        n,
+                        n * 10,
+                        n * 1,
+                        n * 2,
+                        n * 3,
+                        n * 5,
+                        n * 6,
+                        n * 7,
+                        new LastModuleEntity(1L)
                 ))
                 .collect(Collectors.toList());
     }
