@@ -1,11 +1,11 @@
 package app.web.domain;
 
-import app.web.adapter.DosingDeviceFirstEntity;
-import app.web.adapter.DosingDeviceLastEntity;
-import app.web.adapter.FirstModuleEntity;
-import app.web.adapter.LastModuleEntity;
+import app.web.adapter.persistence.DosingDeviceFirstEntity;
+import app.web.adapter.persistence.DosingDeviceLastEntity;
+import app.web.adapter.persistence.FirstModuleEntity;
+import app.web.adapter.persistence.LastModuleEntity;
 
-class DosingDeviceFactory {
+public class DosingDeviceFactory {
     public static DosingDevice toDomain(DosingDeviceFirstEntity entity) {
         return new DosingDeviceFirst(
                 entity.getId(),
@@ -50,6 +50,7 @@ class DosingDeviceFactory {
     public static DosingDeviceLastEntity toEntity(DosingDeviceLast domain) {
         return createLastDosingDeviceEntity(domain);
     }
+
 
     private static DosingDeviceFirstEntity createFirstDosingDeviceEntity(DosingDevice domain) {
         return new DosingDeviceFirstEntity(

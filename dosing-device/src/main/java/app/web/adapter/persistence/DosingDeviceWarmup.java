@@ -1,4 +1,4 @@
-package app.web.adapter;
+package app.web.adapter.persistence;
 
 import app.web.utilities.tools.LoggerInfo;
 import org.junit.jupiter.api.Order;

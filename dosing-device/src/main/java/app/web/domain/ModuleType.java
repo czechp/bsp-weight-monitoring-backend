@@ -1,5 +1,5 @@
 package app.web.domain;
 
-enum ModuleType {
+public enum ModuleType {
     FIRST, LAST
 }

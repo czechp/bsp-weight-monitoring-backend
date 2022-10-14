@@ -1,4 +1,4 @@
-package app.web.adapter;
+package app.web.adapter.persistence;
 
 import lombok.AccessLevel;
 import lombok.Getter;

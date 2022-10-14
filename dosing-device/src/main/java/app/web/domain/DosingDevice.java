@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 
 @Getter(AccessLevel.PACKAGE)
-abstract class DosingDevice {
+public abstract class DosingDevice {
     protected long id;
     protected long version;
     protected ModuleInfo moduleInfo;
