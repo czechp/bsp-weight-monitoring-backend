@@ -15,6 +15,7 @@ class DosingSuperEntity {
     private long id;
     @Version
     private long version;
+    protected String lineName;
     private int recordNumber;
     private int totalMaterial;
     protected float lastMeasure;

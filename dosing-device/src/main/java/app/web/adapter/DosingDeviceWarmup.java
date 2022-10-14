@@ -41,6 +41,7 @@ class DosingDeviceWarmup {
                 .map(n -> new DosingDeviceFirstEntity(
                         0L,
                         0L,
+                        "L-01",
                         n,
                         n * 10,
                         n * 1,

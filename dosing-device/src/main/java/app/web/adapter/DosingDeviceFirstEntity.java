@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.TypeAlias;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,8 +18,13 @@ import javax.persistence.Table;
 @Getter()
 @Setter(AccessLevel.PACKAGE)
 public class DosingDeviceFirstEntity extends DosingSuperEntity {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FirstModuleEntity firstModuleEntity;
+
     public DosingDeviceFirstEntity(long id,
                                    long version,
+                                   String lineName,
                                    int recordNumber,
                                    int totalMaterial,
                                    float lastMeasure,
@@ -32,6 +36,7 @@ public class DosingDeviceFirstEntity extends DosingSuperEntity {
                                    FirstModuleEntity firstModuleEntity) {
         super(id,
                 version,
+                lineName,
                 recordNumber,
                 totalMaterial,
                 lastMeasure,
@@ -42,8 +47,4 @@ public class DosingDeviceFirstEntity extends DosingSuperEntity {
                 correctMeasurePercent);
         this.firstModuleEntity = firstModuleEntity;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private FirstModuleEntity firstModuleEntity;
 }
