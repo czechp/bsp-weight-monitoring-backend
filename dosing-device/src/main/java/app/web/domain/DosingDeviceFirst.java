@@ -1,8 +1,11 @@
 package app.web.domain;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
 class DosingDeviceFirst extends DosingDevice {
-    public DosingDeviceFirst(long id, long version, String lineName, ModuleType moduleType, int recordNumber, int totalMaterial, Measures measures) {
-        super(id, version, lineName, moduleType, recordNumber, totalMaterial, measures);
+    public DosingDeviceFirst(long id, long version, ModuleInfo moduleInfo, String lineName, int recordNumber, int totalMaterial, Measures measures) {
+        super(id, version, moduleInfo, recordNumber, totalMaterial, measures);
     }
 
     @Override
