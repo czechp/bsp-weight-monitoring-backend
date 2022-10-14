@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "first_dosing_device")
+@Table(name = "last_dosing_device")
 @NoArgsConstructor
 @Getter()
 @Setter(AccessLevel.PACKAGE)
