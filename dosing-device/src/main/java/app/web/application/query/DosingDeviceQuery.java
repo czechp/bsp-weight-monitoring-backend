@@ -7,5 +7,10 @@ import java.util.List;
 
 public interface DosingDeviceQuery {
     List<DosingDeviceQueryDto> findAllFirst(Pageable pageable);
+
     List<DosingDeviceQueryDto> findAllLast(Pageable pageable);
+
+    List<DosingDeviceQueryDto> findByModuleIdFirst(long moduleId, Pageable pageable);
+
+    List<DosingDeviceQueryDto> findByModuleIdLast(long moduleId, Pageable pageable);
 }

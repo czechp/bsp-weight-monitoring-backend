@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DosingDeviceFirstPortQuery {
     List<DosingDeviceQueryDto> findAllFirst(Pageable pageable);
+    List<DosingDeviceQueryDto> findAllByModuleIdFirst(long moduleId, Pageable pageable);
 }

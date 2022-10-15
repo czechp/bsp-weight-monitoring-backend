@@ -3,6 +3,7 @@ package app.web.application.query;
 import app.web.application.dto.DosingDeviceQueryDto;
 import app.web.application.port.query.DosingDeviceFirstPortQuery;
 import app.web.application.port.query.DosingDeviceLastPortQuery;
+import app.web.domain.DosingDeviceFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,15 @@ class DosingDeviceQueryImpl implements DosingDeviceQuery {
     @Override
     public List<DosingDeviceQueryDto> findAllLast(Pageable pageable) {
         return lastPortQuery.finaAllLast(pageable);
+    }
+
+    @Override
+    public List<DosingDeviceQueryDto> findByModuleIdFirst(long moduleId, Pageable pageable) {
+        return firstPortQuery.findAllByModuleIdFirst(moduleId, pageable);
+    }
+
+    @Override
+    public List<DosingDeviceQueryDto> findByModuleIdLast(long moduleId, Pageable pageable) {
+        return lastPortQuery.findByModuleIdLast(moduleId, pageable);
     }
 }
