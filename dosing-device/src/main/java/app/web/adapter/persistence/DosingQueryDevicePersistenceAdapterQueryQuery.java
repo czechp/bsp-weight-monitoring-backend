@@ -32,4 +32,20 @@ class DosingQueryDevicePersistenceAdapterQueryQuery implements DosingDeviceLastP
                 .map(DosingDeviceDtoFactory::toQueryDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<DosingDeviceQueryDto> findAllByModuleIdFirst(long moduleId, Pageable pageable) {
+        return firstRepository.findByFirstModuleEntity_Id(moduleId, pageable)
+                .stream()
+                .map(DosingDeviceDtoFactory::toQueryDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DosingDeviceQueryDto> findByModuleIdLast(long moduleId, Pageable pageable) {
+        return lastRepository.findByLastModuleEntity_Id(moduleId, pageable)
+                .stream()
+                .map(DosingDeviceDtoFactory::toQueryDto)
+                .collect(Collectors.toList());
+    }
 }

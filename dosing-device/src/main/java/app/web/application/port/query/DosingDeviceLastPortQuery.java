@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface DosingDeviceLastPortQuery {
     List<DosingDeviceQueryDto> finaAllLast(Pageable pageable);
+    List<DosingDeviceQueryDto> findByModuleIdLast(long moduleId, Pageable pageable);
 }
