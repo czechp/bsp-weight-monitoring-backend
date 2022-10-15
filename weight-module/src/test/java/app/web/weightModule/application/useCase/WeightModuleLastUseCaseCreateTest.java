@@ -3,6 +3,7 @@ package app.web.weightModule.application.useCase;
 import app.web.exception.ConditionsNotFulFiledException;
 import app.web.exception.NotFoundException;
 import app.web.productionLine.dto.ProductionLineFacadeDto;
+import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
 import app.web.weightModule.application.port.query.WeightModuleLastPortExistByProductionLineId;
@@ -47,7 +48,7 @@ class WeightModuleLastUseCaseCreateTest {
     void createNewWeightModuleTest() {
         //given
         final var productionLineId = 1L;
-        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         ProductionLineFacadeDto productionLine = new ProductionLineFacadeDto(productionLineId, "Some name");
         //when
         Mockito.when(portExistByProductionLineId.existsByProductionLineId(anyLong())).thenReturn(false);
@@ -65,7 +66,7 @@ class WeightModuleLastUseCaseCreateTest {
     void createNewWeightModuleAlreadyExistsTest() {
         //given
         final var productionLineId = 1L;
-        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         ProductionLineFacadeDto productionLine = new ProductionLineFacadeDto(productionLineId, "Some name");
         //when
         Mockito.when(portExistByProductionLineId.existsByProductionLineId(anyLong())).thenReturn(true);
@@ -79,7 +80,7 @@ class WeightModuleLastUseCaseCreateTest {
     void createNewWeightModuleLineNotFoundTest() {
         //given
         final var productionLineId = 1L;
-        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        WeightModuleCreateDto weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         //when
         Mockito.when(portExistByProductionLineId.existsByProductionLineId(anyLong())).thenReturn(false);
         Mockito.when(portFindProductionLineById.findProductionLineById(anyLong())).thenReturn(Optional.empty());

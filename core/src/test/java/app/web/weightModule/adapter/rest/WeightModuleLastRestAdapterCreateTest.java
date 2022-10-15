@@ -1,5 +1,6 @@
 package app.web.weightModule.adapter.rest;
 
+import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindAll;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
@@ -38,7 +38,7 @@ class WeightModuleLastRestAdapterCreateTest {
     @DisplayName("Create a new last weight module")
     void createNewLastWeightModuleTest() throws Exception {
         //given
-        final var weightModuleLastCreateDto = new WeightModuleCreateDto(2L);
+        final var weightModuleLastCreateDto = new WeightModuleCreateDto(2L, RandomValueGenerator.randomInt());
         final var requestBody = objectMapper.writeValueAsString(weightModuleLastCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ class WeightModuleLastRestAdapterCreateTest {
     @DisplayName("Module already exists")
     void createNewLastWeightModuleAlreadyExistsTest() throws Exception {
         //given
-        final var weightModuleLastCreateDto = new WeightModuleCreateDto(1L);
+        final var weightModuleLastCreateDto = new WeightModuleCreateDto(1L, RandomValueGenerator.randomInt());
         final var requestBody = objectMapper.writeValueAsString(weightModuleLastCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -72,7 +72,7 @@ class WeightModuleLastRestAdapterCreateTest {
     @DisplayName("Module already exists")
     void createNewLastWeightModuleProductionLineDoesNotExistTest() throws Exception {
         //given
-        final var weightModuleLastCreateDto = new WeightModuleCreateDto(Long.MAX_VALUE);
+        final var weightModuleLastCreateDto = new WeightModuleCreateDto(Long.MAX_VALUE, RandomValueGenerator.randomInt());
         final var requestBody = objectMapper.writeValueAsString(weightModuleLastCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .contentType(MediaType.APPLICATION_JSON)
