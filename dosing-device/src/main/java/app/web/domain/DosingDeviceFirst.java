@@ -8,6 +8,10 @@ public class DosingDeviceFirst extends DosingDevice {
         super(id, version, moduleInfo, recordNumber, totalMaterial, measures);
     }
 
+    public DosingDeviceFirst(ModuleInfo moduleInfo, int recordNumber) {
+        super(moduleInfo, recordNumber);
+    }
+
     @Override
     ModuleType setModuleType() {
         return ModuleType.FIRST;

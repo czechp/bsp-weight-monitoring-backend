@@ -5,6 +5,10 @@ public class DosingDeviceLast extends DosingDevice {
         super(id, version, moduleInfo, recordNumber, totalMaterial, measures);
     }
 
+    public DosingDeviceLast(ModuleInfo moduleInfo, int recordNumber) {
+        super(moduleInfo, recordNumber);
+    }
+
     @Override
     ModuleType setModuleType() {
         return ModuleType.LAST;
