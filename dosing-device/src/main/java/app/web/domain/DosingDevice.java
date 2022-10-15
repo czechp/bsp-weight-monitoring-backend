@@ -11,7 +11,7 @@ public abstract class DosingDevice {
     protected ModuleType moduleType;
     protected int recordNumber;
     protected int totalMaterial;
-    protected Measures measures;
+    protected Measures measures = new Measures();
 
     DosingDevice(long id, long version, ModuleInfo moduleInfo, int recordNumber, int totalMaterial, Measures measures) {
         this.id = id;
