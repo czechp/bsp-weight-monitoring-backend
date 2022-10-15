@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -12,5 +13,6 @@ import javax.validation.constraints.Min;
 public class WeightModuleCreateDto {
     private long productionLineId;
     @Min(1)
+    @NotNull
     private int dosingDeviceAmount;
 }

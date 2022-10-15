@@ -1,13 +1,14 @@
 package app.web.weightModule.domain;
 
 import app.web.weightModule.application.dto.WeightModuleUpdateDto;
+import app.web.weightModule.event.WeightModuleCreateData;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter(value = AccessLevel.PROTECTED)
+@Getter()
 @Setter(value = AccessLevel.PROTECTED)
-abstract class WeightModuleAbstract {
+public abstract class WeightModuleAbstract {
     private long id;
     private long version;
     private long productionLineId;
@@ -45,4 +46,5 @@ abstract class WeightModuleAbstract {
         this.setModuleStatus(new ModuleStatusVO(dto.getCurrentDosingDevice(), dto.getCurrentMeasure(), dto.isStatus()));
         this.setProductionIndicators(new ProductionIndicatorsVO(dto.getTotalMaterialWeight(), dto.getTotalProductPcs(), dto.getCorrectProductPercent()));
     }
+
 }

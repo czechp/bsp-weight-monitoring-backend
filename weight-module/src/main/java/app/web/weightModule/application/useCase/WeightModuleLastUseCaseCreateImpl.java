@@ -5,6 +5,7 @@ import app.web.exception.NotFoundException;
 import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModuleLastPortExistByProductionLineId;
 import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import app.web.weightModule.domain.WeightModuleLast;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 class WeightModuleLastUseCaseCreateImpl implements WeightModuleLastUseCaseCreate {
     private final WeightModuleLastPortExistByProductionLineId portExistsByProductionLineId;
     private final WeightModulePortFindProductionLineById portFindProductionLineById;
+    private final WeightModulePortEvent portEvent;
     private final WeightModuleLastPortSave portSave;
 
     @Override
@@ -27,7 +29,8 @@ class WeightModuleLastUseCaseCreateImpl implements WeightModuleLastUseCaseCreate
         final var productionLine = portFindProductionLineById.findProductionLineById(productionLineId)
                 .orElseThrow(() -> new NotFoundException("Linia z id: " + productionLineId));
         final var weightModuleLast = WeightModuleLastFactory.create(productionLine.getProductionLineId(), productionLine.getProductionLineName());
-        portSave.save(weightModuleLast);
+        WeightModuleLast createdModule = portSave.save(weightModuleLast);
+        portEvent.notifyAboutModuleCreating(createdModule, weightModuleCreateDto.getDosingDeviceAmount());
         return weightModuleLast;
     }
 

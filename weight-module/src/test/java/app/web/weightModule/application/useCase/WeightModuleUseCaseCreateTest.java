@@ -4,6 +4,7 @@ import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,11 +26,14 @@ class WeightModuleUseCaseCreateTest {
     @Mock
     WeightModulePortSave portSave;
 
+    @Mock
+    WeightModulePortEvent portEvent;
+
     WeightModuleUseCaseCreate weightModuleUseCaseCreate;
 
     @BeforeEach
     void init() {
-        this.weightModuleUseCaseCreate = new WeightModuleUseCaseCreateImpl(portFindProductionLineById, portSave);
+        this.weightModuleUseCaseCreate = new WeightModuleUseCaseCreateImpl(portFindProductionLineById, portEvent, portSave);
     }
 
     @Test
