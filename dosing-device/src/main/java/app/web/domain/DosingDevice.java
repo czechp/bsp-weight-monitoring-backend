@@ -1,6 +1,6 @@
 package app.web.domain;
 
-import app.web.dosingDevice.dto.DosingDeviceUpdateDto;
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -32,7 +32,7 @@ public abstract class DosingDevice {
 
     abstract ModuleType setModuleType();
 
-    public DosingDevice updateData(DosingDeviceUpdateDto data) {
+    public DosingDevice updateData(DosingDeviceUpdateData data) {
         this.measures = new Measures(
                 data.getLastMeasure(),
                 data.getAmountBelowMeasures(),

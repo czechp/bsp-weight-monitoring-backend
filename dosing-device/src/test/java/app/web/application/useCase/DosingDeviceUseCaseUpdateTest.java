@@ -3,7 +3,7 @@ package app.web.application.useCase;
 import app.web.application.port.crud.DosingDevicePortCRUD;
 import app.web.domain.DosingDevice;
 import app.web.domain.DosingDeviceTestProvider;
-import app.web.dosingDevice.dto.DosingDeviceUpdateDto;
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import app.web.exception.ConditionsNotFulFiledException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +38,7 @@ class DosingDeviceUseCaseUpdateTest {
         //given
         final var moduleId = 1L;
         final var isFirst = true;
-        List<DosingDeviceUpdateDto> newData = provideListOfDto(10);
+        List<DosingDeviceUpdateData> newData = provideListOfDto(10);
         List<DosingDevice> dosingDevices = provideDomainList(10);
         //when
         Mockito.when(portCRUD.findByModuleId(moduleId, true)).thenReturn(dosingDevices);
@@ -53,7 +53,7 @@ class DosingDeviceUseCaseUpdateTest {
         //given
         final var moduleId = 1L;
         final var isFirst = true;
-        List<DosingDeviceUpdateDto> newData = provideListOfDto(9);
+        List<DosingDeviceUpdateData> newData = provideListOfDto(9);
         List<DosingDevice> dosingDevices = provideDomainList(10);
         //when
         Mockito.when(portCRUD.findByModuleId(moduleId, true)).thenReturn(dosingDevices);
@@ -68,10 +68,10 @@ class DosingDeviceUseCaseUpdateTest {
                 .collect(Collectors.toList());
     }
 
-    private List<DosingDeviceUpdateDto> provideListOfDto(int size) {
+    private List<DosingDeviceUpdateData> provideListOfDto(int size) {
         return IntStream.range(0, size)
                 .boxed()
-                .map(n -> new DosingDeviceUpdateDto() {
+                .map(n -> new DosingDeviceUpdateData() {
                     @Override
                     public int getRecordNumber() {
                         return n;

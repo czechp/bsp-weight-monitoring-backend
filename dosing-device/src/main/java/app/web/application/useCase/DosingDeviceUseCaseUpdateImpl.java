@@ -2,7 +2,7 @@ package app.web.application.useCase;
 
 import app.web.application.port.crud.DosingDevicePortCRUD;
 import app.web.domain.DosingDevice;
-import app.web.dosingDevice.dto.DosingDeviceUpdateDto;
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import app.web.exception.ConditionsNotFulFiledException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ class DosingDeviceUseCaseUpdateImpl implements DosingDeviceUseCaseUpdate {
     private final DosingDevicePortCRUD portCRUD;
 
     @Override
-    public List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<DosingDeviceUpdateDto> newValues, boolean isFirst) {
+    public List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<DosingDeviceUpdateData> newValues, boolean isFirst) {
         List<DosingDevice> dosingDevices = portCRUD.findByModuleId(moduleId, isFirst);
         List<DosingDevice> updatedDosingDevices = dosingDevices.stream()
                 .map(dosingDevice -> {

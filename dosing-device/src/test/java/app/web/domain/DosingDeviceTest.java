@@ -1,6 +1,6 @@
 package app.web.domain;
 
-import app.web.dosingDevice.dto.DosingDeviceUpdateDto;
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +20,7 @@ class DosingDeviceTest {
                 123,
                 new Measures()
         );
-        final DosingDeviceUpdateDto dto = createUpdateDto();
+        final DosingDeviceUpdateData dto = createUpdateDto();
         //when
         DosingDevice updatedDosingDevice = dosingDevice.updateData(dto);
         //then
@@ -33,8 +33,8 @@ class DosingDeviceTest {
         assertEquals(dto.getTotalMaterial(), updatedDosingDevice.getTotalMaterial());
     }
 
-    private DosingDeviceUpdateDto createUpdateDto() {
-        return new DosingDeviceUpdateDto() {
+    private DosingDeviceUpdateData createUpdateDto() {
+        return new DosingDeviceUpdateData() {
             @Override
             public int getRecordNumber() {
                 return 1;
