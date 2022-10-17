@@ -1,5 +1,6 @@
 package app.web.weightModule.adapter.rest;
 
+import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -35,7 +36,7 @@ class WeightModuleRestAdapterCreateTest {
     void createWeightModuleTest() throws Exception {
         //given
         final var productionLineId = 1L;
-        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         final var requestContent = objectMapper.writeValueAsString(weightModuleCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .content(requestContent)
@@ -53,7 +54,7 @@ class WeightModuleRestAdapterCreateTest {
     void createWeightModuleProductionLineNotFoundTest() throws Exception {
         //given
         final var productionLineId = Long.MAX_VALUE;
-        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         final var requestContent = objectMapper.writeValueAsString(weightModuleCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .content(requestContent)
@@ -70,7 +71,7 @@ class WeightModuleRestAdapterCreateTest {
     void createWeightModuleOnlyAdminTest() throws Exception {
         //given
         final var productionLineId = Long.MAX_VALUE;
-        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId);
+        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
         final var requestContent = objectMapper.writeValueAsString(weightModuleCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .content(requestContent)

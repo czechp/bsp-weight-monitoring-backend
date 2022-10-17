@@ -44,15 +44,19 @@ public class DosingDeviceFactory {
     }
 
     public static DosingDeviceFirstEntity toEntity(DosingDeviceFirst domain) {
-        return createFirstDosingDeviceEntity(domain);
+        return toDosingDeviceFirstEntity(domain);
     }
 
     public static DosingDeviceLastEntity toEntity(DosingDeviceLast domain) {
-        return createLastDosingDeviceEntity(domain);
+        return toDosingDeviceLastEntity(domain);
     }
 
+    public static DosingDevice createDosingDevice(long moduleId, String lineName, int recordNr, boolean first) {
+        ModuleInfo moduleInfo = new ModuleInfo(moduleId, lineName);
+        return first ? new DosingDeviceFirst(moduleInfo, recordNr) : new DosingDeviceLast(moduleInfo, recordNr);
+    }
 
-    private static DosingDeviceFirstEntity createFirstDosingDeviceEntity(DosingDevice domain) {
+    private static DosingDeviceFirstEntity toDosingDeviceFirstEntity(DosingDevice domain) {
         return new DosingDeviceFirstEntity(
                 domain.getId(),
                 domain.getVersion(),
@@ -69,7 +73,7 @@ public class DosingDeviceFactory {
         );
     }
 
-    private static DosingDeviceLastEntity createLastDosingDeviceEntity(DosingDevice domain) {
+    private static DosingDeviceLastEntity toDosingDeviceLastEntity(DosingDevice domain) {
         return new DosingDeviceLastEntity(
                 domain.getId(),
                 domain.getVersion(),

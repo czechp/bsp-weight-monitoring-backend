@@ -4,6 +4,7 @@ import app.web.exception.NotFoundException;
 import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleFactory;
@@ -16,6 +17,7 @@ import javax.transaction.Transactional;
 @AllArgsConstructor
 class WeightModuleUseCaseCreateImpl implements WeightModuleUseCaseCreate {
     private final WeightModulePortFindProductionLineById portFindProductionLineById;
+    private final WeightModulePortEvent portEvent;
     private final WeightModulePortSave portSave;
 
     @Override
@@ -24,7 +26,8 @@ class WeightModuleUseCaseCreateImpl implements WeightModuleUseCaseCreate {
         ProductionLineFacadeDto productionLine = portFindProductionLineById.findProductionLineById(weightModuleCreateDto.getProductionLineId())
                 .orElseThrow(() -> new NotFoundException("Linia produkcyjna z id: " + weightModuleCreateDto.getProductionLineId() + " nie istnieje"));
         WeightModule weightModule = WeightModuleFactory.createWeightModule(productionLine.getProductionLineId(), productionLine.getProductionLineName());
-        portSave.saveWeightModule(weightModule);
+        WeightModule createWeightModule = portSave.saveWeightModule(weightModule);
+        portEvent.notifyAboutModuleCreating(createWeightModule, weightModuleCreateDto.getDosingDevicesAmount());
         return weightModule;
 
     }
