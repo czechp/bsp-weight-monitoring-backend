@@ -1,8 +1,11 @@
 package app.web.weightModule.application.dto;
 
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,4 +18,19 @@ class WeightModuleLastUpdateDto {
     private long notRefilledProductPcs;
     private long overFilledProductPcs;
     private float overFilledToNotRefilledPercent;
+    private List<DosingDeviceUpdateDto> dosingDevices;
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class DosingDeviceUpdateDto implements DosingDeviceUpdateData {
+        private int recordNumber;
+        private float LastMeasure;
+        private int amountBelowMeasures;
+        private int amountCorrectMeasures;
+        private int amountAboveMeasures;
+        private float averageMeasure;
+        private int correctMeasuresPercent;
+        private int totalMaterial;
+    }
 }

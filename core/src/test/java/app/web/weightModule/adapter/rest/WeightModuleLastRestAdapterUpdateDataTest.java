@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import javax.transaction.Transactional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 @Transactional
@@ -60,7 +62,12 @@ class WeightModuleLastRestAdapterUpdateDataTest {
                 RandomValueGenerator.randomFloat(),
                 RandomValueGenerator.randomInt(),
                 RandomValueGenerator.randomInt(),
-                RandomValueGenerator.randomFloat()
+                RandomValueGenerator.randomFloat(),
+                IntStream.range(0, 10)
+                        .boxed()
+                        .map(n -> n + 1)
+                        .map(n -> new WeightModuleLastUpdateDto.DosingDeviceUpdateDto(n,0,0,0,0,0,0,0) )
+                        .collect(Collectors.toList())
         );
     }
 
@@ -73,7 +80,12 @@ class WeightModuleLastRestAdapterUpdateDataTest {
                 RandomValueGenerator.randomBoolean(),
                 RandomValueGenerator.randomFloat(),
                 RandomValueGenerator.randomLong(),
-                RandomValueGenerator.randomFloat()
+                RandomValueGenerator.randomFloat(),
+                IntStream.range(0, 10)
+                        .boxed()
+                        .map(n -> n + 1)
+                        .map(n -> new WeightModuleUpdateDto.DosingDeviceUpdateDto(n,0,0,0,0,0,0,0) )
+                        .collect(Collectors.toList())
         );
     }
 }

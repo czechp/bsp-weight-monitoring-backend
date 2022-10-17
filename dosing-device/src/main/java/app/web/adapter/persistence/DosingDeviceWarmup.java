@@ -42,7 +42,7 @@ class DosingDeviceWarmup {
     }
 
     List<DosingDeviceFirstEntity> createDosingDeviceFirst() {
-        return IntStream.range(0, 20)
+        return IntStream.range(0, 10)
                 .boxed()
                 .map(n -> n + 1)
                 .map(n -> new DosingDeviceFirstEntity(
@@ -63,7 +63,7 @@ class DosingDeviceWarmup {
     }
 
     List<DosingDeviceLastEntity> createDosingDeviceLast() {
-        return IntStream.range(0, 20)
+        return IntStream.range(0, 10)
                 .boxed()
                 .map(n -> n + 1)
                 .map(n -> new DosingDeviceLastEntity(
