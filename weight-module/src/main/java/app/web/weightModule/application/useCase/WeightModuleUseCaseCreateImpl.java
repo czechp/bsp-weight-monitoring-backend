@@ -27,7 +27,7 @@ class WeightModuleUseCaseCreateImpl implements WeightModuleUseCaseCreate {
                 .orElseThrow(() -> new NotFoundException("Linia produkcyjna z id: " + weightModuleCreateDto.getProductionLineId() + " nie istnieje"));
         WeightModule weightModule = WeightModuleFactory.createWeightModule(productionLine.getProductionLineId(), productionLine.getProductionLineName());
         WeightModule createWeightModule = portSave.saveWeightModule(weightModule);
-        portEvent.notifyAboutModuleCreating(createWeightModule, weightModuleCreateDto.getDosingDeviceAmount());
+        portEvent.notifyAboutModuleCreating(createWeightModule, weightModuleCreateDto.getDosingDevicesAmount());
         return weightModule;
 
     }

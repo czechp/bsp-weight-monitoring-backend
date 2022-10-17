@@ -14,5 +14,5 @@ public class WeightModuleCreateDto {
     private long productionLineId;
     @Min(1)
     @NotNull
-    private int dosingDeviceAmount;
+    private int dosingDevicesAmount;
 }

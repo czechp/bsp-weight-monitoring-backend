@@ -2,7 +2,6 @@ package app.web.weightModule.application.useCase;
 
 import app.web.exception.ConditionsNotFulFiledException;
 import app.web.exception.NotFoundException;
-import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
@@ -30,7 +29,7 @@ class WeightModuleLastUseCaseCreateImpl implements WeightModuleLastUseCaseCreate
                 .orElseThrow(() -> new NotFoundException("Linia z id: " + productionLineId));
         final var weightModuleLast = WeightModuleLastFactory.create(productionLine.getProductionLineId(), productionLine.getProductionLineName());
         WeightModuleLast createdModule = portSave.save(weightModuleLast);
-        portEvent.notifyAboutModuleCreating(createdModule, weightModuleCreateDto.getDosingDeviceAmount());
+        portEvent.notifyAboutModuleCreating(createdModule, weightModuleCreateDto.getDosingDevicesAmount());
         return weightModuleLast;
     }
 
