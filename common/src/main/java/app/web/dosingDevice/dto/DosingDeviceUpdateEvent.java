@@ -8,11 +8,11 @@ import java.util.List;
 @Getter
 public class DosingDeviceUpdateEvent extends ApplicationEvent {
     private long moduleId;
-    private List<DosingDeviceUpdateData> updateDtoList;
+    private List<? extends DosingDeviceUpdateData> updateDtoList;
     private boolean isFirst;
 
 
-    public DosingDeviceUpdateEvent(Object source, long moduleId, List<DosingDeviceUpdateData> updateDtoList, boolean isFirst) {
+    public DosingDeviceUpdateEvent(Object source, long moduleId, List<? extends DosingDeviceUpdateData> updateDtoList, boolean isFirst) {
         super(source);
         this.moduleId = moduleId;
         this.updateDtoList = updateDtoList;

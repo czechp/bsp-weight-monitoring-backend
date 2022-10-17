@@ -62,7 +62,5 @@ class WeightModuleRestAdapterUpdateDataTest {
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
 
 
-        System.out.println("I'm here");
-        System.out.println(requestBody);
     }
 }

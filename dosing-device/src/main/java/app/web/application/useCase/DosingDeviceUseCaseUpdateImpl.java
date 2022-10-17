@@ -18,7 +18,7 @@ class DosingDeviceUseCaseUpdateImpl implements DosingDeviceUseCaseUpdate {
     private final DosingDevicePortCRUD portCRUD;
 
     @Override
-    public List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<DosingDeviceUpdateData> newValues, boolean isFirst) {
+    public List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<? extends DosingDeviceUpdateData> newValues, boolean isFirst) {
         List<DosingDevice> dosingDevices = portCRUD.findByModuleId(moduleId, isFirst);
         List<DosingDevice> updatedDosingDevices = dosingDevices.stream()
                 .map(dosingDevice -> {

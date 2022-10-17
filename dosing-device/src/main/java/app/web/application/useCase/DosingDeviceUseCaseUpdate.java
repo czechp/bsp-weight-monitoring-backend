@@ -6,5 +6,5 @@ import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import java.util.List;
 
 public interface DosingDeviceUseCaseUpdate {
-    List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<DosingDeviceUpdateData> newValues, boolean isFirst);
+    List<DosingDevice> updateDosingDevicesByModuleId(long moduleId, List<? extends DosingDeviceUpdateData> newValues, boolean isFirst);
 }

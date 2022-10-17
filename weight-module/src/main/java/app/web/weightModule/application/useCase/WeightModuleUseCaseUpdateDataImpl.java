@@ -23,6 +23,7 @@ class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData
     public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto weightModuleUpdateDto) {
         WeightModule weightModuleToUpdate = portFindById.findByIdWeightModuleOrThrowException(weightModuleId);
         WeightModule updatedWeightModule = weightModuleToUpdate.updateData(weightModuleUpdateDto);
+        portEvent.notifyAboutUpdateDosingDevice(weightModuleId, weightModuleUpdateDto.getDosingDevices(), true);
         portSave.saveWeightModule(updatedWeightModule);
         return updatedWeightModule;
     }

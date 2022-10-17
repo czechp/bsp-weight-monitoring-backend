@@ -32,5 +32,6 @@ class WeightModuleLastUpdateDto {
         private float averageMeasure;
         private int correctMeasuresPercent;
         private int totalMaterial;
+
     }
 }
