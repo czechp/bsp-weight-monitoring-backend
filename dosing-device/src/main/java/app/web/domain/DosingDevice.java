@@ -44,4 +44,8 @@ public abstract class DosingDevice {
         this.totalMaterial = data.getTotalMaterial();
         return this;
     }
+
+    public int getRecordNumber(){
+        return this.recordNumber;
+    }
 }

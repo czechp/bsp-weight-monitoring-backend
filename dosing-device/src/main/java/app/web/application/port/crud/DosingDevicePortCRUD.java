@@ -7,5 +7,5 @@ import java.util.List;
 public interface DosingDevicePortCRUD {
     DosingDevice save(DosingDevice dosingDevice);
 
-    List<DosingDevice> findByModuleId(long moduleId, boolean b);
+    List<DosingDevice> findByModuleId(long moduleId, boolean isFirst);
 }
