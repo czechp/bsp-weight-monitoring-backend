@@ -32,7 +32,7 @@ public class DosingDeviceLastEntity extends DosingSuperEntity {
                                   int amountCorrectMeasures,
                                   int amountAboveMeasures,
                                   float averageMeasure,
-                                  float correctMeasurePercent,
+                                  int correctMeasurePercent,
                                   LastModuleEntity lastModuleEntity) {
         super(id,
                 version,

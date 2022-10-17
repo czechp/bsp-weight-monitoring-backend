@@ -11,7 +11,6 @@ public class DosingDeviceFactory {
                 entity.getId(),
                 entity.getVersion(),
                 new ModuleInfo(entity.getFirstModuleEntity().getId(), entity.getLineName()),
-                entity.getLineName(),
                 entity.getRecordNumber(),
                 entity.getTotalMaterial(),
                 new Measures(
