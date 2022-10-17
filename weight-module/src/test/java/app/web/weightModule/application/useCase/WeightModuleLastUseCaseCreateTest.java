@@ -6,6 +6,7 @@ import app.web.productionLine.dto.ProductionLineFacadeDto;
 import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleCreateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModuleLastPortExistByProductionLineId;
 import app.web.weightModule.application.port.query.WeightModulePortFindProductionLineById;
 import app.web.weightModule.domain.WeightModuleLast;
@@ -30,6 +31,9 @@ class WeightModuleLastUseCaseCreateTest {
     WeightModuleLastPortSave portSave;
 
     @Mock
+    WeightModulePortEvent portEvent;
+
+    @Mock
     WeightModulePortFindProductionLineById portFindProductionLineById;
 
     @Mock
@@ -40,7 +44,7 @@ class WeightModuleLastUseCaseCreateTest {
 
     @BeforeEach
     void init() {
-        useCaseCreate = new WeightModuleLastUseCaseCreateImpl(portExistByProductionLineId, portFindProductionLineById, portSave);
+        useCaseCreate = new WeightModuleLastUseCaseCreateImpl(portExistByProductionLineId, portFindProductionLineById, portEvent ,portSave);
     }
 
     @Test
