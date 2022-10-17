@@ -1,6 +1,7 @@
 package app.web.dosingDevice.dto;
 
 public interface DosingDeviceUpdateDto {
+    int getRecordNumber();
     float getLastMeasure();
     int getAmountBelowMeasures();
     int getAmountCorrectMeasures();

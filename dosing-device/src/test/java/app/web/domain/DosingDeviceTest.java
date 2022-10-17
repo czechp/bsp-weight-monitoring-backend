@@ -36,6 +36,11 @@ class DosingDeviceTest {
     private DosingDeviceUpdateDto createUpdateDto() {
         return new DosingDeviceUpdateDto() {
             @Override
+            public int getRecordNumber() {
+                return 1;
+            }
+
+            @Override
             public float getLastMeasure() {
                 return 13.3f;
             }
