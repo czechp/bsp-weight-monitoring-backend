@@ -1,7 +1,7 @@
 package app.web.domain;
 
 public class DosingDeviceLast extends DosingDevice {
-    public DosingDeviceLast(long id, long version, ModuleInfo moduleInfo, int recordNumber, int totalMaterial, Measures measures) {
+    public DosingDeviceLast(long id, long version, ModuleInfo moduleInfo, int recordNumber, float totalMaterial, Measures measures) {
         super(id, version, moduleInfo, recordNumber, totalMaterial, measures);
     }
 

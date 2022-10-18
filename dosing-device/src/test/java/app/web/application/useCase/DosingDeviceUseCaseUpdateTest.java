@@ -108,7 +108,7 @@ class DosingDeviceUseCaseUpdateTest {
                     }
 
                     @Override
-                    public int getTotalMaterial() {
+                    public float getTotalMaterial() {
                         return n;
                     }
                 })

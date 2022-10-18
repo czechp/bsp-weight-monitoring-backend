@@ -8,5 +8,5 @@ public interface DosingDeviceUpdateData {
     int getAmountAboveMeasures();
     float getAverageMeasure();
     int getCorrectMeasuresPercent();
-    int getTotalMaterial();
+    float getTotalMaterial();
 }
