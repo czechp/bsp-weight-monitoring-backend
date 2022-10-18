@@ -2,6 +2,7 @@ package app.web.weightModule.application.useCase;
 
 import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
 import app.web.weightModule.domain.WeightModuleLast;
 import app.web.weightModule.domain.WeightModuleLastTestProvider;
@@ -24,11 +25,13 @@ class WeightModuleLastUseCaseUpdateDataTest {
     @Mock
     WeightModuleLastPortFindByIdOrThrow portFindByIdOrThrow;
 
+    @Mock
+    WeightModulePortEvent eventPort;
     WeightModuleLastUseCaseUpdateData useCaseUpdateData;
 
     @BeforeEach
     void init() {
-        this.useCaseUpdateData = new WeightModuleLastUseCaseUpdateDataImpl(portFindByIdOrThrow, portSave);
+        this.useCaseUpdateData = new WeightModuleLastUseCaseUpdateDataImpl(portFindByIdOrThrow, eventPort, portSave);
     }
 
     @Test

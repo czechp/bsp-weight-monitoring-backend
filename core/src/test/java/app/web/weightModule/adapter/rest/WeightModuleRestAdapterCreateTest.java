@@ -36,7 +36,7 @@ class WeightModuleRestAdapterCreateTest {
     void createWeightModuleTest() throws Exception {
         //given
         final var productionLineId = 1L;
-        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, RandomValueGenerator.randomInt());
+        final var weightModuleCreateDto = new WeightModuleCreateDto(productionLineId, 10);
         final var requestContent = objectMapper.writeValueAsString(weightModuleCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .content(requestContent)

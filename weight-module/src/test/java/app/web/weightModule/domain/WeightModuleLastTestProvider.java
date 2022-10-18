@@ -4,6 +4,10 @@ import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
 import app.web.weightModule.application.dto.WeightModuleLastUpdateDto;
+import app.web.weightModule.application.dto.WeightModuleUpdateDto;
+
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class WeightModuleLastTestProvider {
     static WeightModuleLastEntity getEntity() {
@@ -55,7 +59,13 @@ public class WeightModuleLastTestProvider {
                 RandomValueGenerator.randomFloat(),
                 RandomValueGenerator.randomInt(),
                 RandomValueGenerator.randomInt(),
-                RandomValueGenerator.randomFloat()
+                RandomValueGenerator.randomFloat(),
+                IntStream.range(0, 10)
+                        .boxed()
+                        .map(n -> n + 1)
+                        .map(n -> new WeightModuleLastUpdateDto.DosingDeviceUpdateDto(n,0,0,0,0,0,0,0) )
+                        .collect(Collectors.toList())
+
         );
     }
 }

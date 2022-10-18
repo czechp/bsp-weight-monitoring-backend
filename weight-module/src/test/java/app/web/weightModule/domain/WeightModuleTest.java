@@ -4,6 +4,9 @@ import app.web.utilities.tools.RandomValueGenerator;
 import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WeightModuleTest {
@@ -18,7 +21,12 @@ class WeightModuleTest {
                 RandomValueGenerator.randomBoolean(),
                 RandomValueGenerator.randomFloat(),
                 RandomValueGenerator.randomLong(),
-                RandomValueGenerator.randomFloat()
+                RandomValueGenerator.randomFloat(),
+                IntStream.range(0, 10)
+                        .boxed()
+                        .map(n -> n + 1)
+                        .map(n -> new WeightModuleUpdateDto.DosingDeviceUpdateDto(n,0,0,0,0,0,0,0) )
+                        .collect(Collectors.toList())
         );
         WeightModule weightModule = WeightModuleTestProvider.domain();
         //when

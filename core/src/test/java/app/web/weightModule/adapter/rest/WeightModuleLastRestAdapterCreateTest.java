@@ -38,7 +38,7 @@ class WeightModuleLastRestAdapterCreateTest {
     @DisplayName("Create a new last weight module")
     void createNewLastWeightModuleTest() throws Exception {
         //given
-        final var weightModuleLastCreateDto = new WeightModuleCreateDto(2L, RandomValueGenerator.randomInt());
+        final var weightModuleLastCreateDto = new WeightModuleCreateDto(2L, 10);
         final var requestBody = objectMapper.writeValueAsString(weightModuleLastCreateDto);
         final var requestBuilder = MockMvcRequestBuilders.post(URL)
                 .contentType(MediaType.APPLICATION_JSON)

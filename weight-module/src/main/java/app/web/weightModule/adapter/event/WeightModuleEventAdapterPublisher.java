@@ -1,5 +1,7 @@
 package app.web.weightModule.adapter.event;
 
+import app.web.dosingDevice.dto.DosingDeviceUpdateData;
+import app.web.dosingDevice.dto.DosingDeviceUpdateEvent;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleAbstract;
@@ -9,6 +11,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @AllArgsConstructor
 class WeightModuleEventAdapterPublisher implements WeightModulePortEvent {
@@ -17,6 +21,12 @@ class WeightModuleEventAdapterPublisher implements WeightModulePortEvent {
     @Override
     public void notifyAboutModuleCreating(WeightModuleAbstract module, int dosingDeviceAmount) {
         WeightModuleCreateEvent event = new WeightModuleCreateEvent(this, new EventData(module, dosingDeviceAmount));
+        publisher.publishEvent(event);
+    }
+
+    @Override
+    public void notifyAboutUpdateDosingDevice(long moduleId, List<? extends DosingDeviceUpdateData> dosingDeviceUpdateData, boolean isFirst) {
+        DosingDeviceUpdateEvent event = new DosingDeviceUpdateEvent(this, moduleId, dosingDeviceUpdateData, isFirst);
         publisher.publishEvent(event);
     }
 

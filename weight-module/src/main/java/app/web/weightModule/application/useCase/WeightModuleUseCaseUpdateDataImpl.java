@@ -2,6 +2,7 @@ package app.web.weightModule.application.useCase;
 
 import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
+import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
 import app.web.weightModule.domain.WeightModule;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,8 @@ import javax.transaction.Transactional;
 @AllArgsConstructor
 class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData {
     private final WeightModulePortFindById portFindById;
+
+    private final WeightModulePortEvent portEvent;
     private final WeightModulePortSave portSave;
 
     @Override
@@ -20,6 +23,7 @@ class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData
     public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto weightModuleUpdateDto) {
         WeightModule weightModuleToUpdate = portFindById.findByIdWeightModuleOrThrowException(weightModuleId);
         WeightModule updatedWeightModule = weightModuleToUpdate.updateData(weightModuleUpdateDto);
+        portEvent.notifyAboutUpdateDosingDevice(weightModuleId, weightModuleUpdateDto.getDosingDevices(), true);
         portSave.saveWeightModule(updatedWeightModule);
         return updatedWeightModule;
     }

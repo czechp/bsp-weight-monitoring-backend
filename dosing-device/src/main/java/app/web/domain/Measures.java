@@ -14,6 +14,6 @@ class Measures {
     protected int amountCorrectMeasures;
     protected int amountAboveMeasures;
     protected float averageMeasure;
-    protected float correctMeasurePercent;
+    protected int correctMeasurePercent;
 
 }
