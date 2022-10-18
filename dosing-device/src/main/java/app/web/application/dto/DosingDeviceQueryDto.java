@@ -13,7 +13,7 @@ public class DosingDeviceQueryDto {
     private ModuleInfoDto moduleInfo;
     private ModuleType moduleType;
     private int recordNumber;
-    private int totalMaterial;
+    private float totalMaterial;
     private MeasuresDto measures;
 
     @AllArgsConstructor

@@ -11,10 +11,10 @@ public abstract class DosingDevice {
     protected ModuleInfo moduleInfo;
     protected ModuleType moduleType;
     protected int recordNumber;
-    protected int totalMaterial;
+    protected float totalMaterial;
     protected Measures measures = new Measures();
 
-    DosingDevice(long id, long version, ModuleInfo moduleInfo, int recordNumber, int totalMaterial, Measures measures) {
+    DosingDevice(long id, long version, ModuleInfo moduleInfo, int recordNumber, float totalMaterial, Measures measures) {
         this.id = id;
         this.version = version;
         this.recordNumber = recordNumber;

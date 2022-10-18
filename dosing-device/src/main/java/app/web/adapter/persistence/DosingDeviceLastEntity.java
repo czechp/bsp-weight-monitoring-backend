@@ -26,7 +26,7 @@ public class DosingDeviceLastEntity extends DosingSuperEntity {
                                   long version,
                                   String lineName,
                                   int recordNumber,
-                                  int totalMaterial,
+                                  float totalMaterial,
                                   float lastMeasure,
                                   int amountBelowMeasures,
                                   int amountCorrectMeasures,

@@ -17,7 +17,7 @@ class DosingSuperEntity {
     private long version;
     protected String lineName;
     private int recordNumber;
-    private int totalMaterial;
+    private float totalMaterial;
     protected float lastMeasure;
     protected int amountBelowMeasures;
     protected int amountCorrectMeasures;

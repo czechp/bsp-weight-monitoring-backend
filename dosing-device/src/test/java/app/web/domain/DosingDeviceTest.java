@@ -71,7 +71,7 @@ class DosingDeviceTest {
             }
 
             @Override
-            public int getTotalMaterial() {
+            public float getTotalMaterial() {
                 return 666;
             }
         };

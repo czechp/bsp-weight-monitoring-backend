@@ -31,6 +31,6 @@ public class WeightModuleUpdateDto {
         private int amountAboveMeasures;
         private float averageMeasure;
         private int correctMeasuresPercent;
-        private int totalMaterial;
+        private float totalMaterial;
     }
 }
