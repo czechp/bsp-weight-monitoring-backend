@@ -18,5 +18,4 @@ class WeightModuleLastUpdateDto {
     private long notRefilledProductPcs;
     private long overFilledProductPcs;
     private float overFilledToNotRefilledPercent;
-
 }

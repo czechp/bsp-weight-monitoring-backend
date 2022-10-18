@@ -62,12 +62,7 @@ class WeightModuleLastRestAdapterUpdateDataTest {
                 RandomValueGenerator.randomFloat(),
                 RandomValueGenerator.randomInt(),
                 RandomValueGenerator.randomInt(),
-                RandomValueGenerator.randomFloat(),
-                IntStream.range(0, 10)
-                        .boxed()
-                        .map(n -> n + 1)
-                        .map(n -> new WeightModuleLastUpdateDto.DosingDeviceUpdateDto(n,0,0,0,0,0,0,0) )
-                        .collect(Collectors.toList())
+                RandomValueGenerator.randomFloat()
         );
     }
 
