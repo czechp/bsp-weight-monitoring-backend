@@ -20,7 +20,7 @@ class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUp
     public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto moduleLastDataDto) {
         WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
         WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, moduleLastDataDto);
-        portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleLastDataDto.getDosingDevices(), false);
+        portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleDataDto.getDosingDevices(), false);
         portSave.save(weightModuleLast);
         return updatedWeightModuleLast;
     }

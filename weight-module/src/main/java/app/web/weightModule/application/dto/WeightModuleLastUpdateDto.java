@@ -18,20 +18,5 @@ class WeightModuleLastUpdateDto {
     private long notRefilledProductPcs;
     private long overFilledProductPcs;
     private float overFilledToNotRefilledPercent;
-    private List<DosingDeviceUpdateDto> dosingDevices;
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
-    public static class DosingDeviceUpdateDto implements DosingDeviceUpdateData {
-        private int recordNumber;
-        private float LastMeasure;
-        private int amountBelowMeasures;
-        private int amountCorrectMeasures;
-        private int amountAboveMeasures;
-        private float averageMeasure;
-        private int correctMeasuresPercent;
-        private int totalMaterial;
-
-    }
 }
