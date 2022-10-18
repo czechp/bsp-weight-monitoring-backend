@@ -25,7 +25,7 @@ public class WeightModuleUpdateDto {
     @Data
     public static class DosingDeviceUpdateDto implements DosingDeviceUpdateData {
         private  int recordNumber;
-        private float LastMeasure;
+        private float lastMeasure;
         private int amountBelowMeasures;
         private int amountCorrectMeasures;
         private int amountAboveMeasures;
