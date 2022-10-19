@@ -5,5 +5,5 @@ import app.web.report.dto.ReportSummary;
 import java.util.Optional;
 
 public interface ReportSummaryProvider {
-    Optional<ReportSummary> findByModuleId(long moduleId);
+    Optional<ReportSummary> findByModuleId(long lineId);
 }
