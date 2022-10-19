@@ -9,6 +9,7 @@ import java.util.List;
 class Report {
     private final long id = 0L;
     private final String lineName = "";
+    private final WorkShift workShift;
     private final ReportSummary reportSummary;
     private final List<ReportDosingDeviceData> dosingDeviceFirstModule;
     private final List<ReportDosingDeviceData> dosingDeviceLastModule;
