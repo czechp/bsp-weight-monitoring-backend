@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
+public
 class ReportSummaryDto implements ReportSummary {
     private final long totalProductPcs;
     private final float totalMaterialWeight;
