@@ -4,6 +4,8 @@ import app.web.adapter.persistence.DosingDeviceFirstEntity;
 import app.web.adapter.persistence.DosingDeviceLastEntity;
 import app.web.adapter.persistence.FirstModuleEntity;
 import app.web.adapter.persistence.LastModuleEntity;
+import app.web.application.dto.ReportDosingDeviceDto;
+import app.web.report.dto.ReportDosingDevice;
 
 public class DosingDeviceFactory {
     public static DosingDevice toDomain(DosingDeviceFirstEntity entity) {
@@ -90,4 +92,12 @@ public class DosingDeviceFactory {
     }
 
 
+    public static ReportDosingDevice toReportDto(DosingDevice dosingDevice) {
+        return new ReportDosingDeviceDto(
+                dosingDevice.getRecordNumber(),
+                dosingDevice.getTotalMaterial(),
+                dosingDevice.getMeasures().getCorrectMeasurePercent(),
+                dosingDevice.getMeasures().getAverageMeasure()
+        );
+    }
 }
