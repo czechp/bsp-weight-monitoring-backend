@@ -56,4 +56,24 @@ class DosingDevicePersistenceAdapterCRUD implements DosingDevicePortCRUD {
                 .map(DosingDeviceFactory::toDomain)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<DosingDevice> findByLineName(String lineName, boolean isFirst) {
+        return  isFirst ? findFirstDosingDeviceByLineName(lineName) : findLastDosingDevicesByLineName(lineName);
+    }
+
+    private List<DosingDevice> findLastDosingDevicesByLineName(String lineName) {
+        return lastRepository.findByLineName(lineName)
+                .stream()
+                .map(DosingDeviceFactory::toDomain)
+                .collect(Collectors.toList());
+
+    }
+
+    private List<DosingDevice> findFirstDosingDeviceByLineName(String lineName) {
+        return firstRepository.findByLineName(lineName)
+                .stream()
+                .map(DosingDeviceFactory::toDomain)
+                .collect(Collectors.toList());
+    }
 }

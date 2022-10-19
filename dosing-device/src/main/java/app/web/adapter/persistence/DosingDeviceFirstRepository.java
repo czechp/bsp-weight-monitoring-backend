@@ -8,4 +8,6 @@ import java.util.List;
 
 interface DosingDeviceFirstRepository extends JpaRepository<DosingDeviceFirstEntity, Long> {
     List<DosingDeviceFirstEntity> findByFirstModuleEntity_Id(long moduleId, Pageable pageable);
+
+    List<DosingDeviceFirstEntity> findByLineName(String lineName);
 }

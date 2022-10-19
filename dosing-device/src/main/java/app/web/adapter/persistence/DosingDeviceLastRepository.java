@@ -1,6 +1,7 @@
 package app.web.adapter.persistence;
 
 import app.web.application.dto.DosingDeviceQueryDto;
+import app.web.domain.DosingDevice;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,4 +11,5 @@ interface DosingDeviceLastRepository extends JpaRepository<DosingDeviceLastEntit
     List<DosingDeviceLastEntity> findByLastModuleEntity_Id(long moduleId, Pageable pageable);
 
 
+    List<DosingDeviceLastEntity> findByLineName(String lineName);
 }
