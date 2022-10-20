@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Getter()
 @Setter(AccessLevel.PACKAGE)
 public class ReportDosingDeviceLastEntity extends ReportDosingDeviceSuper {
-
     public ReportDosingDeviceLastEntity(long id, long version, int recordNumber, float totalMaterialWeight, float correctPercent, float averageWeight) {
         super(id, version, recordNumber, totalMaterialWeight, correctPercent, averageWeight);
     }

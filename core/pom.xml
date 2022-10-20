@@ -46,6 +46,12 @@
             <artifactId>dosing-device</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>pl.bispol.weight-monitoring</groupId>
+            <artifactId>report</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

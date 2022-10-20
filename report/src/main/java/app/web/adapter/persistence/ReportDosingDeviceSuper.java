@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @MappedSuperclass()
-@AllArgsConstructor
 @Getter
 @Setter(AccessLevel.PACKAGE)
 abstract class ReportDosingDeviceSuper {
@@ -21,4 +20,15 @@ abstract class ReportDosingDeviceSuper {
     private final float totalMaterialWeight;
     private final float correctPercent;
     private final float averageWeight;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ReportEntity report;
+
+    public ReportDosingDeviceSuper(long id, long version, int recordNumber, float totalMaterialWeight, float correctPercent, float averageWeight) {
+        this.id = id;
+        this.version = version;
+        this.recordNumber = recordNumber;
+        this.totalMaterialWeight = totalMaterialWeight;
+        this.correctPercent = correctPercent;
+        this.averageWeight = averageWeight;
+    }
 }
