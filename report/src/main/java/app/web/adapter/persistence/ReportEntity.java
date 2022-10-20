@@ -22,6 +22,7 @@ public class ReportEntity {
     private long id;
     @Version
     private long version;
+    private String lineName;
     private LocalDate reportDate;
     @Enumerated(EnumType.STRING)
     private WorkShift workShift;
@@ -39,6 +40,7 @@ public class ReportEntity {
 
     public ReportEntity(long id,
                         long version,
+                        String lineName,
                         LocalDate reportDate,
                         WorkShift workShift,
                         long totalProductPcs,
@@ -50,6 +52,7 @@ public class ReportEntity {
                         long notRefilledProductPcs) {
         this.id = id;
         this.version = version;
+        this.lineName = lineName;
         this.reportDate = reportDate;
         this.workShift = workShift;
         this.totalProductPcs = totalProductPcs;
