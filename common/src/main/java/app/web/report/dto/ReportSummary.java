@@ -6,7 +6,7 @@ public interface ReportSummary {
     float getTotalMaterialWeight();
     float getWeightDifference();
     float getCorrectProductPercent();
-    float getIncorrectProductPcs();
+    long getIncorrectProductPcs();
     long getOverFilledProductPcs();
     long getNotFulFilledProductPcs();
 }
