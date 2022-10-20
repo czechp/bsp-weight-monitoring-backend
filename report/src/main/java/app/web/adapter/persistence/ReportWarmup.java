@@ -33,7 +33,7 @@ class ReportWarmup {
 
         IntStream.range(1, 4)
                 .boxed()
-                .map(n -> new ReportEntity(0, 0, LocalDate.now().minusDays(n), WorkShift.I, n * 1, n * 2, n * 3, n * 4, n * 5, n * 6, n * 7))
+                .map(n -> new ReportEntity(0, 0, "L-01", LocalDate.now().minusDays(n), WorkShift.I, n * 1, n * 2, n * 3, n * 4, n * 5, n * 6, n * 7))
                 .forEach(n -> {
                     List<ReportDosingDeviceFirstEntity> firstDosingDevices = IntStream.range(1, 21)
                             .boxed()
