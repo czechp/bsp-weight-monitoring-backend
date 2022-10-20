@@ -9,21 +9,21 @@ import java.util.List;
 abstract class ReportSuper {
     private final long id;
     private final String lineName;
-    private final LocalDate localDate;
+    private final LocalDate reportDate;
     private final WorkShift workShift;
     private final ReportSummaryData reportSummaryData;
     private final List<ReportDosingDeviceData> dosingDeviceFirstModule;
     private final List<ReportDosingDeviceData> dosingDeviceLastModule;
 
     public ReportSuper(String lineName,
-                       LocalDate localDate,
+                       LocalDate reportDate,
                        WorkShift workShift,
                        ReportSummaryData reportSummaryData,
                        List<ReportDosingDeviceData> dosingDeviceFirstModule,
                        List<ReportDosingDeviceData> dosingDeviceLastModule) {
         this.id = 0L;
         this.lineName = lineName;
-        this.localDate = localDate;
+        this.reportDate = reportDate;
         this.workShift = workShift;
         this.reportSummaryData = reportSummaryData;
         this.dosingDeviceFirstModule = dosingDeviceFirstModule;
