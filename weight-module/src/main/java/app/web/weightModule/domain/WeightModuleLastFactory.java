@@ -96,6 +96,7 @@ public class WeightModuleLastFactory {
 
     public static ReportSummary toReportDto(WeightModuleLast module) {
         return new ReportSummaryDto(
+                module.getProductionLineName(),
                 module.getProductionIndicators().getTotalProductPcs(),
                 module.getProductionIndicators().getTotalMaterialWeight(),
                 module.getModuleLastInfo().getWeightDifference(),

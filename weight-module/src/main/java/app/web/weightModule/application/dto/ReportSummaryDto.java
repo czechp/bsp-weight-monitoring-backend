@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public
 class ReportSummaryDto implements ReportSummary {
+    private final String lineName;
     private final long totalProductPcs;
     private final float totalMaterialWeight;
     private final float weightDifference;
