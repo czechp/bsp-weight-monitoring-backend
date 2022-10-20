@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-class ReportSummary {
+class ReportSummaryData {
     private final long totalProductPcs;
     private final float totalMaterialWeight;
     private final float weightDifference;

@@ -11,7 +11,7 @@ abstract class ReportSuper {
     private final String lineName;
     private final LocalDate localDate;
     private final WorkShift workShift;
-    private final ReportSummary reportSummary;
+    private final ReportSummaryData reportSummaryData;
     private final List<ReportDosingDeviceData> dosingDeviceFirstModule;
     private final List<ReportDosingDeviceData> dosingDeviceLastModule;
 
