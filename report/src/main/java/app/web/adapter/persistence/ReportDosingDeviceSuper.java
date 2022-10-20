@@ -1,25 +1,24 @@
 package app.web.adapter.persistence;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @MappedSuperclass()
 @Getter
 @Setter(AccessLevel.PACKAGE)
+@NoArgsConstructor
 abstract class ReportDosingDeviceSuper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Version
     private long version;
-    private final int recordNumber;
-    private final float totalMaterialWeight;
-    private final float correctPercent;
-    private final float averageWeight;
+    private  int recordNumber=0;
+    private  float totalMaterialWeight=0;
+    private  float correctPercent=0;
+    private  float averageWeight=0;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     private ReportEntity report;
 

@@ -1,5 +1,6 @@
 package app.web.adapter.persistence;
 
+import app.web.application.dto.ReportQueryDto;
 import app.web.application.dto.ReportSimpleQueryDto;
 import app.web.application.port.query.ReportPortQuery;
 import app.web.domain.ReportFactory;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,5 +23,11 @@ class ReportPersistenceAdapterQuery implements ReportPortQuery {
                 .stream()
                 .map(ReportFactory::toSimpleDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ReportQueryDto> findById(long id) {
+        return repository.findById(id)
+                .map(ReportFactory::toDto);
     }
 }
