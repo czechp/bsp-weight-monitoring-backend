@@ -1,10 +1,7 @@
 package app.web.adapter.persistence;
 
 import app.web.domain.WorkShift;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "reports")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter()
 @Setter(AccessLevel.PACKAGE)
 public class ReportEntity {
