@@ -1,5 +1,7 @@
 package app.web.domain;
 
+import app.web.adapter.persistence.ReportEntity;
+import app.web.application.dto.ReportSimpleQueryDto;
 import app.web.report.dto.ReportDosingDevice;
 import app.web.report.dto.ReportSummary;
 
@@ -26,6 +28,21 @@ public class ReportFactory {
                 reportSummaryData,
                 firstDosingDevicesData,
                 lastDosingDevicesData
+        );
+    }
+
+    public static ReportSimpleQueryDto toSimpleDto(ReportEntity entity) {
+        return  new ReportSimpleQueryDto(
+                entity.getId(),
+                entity.getReportDate(),
+                entity.getLineName(),
+                entity.getTotalProductPcs(),
+                entity.getTotalMaterialWeight(),
+                entity.getWeightDifference(),
+                entity.getCorrectProductPercent(),
+                entity.getIncorrectProductPcs(),
+                entity.getOverFilledProductPcs(),
+                entity.getNotRefilledProductPcs()
         );
     }
 
