@@ -1,7 +1,9 @@
 package app.web.weightModule.domain;
 
+import app.web.report.dto.ReportSummary;
 import app.web.weightModule.adapter.persistence.ProductionLineSimpleEntity;
 import app.web.weightModule.adapter.persistence.WeightModuleLastEntity;
+import app.web.weightModule.application.dto.ReportSummaryDto;
 import app.web.weightModule.application.dto.WeightModuleLastQueryDto;
 import app.web.weightModule.application.dto.WeightModuleQueryDto;
 
@@ -90,5 +92,18 @@ public class WeightModuleLastFactory {
 
     public static WeightModuleLast create(long productionLineId, String productionLineName){
         return  new WeightModuleLast(productionLineId, productionLineName);
+    }
+
+    public static ReportSummary toReportDto(WeightModuleLast module) {
+        return new ReportSummaryDto(
+                module.getProductionLineName(),
+                module.getProductionIndicators().getTotalProductPcs(),
+                module.getProductionIndicators().getTotalMaterialWeight(),
+                module.getModuleLastInfo().getWeightDifference(),
+                module.getProductionIndicators().getCorrectProductPercent(),
+                module.getModuleLastInfo().getIncorrectProductPcs(),
+                module.getModuleLastInfo().getOverFilledProductPcs(),
+                module.getModuleLastInfo().getNotRefilledProductPcs()
+        );
     }
 }

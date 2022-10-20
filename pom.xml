@@ -10,6 +10,7 @@
         <module>production-line</module>
         <module>weight-module</module>
         <module>dosing-device</module>
+        <module>report</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
