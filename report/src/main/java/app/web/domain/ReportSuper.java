@@ -15,6 +15,18 @@ abstract class ReportSuper {
     private final List<ReportDosingDeviceData> dosingDeviceFirstModule;
     private final List<ReportDosingDeviceData> dosingDeviceLastModule;
 
-
-
+    public ReportSuper(String lineName,
+                       LocalDate localDate,
+                       WorkShift workShift,
+                       ReportSummaryData reportSummaryData,
+                       List<ReportDosingDeviceData> dosingDeviceFirstModule,
+                       List<ReportDosingDeviceData> dosingDeviceLastModule) {
+        this.id = 0L;
+        this.lineName = lineName;
+        this.localDate = localDate;
+        this.workShift = workShift;
+        this.reportSummaryData = reportSummaryData;
+        this.dosingDeviceFirstModule = dosingDeviceFirstModule;
+        this.dosingDeviceLastModule = dosingDeviceLastModule;
+    }
 }
