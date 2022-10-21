@@ -1,5 +1,6 @@
 package app.web.application.dto;
 
+import app.web.domain.WorkShift;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class ReportQueryDto extends ReportSimpleQueryDto {
     public ReportQueryDto(long id,
                           LocalDate reportDate,
                           String lineName,
+                          WorkShift workShift,
                           long totalProductPcs,
                           float totalMaterialWeight,
                           float weightDifference,
@@ -26,7 +28,7 @@ public class ReportQueryDto extends ReportSimpleQueryDto {
                           long notRefilledProductPcs,
                           List<ReportDosingDeviceDto> firstDosingDevices,
                           List<ReportDosingDeviceDto> lastDosingDevices) {
-        super(id, reportDate, lineName, totalProductPcs, totalMaterialWeight, weightDifference, correctProductPercent, incorrectProductPcs, overFilledProductPcs, notRefilledProductPcs);
+        super(id, reportDate, lineName, workShift, totalProductPcs, totalMaterialWeight, weightDifference, correctProductPercent, incorrectProductPcs, overFilledProductPcs, notRefilledProductPcs);
         this.firstDosingDevices = firstDosingDevices;
         this.lastDosingDevices = lastDosingDevices;
     }

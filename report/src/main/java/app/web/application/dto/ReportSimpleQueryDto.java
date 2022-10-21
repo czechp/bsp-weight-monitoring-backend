@@ -1,5 +1,6 @@
 package app.web.application.dto;
 
+import app.web.domain.WorkShift;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ public class ReportSimpleQueryDto {
     private final long id;
     private final LocalDate reportDate;
     private final String lineName;
+    private final WorkShift workShift;
     private final long totalProductPcs;
     private final float totalMaterialWeight;
     private final float weightDifference;
