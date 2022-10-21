@@ -15,11 +15,10 @@ class Report extends ReportSuper{
     }
 
     public Report(String lineName,
-                  LocalDate localDate,
                   WorkShift workShift,
                   ReportSummaryData reportSummaryData,
                   List<ReportDosingDeviceData> dosingDeviceFirstModule,
                   List<ReportDosingDeviceData> dosingDeviceLastModule) {
-        super(lineName, localDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
+        super(lineName, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
     }
 }

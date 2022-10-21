@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class ReportFactory {
     static Report create(
             String lineName,
-            LocalDate reportDate,
             WorkShift workShift,
             ReportSummary reportSummary,
             List<ReportDosingDevice> firstDosingDevices,
@@ -26,7 +25,6 @@ public class ReportFactory {
         List<ReportDosingDeviceData> lastDosingDevicesData = createDosingDevices(lastDosingDevices);
         return new Report(
                 lineName,
-                reportDate,
                 workShift,
                 reportSummaryData,
                 firstDosingDevicesData,

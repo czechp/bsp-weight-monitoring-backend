@@ -16,14 +16,13 @@ abstract class ReportSuper {
     private final List<ReportDosingDeviceData> dosingDeviceLastModule;
 
     public ReportSuper(String lineName,
-                       LocalDate reportDate,
                        WorkShift workShift,
                        ReportSummaryData reportSummaryData,
                        List<ReportDosingDeviceData> dosingDeviceFirstModule,
                        List<ReportDosingDeviceData> dosingDeviceLastModule) {
         this.id = 0L;
         this.lineName = lineName;
-        this.reportDate = reportDate;
+        this.reportDate = workShift == WorkShift.III ? LocalDate.now().minusDays(1) : LocalDate.now();
         this.workShift = workShift;
         this.reportSummaryData = reportSummaryData;
         this.dosingDeviceFirstModule = dosingDeviceFirstModule;
