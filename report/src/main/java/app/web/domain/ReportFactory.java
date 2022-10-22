@@ -1,6 +1,7 @@
 package app.web.domain;
 
 import app.web.adapter.persistence.ReportDosingDeviceFirstEntity;
+import app.web.adapter.persistence.ReportDosingDeviceSuper;
 import app.web.adapter.persistence.ReportEntity;
 import app.web.application.dto.ReportDosingDeviceQueryDto;
 import app.web.application.dto.ReportQueryDto;
@@ -62,23 +63,19 @@ public class ReportFactory {
                 );
     }
 
-    private static List<ReportDosingDeviceQueryDto> createFirstDosingDevicesDto(List<ReportDosingDeviceFirstEntity> entities) {
-        return entities
-                .stream()
-                .map(dosingDevice -> new ReportDosingDeviceQueryDto(dosingDevice.getId(),
-                        dosingDevice.getRecordNumber(),
-                        dosingDevice.getTotalMaterialWeight(),
-                        dosingDevice.getCorrectPercent(),
-                        dosingDevice.getAverageWeight()))
-                .collect(Collectors.toList());
-    }
-
-
-    private static List<ReportDosingDeviceData> createDosingDevices(List<? extends ReportDosingDevice> reportDosingDevices) {
+    public static List<ReportDosingDeviceData> createDosingDevices(List<? extends ReportDosingDevice> reportDosingDevices) {
         return reportDosingDevices
                 .stream()
                 .map(n -> new ReportDosingDeviceData(n.getRecordNumber(), n.getTotalMaterial(), n.getCorrectPercent(), n.getAverageMeasure()))
                 .collect(Collectors.toList());
+    }
+
+    public static ReportDosingDeviceQueryDto toDto(ReportDosingDeviceSuper entity){
+        return new ReportDosingDeviceQueryDto(entity.getId(),
+                entity.getRecordNumber(),
+                entity.getTotalMaterialWeight(),
+                entity.getCorrectPercent(),
+                entity.getAverageWeight());
     }
 
     private static ReportSummaryData createReportSummary(ReportSummary reportSummary) {

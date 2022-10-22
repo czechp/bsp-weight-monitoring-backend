@@ -1,5 +1,6 @@
 package app.web.adapter.rest;
 
+import app.web.application.dto.ReportDosingDeviceQueryDto;
 import app.web.application.dto.ReportQueryDto;
 import app.web.application.query.ReportQuery;
 import app.web.exception.NotFoundException;
@@ -29,5 +30,16 @@ class ReportRestAdapterQuery {
     ReportQueryDto findById(@PathVariable(name = "id") long reportId) {
         return reportQuery.findById(reportId)
                 .orElseThrow(() -> new NotFoundException("Raport z id: " + reportId + " nie istnieje"));
+    }
+
+    @GetMapping("/dosing-devices-first/{reportId}")
+    List<ReportDosingDeviceQueryDto> findAllFirstDosingDevices(@PathVariable(name = "reportId") long reportId, Pageable pageable) {
+        return reportQuery.findAllFirstDosingDevices(reportId, pageable);
+    }
+
+
+    @GetMapping("/dosing-devices-last/{reportId}")
+    List<ReportDosingDeviceQueryDto> findAllLastDosingDevices(@PathVariable(name = "reportId") long reportId, Pageable pageable) {
+        return reportQuery.findAllLastDosingDevices(reportId, pageable);
     }
 }
