@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter(AccessLevel.PACKAGE)
 @NoArgsConstructor
-abstract class ReportDosingDeviceSuper {
+public abstract class ReportDosingDeviceSuper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

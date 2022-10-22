@@ -1,14 +1,13 @@
 package app.web.domain;
 
 import app.web.adapter.persistence.ReportDosingDeviceFirstEntity;
-import app.web.adapter.persistence.ReportDosingDeviceLastEntity;
+import app.web.adapter.persistence.ReportDosingDeviceSuper;
 import app.web.adapter.persistence.ReportEntity;
+import app.web.application.dto.ReportDosingDeviceQueryDto;
 import app.web.application.dto.ReportQueryDto;
-import app.web.application.dto.ReportSimpleQueryDto;
 import app.web.report.dto.ReportDosingDevice;
 import app.web.report.dto.ReportSummary;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,8 +31,8 @@ public class ReportFactory {
         );
     }
 
-    public static ReportSimpleQueryDto toSimpleDto(ReportEntity entity) {
-        return new ReportSimpleQueryDto(
+    public static ReportQueryDto toSimpleDto(ReportEntity entity) {
+        return new ReportQueryDto(
                 entity.getId(),
                 entity.getReportDate(),
                 entity.getLineName(),
@@ -49,8 +48,6 @@ public class ReportFactory {
     }
 
     public static ReportQueryDto toDto(ReportEntity entity) {
-        List<ReportQueryDto.ReportDosingDeviceDto> firstDosingDevices = createFirstDosingDevicesDto(entity.getFirstDosingDevices());
-        List<ReportQueryDto.ReportDosingDeviceDto> lastDosingDevices = createLastDosingDevicesDto(entity.getLastDosingDevices());
 
         return new ReportQueryDto(entity.getId(),
                 entity.getReportDate(),
@@ -62,38 +59,23 @@ public class ReportFactory {
                 entity.getCorrectProductPercent(),
                 entity.getIncorrectProductPcs(),
                 entity.getOverFilledProductPcs(),
-                entity.getNotRefilledProductPcs(),
-                firstDosingDevices,
-                lastDosingDevices
-        );
+                entity.getNotRefilledProductPcs()
+                );
     }
 
-    private static List<ReportQueryDto.ReportDosingDeviceDto> createFirstDosingDevicesDto(List<ReportDosingDeviceFirstEntity> entities) {
-        return entities
-                .stream()
-                .map(dosingDevice -> new ReportQueryDto.ReportDosingDeviceDto(dosingDevice.getId(),
-                        dosingDevice.getRecordNumber(),
-                        dosingDevice.getTotalMaterialWeight(),
-                        dosingDevice.getCorrectPercent(),
-                        dosingDevice.getAverageWeight()))
-                .collect(Collectors.toList());
-    }
-    private static List<ReportQueryDto.ReportDosingDeviceDto> createLastDosingDevicesDto(List<ReportDosingDeviceLastEntity> entities) {
-        return entities
-                .stream()
-                .map(dosingDevice -> new ReportQueryDto.ReportDosingDeviceDto(dosingDevice.getId(),
-                        dosingDevice.getRecordNumber(),
-                        dosingDevice.getTotalMaterialWeight(),
-                        dosingDevice.getCorrectPercent(),
-                        dosingDevice.getAverageWeight()))
-                .collect(Collectors.toList());
-    }
-
-    private static List<ReportDosingDeviceData> createDosingDevices(List<? extends ReportDosingDevice> reportDosingDevices) {
+    public static List<ReportDosingDeviceData> createDosingDevices(List<? extends ReportDosingDevice> reportDosingDevices) {
         return reportDosingDevices
                 .stream()
                 .map(n -> new ReportDosingDeviceData(n.getRecordNumber(), n.getTotalMaterial(), n.getCorrectPercent(), n.getAverageMeasure()))
                 .collect(Collectors.toList());
+    }
+
+    public static ReportDosingDeviceQueryDto toDto(ReportDosingDeviceSuper entity){
+        return new ReportDosingDeviceQueryDto(entity.getId(),
+                entity.getRecordNumber(),
+                entity.getTotalMaterialWeight(),
+                entity.getCorrectPercent(),
+                entity.getAverageWeight());
     }
 
     private static ReportSummaryData createReportSummary(ReportSummary reportSummary) {
