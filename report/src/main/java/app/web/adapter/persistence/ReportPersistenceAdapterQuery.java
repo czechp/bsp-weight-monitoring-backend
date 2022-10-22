@@ -2,7 +2,7 @@ package app.web.adapter.persistence;
 
 import app.web.application.dto.ReportDosingDeviceQueryDto;
 import app.web.application.dto.ReportQueryDto;
-import app.web.application.port.query.ReportPortQuery;
+import app.web.application.port.ReportPortQuery;
 import app.web.domain.ReportFactory;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;

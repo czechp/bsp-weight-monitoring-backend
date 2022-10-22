@@ -2,7 +2,7 @@ package app.web.application.query;
 
 import app.web.application.dto.ReportDosingDeviceQueryDto;
 import app.web.application.dto.ReportQueryDto;
-import app.web.application.port.query.ReportPortQuery;
+import app.web.application.port.ReportPortQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

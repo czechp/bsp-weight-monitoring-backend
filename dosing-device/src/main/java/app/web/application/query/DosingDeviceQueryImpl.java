@@ -1,9 +1,8 @@
 package app.web.application.query;
 
 import app.web.application.dto.DosingDeviceQueryDto;
-import app.web.application.port.query.DosingDeviceFirstPortQuery;
-import app.web.application.port.query.DosingDeviceLastPortQuery;
-import app.web.domain.DosingDeviceFactory;
+import app.web.application.port.DosingDeviceFirstPortQuery;
+import app.web.application.port.DosingDeviceLastPortQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

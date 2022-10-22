@@ -1,4 +1,4 @@
-package app.web.application.port.query;
+package app.web.application.port;
 
 import app.web.application.dto.DosingDeviceQueryDto;
 import app.web.domain.DosingDevice;
