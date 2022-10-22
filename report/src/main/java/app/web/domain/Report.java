@@ -3,7 +3,7 @@ package app.web.domain;
 import java.time.LocalDate;
 import java.util.List;
 
-class Report extends ReportSuper{
+public class Report extends ReportSuper{
     public Report(long id,
                   String lineName,
                   LocalDate reportDate,
