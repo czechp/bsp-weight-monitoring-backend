@@ -1,7 +1,6 @@
 package app.web.adapter.rest;
 
 import app.web.application.dto.ReportQueryDto;
-import app.web.application.dto.ReportSimpleQueryDto;
 import app.web.application.query.ReportQuery;
 import app.web.exception.NotFoundException;
 import lombok.AllArgsConstructor;
@@ -22,7 +21,7 @@ class ReportRestAdapterQuery {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    List<ReportSimpleQueryDto> findAll(@PageableDefault(sort = {"reportDate", "lineName"}, direction = Sort.Direction.DESC) Pageable pageable) {
+    List<ReportQueryDto> findAll(@PageableDefault(sort = {"reportDate", "lineName"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return reportQuery.findAll(pageable);
     }
 
