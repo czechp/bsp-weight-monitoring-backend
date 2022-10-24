@@ -24,5 +24,6 @@ class ReportPersistenceAdapterCrud implements ReportPortCrud {
     @Override
     public Report save(Report report) {
         final ReportEntity reportEntity = ReportFactory.toEntity(report);
+        return  ReportFactory.create(repository.save(reportEntity));
     }
 }
