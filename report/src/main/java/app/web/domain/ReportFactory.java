@@ -32,6 +32,18 @@ public class ReportFactory {
         );
     }
 
+    public static Report create(ReportEntity entity){
+        return new Report(
+                entity.getId(),
+                entity.getLineName(),
+                entity.getReportDate(),
+                entity.getWorkShift(),
+                createReportSummary(entity),
+                entity.getFirstDosingDevices().stream().map(ReportFactory::toReportDosingDevice).collect(Collectors.toList()),
+                entity.getLastDosingDevices().stream().map(ReportFactory::toReportDosingDevice).collect(Collectors.toList())
+        );
+    }
+
     public static ReportQueryDto toSimpleDto(ReportEntity entity) {
         return new ReportQueryDto(
                 entity.getId(),
@@ -91,6 +103,18 @@ public class ReportFactory {
         );
     }
 
+    private static ReportSummaryData createReportSummary(ReportEntity entity){
+        return  new ReportSummaryData(
+                entity.getTotalProductPcs(),
+                entity.getTotalMaterialWeight(),
+                entity.getWeightDifference(),
+                entity.getCorrectProductPercent(),
+                entity.getIncorrectProductPcs(),
+                entity.getOverFilledProductPcs(),
+                entity.getNotRefilledProductPcs()
+        );
+    }
+
     public static ReportEntity toEntity(Report report) {
         List<ReportDosingDeviceFirstEntity> firstDevices = report.getDosingDeviceFirstModule().stream()
                 .map(ReportFactory::toFirstDosingDevicesEntity)
@@ -137,6 +161,17 @@ public class ReportFactory {
                 data.getTotalMaterialWeight(),
                 data.getCorrectPercent(),
                 data.getAverageWeight()
+        );
+    }
+
+    private static ReportDosingDeviceData toReportDosingDevice(ReportDosingDeviceSuper entity){
+        return new ReportDosingDeviceData(
+                entity.getId(),
+                entity.getVersion(),
+                entity.getRecordNumber(),
+                entity.getTotalMaterialWeight(),
+                entity.getCorrectPercent(),
+                entity.getAverageWeight()
         );
     }
 }
