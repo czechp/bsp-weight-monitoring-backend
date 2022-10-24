@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -27,11 +28,12 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
     private final ReportPortCrud portCrud;
     @Override
     public List<Report> createForAllLines(WorkShift workShift) {
-        reportLineProvider.findAllLines()
+        return reportLineProvider.findAllLines()
                 .stream()
                 .map((reportLine -> createSingleReport(reportLine, workShift)))
                 .filter(Report::isNotEmpty)
                 .map(portCrud::save)
+                .collect(Collectors.toList());
     }
 
 
