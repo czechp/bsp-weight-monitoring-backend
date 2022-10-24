@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Report extends ReportSuper{
      Report(long id,
+                  long version,
                   String lineName,
                   LocalDate reportDate,
                   WorkShift workShift,
                   ReportSummaryData reportSummaryData,
                   List<ReportDosingDeviceData> dosingDeviceFirstModule,
                   List<ReportDosingDeviceData> dosingDeviceLastModule) {
-        super(id, lineName, reportDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
+        super(id, version, lineName, reportDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
     }
 
      Report(String lineName,

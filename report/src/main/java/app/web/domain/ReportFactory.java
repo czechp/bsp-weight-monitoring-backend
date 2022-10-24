@@ -35,6 +35,7 @@ public class ReportFactory {
     public static Report create(ReportEntity entity){
         return new Report(
                 entity.getId(),
+                entity.getVersion(),
                 entity.getLineName(),
                 entity.getReportDate(),
                 entity.getWorkShift(),
