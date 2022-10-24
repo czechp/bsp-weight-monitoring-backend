@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReportFactory {
-    static Report create(
+    public static Report create(
             String lineName,
             WorkShift workShift,
             ReportSummary reportSummary,

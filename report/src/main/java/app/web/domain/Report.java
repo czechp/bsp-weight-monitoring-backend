@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Report extends ReportSuper{
-    public Report(long id,
+     Report(long id,
                   String lineName,
                   LocalDate reportDate,
                   WorkShift workShift,
@@ -14,7 +14,7 @@ public class Report extends ReportSuper{
         super(id, lineName, reportDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
     }
 
-    public Report(String lineName,
+     Report(String lineName,
                   WorkShift workShift,
                   ReportSummaryData reportSummaryData,
                   List<ReportDosingDeviceData> dosingDeviceFirstModule,
