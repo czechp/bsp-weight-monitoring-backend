@@ -1,6 +1,7 @@
 package app.web.domain;
 
 import app.web.adapter.persistence.ReportDosingDeviceFirstEntity;
+import app.web.adapter.persistence.ReportDosingDeviceLastEntity;
 import app.web.adapter.persistence.ReportDosingDeviceSuper;
 import app.web.adapter.persistence.ReportEntity;
 import app.web.application.dto.ReportDosingDeviceQueryDto;
@@ -60,7 +61,7 @@ public class ReportFactory {
                 entity.getIncorrectProductPcs(),
                 entity.getOverFilledProductPcs(),
                 entity.getNotRefilledProductPcs()
-                );
+        );
     }
 
     public static List<ReportDosingDeviceData> createDosingDevices(List<? extends ReportDosingDevice> reportDosingDevices) {
@@ -70,7 +71,7 @@ public class ReportFactory {
                 .collect(Collectors.toList());
     }
 
-    public static ReportDosingDeviceQueryDto toDto(ReportDosingDeviceSuper entity){
+    public static ReportDosingDeviceQueryDto toDto(ReportDosingDeviceSuper entity) {
         return new ReportDosingDeviceQueryDto(entity.getId(),
                 entity.getRecordNumber(),
                 entity.getTotalMaterialWeight(),
@@ -90,4 +91,52 @@ public class ReportFactory {
         );
     }
 
+    public static ReportEntity toEntity(Report report) {
+        List<ReportDosingDeviceFirstEntity> firstDevices = report.getDosingDeviceFirstModule().stream()
+                .map(ReportFactory::toFirstDosingDevicesEntity)
+                .collect(Collectors.toList());
+
+        List<ReportDosingDeviceLastEntity> lastDevices = report.getDosingDeviceLastModule().stream()
+                .map(ReportFactory::toLastDosingDevicesEntity)
+                .collect(Collectors.toList());
+
+
+        return new ReportEntity(
+                report.getId(),
+                report.getVersion(),
+                report.getLineName(),
+                report.getReportDate(),
+                report.getWorkShift(),
+                report.getReportSummaryData().getTotalProductPcs(),
+                report.getReportSummaryData().getTotalMaterialWeight(),
+                report.getReportSummaryData().getWeightDifference(),
+                report.getReportSummaryData().getCorrectProductPercent(),
+                report.getReportSummaryData().getIncorrectProductPcs(),
+                report.getReportSummaryData().getOverFilledProductPcs(),
+                report.getReportSummaryData().getNotRefilledProductPcs(),
+                firstDevices,
+                lastDevices);
+    }
+
+    private static ReportDosingDeviceFirstEntity toFirstDosingDevicesEntity(ReportDosingDeviceData data) {
+        return new ReportDosingDeviceFirstEntity(
+                data.getId(),
+                data.getVersion(),
+                data.getRecordNumber(),
+                data.getTotalMaterialWeight(),
+                data.getCorrectPercent(),
+                data.getAverageWeight()
+        );
+    }
+
+    private static ReportDosingDeviceLastEntity toLastDosingDevicesEntity(ReportDosingDeviceData data) {
+        return new ReportDosingDeviceLastEntity(
+                data.getId(),
+                data.getVersion(),
+                data.getRecordNumber(),
+                data.getTotalMaterialWeight(),
+                data.getCorrectPercent(),
+                data.getAverageWeight()
+        );
+    }
 }

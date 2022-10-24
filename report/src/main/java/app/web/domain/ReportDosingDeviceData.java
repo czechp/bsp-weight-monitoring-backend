@@ -2,8 +2,10 @@ package app.web.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter(AccessLevel.PACKAGE)
 class ReportDosingDeviceData {
     private final long id;
     private final long version;

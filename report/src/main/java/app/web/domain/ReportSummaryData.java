@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter(AccessLevel.PACKAGE)
 class ReportSummaryData {
-    @Getter(AccessLevel.PACKAGE)
     private final long totalProductPcs;
     private final float totalMaterialWeight;
     private final float weightDifference;
