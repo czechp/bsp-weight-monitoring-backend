@@ -64,6 +64,38 @@ public class ReportEntity {
         this.notRefilledProductPcs = notRefilledProductPcs;
     }
 
+    public ReportEntity(long id,
+                        long version,
+                        String lineName,
+                        LocalDate reportDate,
+                        WorkShift workShift,
+                        long totalProductPcs,
+                        float totalMaterialWeight,
+                        float weightDifference,
+                        float correctProductPercent,
+                        long incorrectProductPcs,
+                        long overFilledProductPcs,
+                        long notRefilledProductPcs,
+                        List<ReportDosingDeviceFirstEntity> firstDosingDevices,
+                        List<ReportDosingDeviceLastEntity> lastDosingDevices
+                        ) {
+        this.id = id;
+        this.version = version;
+        this.lineName = lineName;
+        this.reportDate = reportDate;
+        this.workShift = workShift;
+        this.totalProductPcs = totalProductPcs;
+        this.totalMaterialWeight = totalMaterialWeight;
+        this.weightDifference = weightDifference;
+        this.correctProductPercent = correctProductPercent;
+        this.incorrectProductPcs = incorrectProductPcs;
+        this.overFilledProductPcs = overFilledProductPcs;
+        this.notRefilledProductPcs = notRefilledProductPcs;
+        firstDosingDevices.forEach(this::addFirstDosingDevice);
+        lastDosingDevices.forEach(this::addLastDosingDevice);
+    }
+
+
     void addFirstDosingDevice(ReportDosingDeviceFirstEntity entity) {
         this.firstDosingDevices.add(entity);
         entity.setReport(this);

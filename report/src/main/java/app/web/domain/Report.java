@@ -4,17 +4,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Report extends ReportSuper{
-    public Report(long id,
+     Report(long id,
+                  long version,
                   String lineName,
                   LocalDate reportDate,
                   WorkShift workShift,
                   ReportSummaryData reportSummaryData,
                   List<ReportDosingDeviceData> dosingDeviceFirstModule,
                   List<ReportDosingDeviceData> dosingDeviceLastModule) {
-        super(id, lineName, reportDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
+        super(id, version, lineName, reportDate, workShift, reportSummaryData, dosingDeviceFirstModule, dosingDeviceLastModule);
     }
 
-    public Report(String lineName,
+     Report(String lineName,
                   WorkShift workShift,
                   ReportSummaryData reportSummaryData,
                   List<ReportDosingDeviceData> dosingDeviceFirstModule,

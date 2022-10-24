@@ -1,6 +1,8 @@
 package app.web.adapter.persistence;
 
 import app.web.application.port.ReportPortCrud;
+import app.web.domain.Report;
+import app.web.domain.ReportFactory;
 import app.web.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,5 +19,11 @@ class ReportPersistenceAdapterCrud implements ReportPortCrud {
                         repository::delete,
                         () -> {throw new NotFoundException("Raport z id: " + reportId + " nie istnieje");}
                 );
+    }
+
+    @Override
+    public Report save(Report report) {
+        final ReportEntity reportEntity = ReportFactory.toEntity(report);
+        return  ReportFactory.create(repository.save(reportEntity));
     }
 }
