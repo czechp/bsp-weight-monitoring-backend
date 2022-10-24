@@ -4,6 +4,7 @@ import app.web.application.port.crud.DosingDevicePortCRUD;
 import app.web.domain.DosingDeviceFactory;
 import app.web.report.dto.ReportDosingDevice;
 import app.web.report.provider.ReportDosingDeviceFirstProvider;
+import app.web.report.provider.ReportDosingDeviceLastProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class ReportDosingDeviceLastProviderImpl implements ReportDosingDeviceFirstProvider {
+class ReportDosingDeviceLastProviderImpl implements ReportDosingDeviceLastProvider {
     private final DosingDevicePortCRUD portCRUD;
 
     @Override
