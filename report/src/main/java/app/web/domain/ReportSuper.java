@@ -28,4 +28,9 @@ abstract class ReportSuper {
         this.dosingDeviceFirstModule = dosingDeviceFirstModule;
         this.dosingDeviceLastModule = dosingDeviceLastModule;
     }
+
+
+    public boolean isNotEmpty() {
+        return this.reportSummaryData.getTotalProductPcs() != 0;
+    }
 }
