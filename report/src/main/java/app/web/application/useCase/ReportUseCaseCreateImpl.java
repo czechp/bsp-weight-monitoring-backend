@@ -1,5 +1,6 @@
 package app.web.application.useCase;
 
+import app.web.application.port.ReportPortResetCounters;
 import app.web.application.port.ReportPortCrud;
 import app.web.domain.Report;
 import app.web.domain.ReportFactory;
@@ -25,15 +26,18 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
     private final ReportDosingDeviceFirstProvider reportDosingDeviceFirstProvider;
     private final ReportDosingDeviceLastProvider reportDosingDeviceLastProvider;
 
+    private final ReportPortResetCounters resetCounters;
     private final ReportPortCrud portCrud;
     @Override
     public List<Report> createForAllLines(WorkShift workShift) {
-        return reportLineProvider.findAllLines()
+        List<Report> reports = reportLineProvider.findAllLines()
                 .stream()
                 .map((reportLine -> createSingleReport(reportLine, workShift)))
                 .filter(Report::isNotEmpty)
                 .map(portCrud::save)
                 .collect(Collectors.toList());
+        resetCounters.resetAllCounters();
+        return reports;
     }
 
 
