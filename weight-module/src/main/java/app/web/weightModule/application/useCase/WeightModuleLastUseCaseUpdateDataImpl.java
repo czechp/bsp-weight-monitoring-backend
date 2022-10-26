@@ -5,6 +5,7 @@ import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
+import app.web.weightModule.application.service.WeightModuleReportCreator;
 import app.web.weightModule.domain.WeightModuleLast;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUp
     private final WeightModulePortEvent portEvent;
     private final WeightModuleLastPortSave portSave;
 
+    private final WeightModuleReportCreator reportCreator;
     @Override
     public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto lastData) {
         WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
@@ -23,7 +25,7 @@ class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUp
                 moduleDataDto.getProductUpRangeWeight());
 
         if (dataChanged) {
-            here
+            reportCreator.createReportForLine(weightModuleLast.getProductionLineId());
             return weightModuleLast;
         } else {
             WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, lastData);
