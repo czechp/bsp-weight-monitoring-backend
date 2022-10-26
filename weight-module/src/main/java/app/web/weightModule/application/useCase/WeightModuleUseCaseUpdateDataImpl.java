@@ -20,11 +20,17 @@ class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData
 
     @Override
     @Transactional
-    public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto weightModuleUpdateDto) {
+    public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto dto) {
         WeightModule weightModuleToUpdate = portFindById.findByIdWeightModuleOrThrowException(weightModuleId);
-        WeightModule updatedWeightModule = weightModuleToUpdate.updateData(weightModuleUpdateDto);
-        portEvent.notifyAboutUpdateDosingDevice(weightModuleId, weightModuleUpdateDto.getDosingDevices(), true);
-        portSave.saveWeightModule(updatedWeightModule);
-        return updatedWeightModule;
+        final var dataChanged = weightModuleToUpdate.productDataChanged(dto.getProductDownRangeWeight(), dto.getProductUpRangeWeight());
+        if(dataChanged){
+            here
+            return weightModuleToUpdate;
+        }else{
+            WeightModule updatedWeightModule = weightModuleToUpdate.updateData(dto);
+            portEvent.notifyAboutUpdateDosingDevice(weightModuleId, dto.getDosingDevices(), true);
+            portSave.saveWeightModule(updatedWeightModule);
+            return updatedWeightModule;
+        }
     }
 }

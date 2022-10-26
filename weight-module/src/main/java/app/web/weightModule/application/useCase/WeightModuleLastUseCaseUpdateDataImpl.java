@@ -11,17 +11,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUpdateData{
+class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUpdateData {
     private final WeightModuleLastPortFindByIdOrThrow portFindByIdOrThrow;
     private final WeightModulePortEvent portEvent;
     private final WeightModuleLastPortSave portSave;
 
     @Override
-    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto moduleLastDataDto) {
+    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto lastData) {
         WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
-        WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, moduleLastDataDto);
-        portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleDataDto.getDosingDevices(), false);
-        portSave.save(weightModuleLast);
-        return updatedWeightModuleLast;
+        final var dataChanged = weightModuleLast.productDataChanged(moduleDataDto.getProductDownRangeWeight(),
+                moduleDataDto.getProductUpRangeWeight());
+
+        if (dataChanged) {
+            here
+            return weightModuleLast;
+        } else {
+            WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, lastData);
+            portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleDataDto.getDosingDevices(), false);
+            portSave.save(weightModuleLast);
+            return updatedWeightModuleLast;
+        }
+
     }
 }
