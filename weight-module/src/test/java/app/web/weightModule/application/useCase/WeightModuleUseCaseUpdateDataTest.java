@@ -1,15 +1,12 @@
 package app.web.weightModule.application.useCase;
 
-import app.web.utilities.tools.RandomValueGenerator;
-import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import app.web.weightModule.application.port.crud.WeightModulePortSave;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
-import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
 import app.web.weightModule.application.port.query.WeightModulePortFindById;
+import app.web.weightModule.application.service.WeightModuleReportCreator;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleTestProvider;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -31,11 +28,15 @@ class WeightModuleUseCaseUpdateDataTest {
 
     @Mock
     WeightModulePortEvent eventPort;
+
+    @Mock
+    WeightModuleReportCreator weightModuleReportCreator;
+
     WeightModuleUseCaseUpdateData useCaseUpdateData;
 
     @BeforeEach
     void init() {
-        this.useCaseUpdateData = new WeightModuleUseCaseUpdateDataImpl(portFindById, eventPort ,portSave);
+        this.useCaseUpdateData = new WeightModuleUseCaseUpdateDataImpl(portFindById, eventPort, portSave, weightModuleReportCreator);
     }
 
     @Test

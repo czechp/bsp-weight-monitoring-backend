@@ -8,8 +8,9 @@ import app.web.weightModule.application.service.WeightModuleReportCreator;
 import app.web.weightModule.domain.WeightModule;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +23,7 @@ class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData
     private final WeightModuleReportCreator reportCreator;
 
     @Override
-    @Transactional
+    @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
     public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto dto) {
         WeightModule weightModuleToUpdate = portFindById.findByIdWeightModuleOrThrowException(weightModuleId);
         final var dataChanged = weightModuleToUpdate.productDataChanged(dto.getProductDownRangeWeight(), dto.getProductUpRangeWeight());
