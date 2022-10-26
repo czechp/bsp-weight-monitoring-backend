@@ -52,4 +52,7 @@ public abstract class WeightModuleAbstract {
         return differentThanZero && dataChanged;
     }
 
+    public void clearProductInfo() {
+        this.productInfo = new ProductInfoVO();
+    }
 }

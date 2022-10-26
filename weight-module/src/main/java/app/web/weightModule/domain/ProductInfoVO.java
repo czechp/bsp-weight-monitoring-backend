@@ -10,8 +10,8 @@ class ProductInfoVO {
     private final float downRangeWeight;
 
     ProductInfoVO() {
-        this.upRangeWeight = 0f;
-        this.downRangeWeight = 0f;
+        this.upRangeWeight = 0.0f;
+        this.downRangeWeight = 0.0f;
     }
 
 
