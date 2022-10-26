@@ -15,4 +15,11 @@ class ProductInfoVO {
     }
 
 
+    boolean isNotZero() {
+        return upRangeWeight != 0.0f && downRangeWeight !=0.0f;
+    }
+
+    boolean areDifferent(float productDownRange, float productUpRange) {
+        return productDownRange != this.downRangeWeight || productUpRange != this.upRangeWeight;
+    }
 }
