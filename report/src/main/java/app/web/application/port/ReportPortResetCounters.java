@@ -1,5 +1,7 @@
 package app.web.application.port;
 
+import java.util.List;
+
 public interface ReportPortResetCounters {
-    void resetAllCounters();
+    void resetAllLinesCounters(List<Long> lineIds);
 }

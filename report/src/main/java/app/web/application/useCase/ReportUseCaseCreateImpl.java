@@ -1,7 +1,7 @@
 package app.web.application.useCase;
 
-import app.web.application.port.ReportPortResetCounters;
 import app.web.application.port.ReportPortCrud;
+import app.web.application.port.ReportPortResetCounters;
 import app.web.domain.Report;
 import app.web.domain.ReportFactory;
 import app.web.domain.WorkShift;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
+class ReportUseCaseCreateImpl implements ReportUseCaseCreate {
     private final ReportLineProvider reportLineProvider;
     private final ReportSummaryProvider reportSummaryProvider;
     private final ReportDosingDeviceFirstProvider reportDosingDeviceFirstProvider;
@@ -28,6 +28,7 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
 
     private final ReportPortResetCounters resetCounters;
     private final ReportPortCrud portCrud;
+
     @Override
     public List<Report> createForAllLines(WorkShift workShift) {
         List<Report> reports = reportLineProvider.findAllLines()
@@ -36,10 +37,14 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
                 .filter(Report::isNotEmpty)
                 .map(portCrud::save)
                 .collect(Collectors.toList());
-        resetCounters.resetAllCounters();
+
+        List<Long> lineIds = reportLineProvider.findAllLines().stream()
+                .map(ReportLine::getLineId)
+                .collect(Collectors.toList());
+
+        resetCounters.resetAllLinesCounters(lineIds);
         return reports;
     }
-
 
 
     private Report createSingleReport(ReportLine reportLine, WorkShift workShift) {
@@ -56,7 +61,7 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate{
                 reportSummary,
                 firstDosingDevices,
                 lastDosingDevices
-                );
+        );
     }
 
 
