@@ -2,9 +2,11 @@ package app.web.application.useCase;
 
 import app.web.application.port.ReportPortCrud;
 import app.web.application.port.ReportPortResetCounters;
+import app.web.application.service.WorkShiftProvider;
 import app.web.domain.Report;
 import app.web.domain.ReportFactory;
 import app.web.domain.WorkShift;
+import app.web.exception.ConditionsNotFulFiledException;
 import app.web.report.dto.ReportDosingDevice;
 import app.web.report.dto.ReportLine;
 import app.web.report.dto.ReportSummary;
@@ -15,6 +17,7 @@ import app.web.report.provider.ReportSummaryProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +49,23 @@ class ReportUseCaseCreateImpl implements ReportUseCaseCreate {
         return reports;
     }
 
+    @Override
+    public Report createForSingleLine(long lineId) {
+        WorkShift workShift = WorkShiftProvider.forTime(LocalTime.now());
+        Report report = reportLineProvider.findAllLines()
+                .stream()
+                .filter(reportLine -> reportLine.getLineId() == lineId)
+                .map(reportLine -> createSingleReport(reportLine, workShift))
+                .findAny()
+                .orElseThrow(() -> new ConditionsNotFulFiledException("There is not line with id: " + lineId));
+
+        if (report.isNotEmpty()) {
+            portCrud.save(report);
+            resetCounters.resetAllLinesCounters(List.of(lineId));
+        }
+
+        return report;
+    }
 
     private Report createSingleReport(ReportLine reportLine, WorkShift workShift) {
         ReportSummary reportSummary = reportSummaryProvider.findByModuleId(reportLine.getLineId())

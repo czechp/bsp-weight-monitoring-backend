@@ -5,23 +5,38 @@ import app.web.weightModule.application.dto.WeightModuleUpdateDto;
 import app.web.weightModule.application.port.crud.WeightModuleLastPortSave;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.application.port.query.WeightModuleLastPortFindByIdOrThrow;
+import app.web.weightModule.application.service.WeightModuleReportCreator;
 import app.web.weightModule.domain.WeightModuleLast;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
-class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUpdateData{
+class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUpdateData {
     private final WeightModuleLastPortFindByIdOrThrow portFindByIdOrThrow;
     private final WeightModulePortEvent portEvent;
     private final WeightModuleLastPortSave portSave;
 
+    private final WeightModuleReportCreator reportCreator;
     @Override
-    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto moduleLastDataDto) {
+    @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
+    public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto lastData) {
         WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
-        WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, moduleLastDataDto);
-        portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleDataDto.getDosingDevices(), false);
-        portSave.save(weightModuleLast);
-        return updatedWeightModuleLast;
+        final var dataChanged = weightModuleLast.productDataChanged(moduleDataDto.getProductDownRangeWeight(),
+                moduleDataDto.getProductUpRangeWeight());
+
+        if (dataChanged) {
+            reportCreator.createReportForLine(weightModuleLast.getProductionLineId());
+            return weightModuleLast;
+        } else {
+            WeightModuleLast updatedWeightModuleLast = weightModuleLast.updateData(moduleDataDto, lastData);
+            portEvent.notifyAboutUpdateDosingDevice(moduleId, moduleDataDto.getDosingDevices(), false);
+            portSave.save(weightModuleLast);
+            return updatedWeightModuleLast;
+        }
+
     }
 }

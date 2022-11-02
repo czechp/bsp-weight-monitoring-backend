@@ -2,6 +2,7 @@ package app.web.weightModule.adapter.event;
 
 import app.web.dosingDevice.dto.DosingDeviceUpdateData;
 import app.web.dosingDevice.dto.DosingDeviceUpdateEvent;
+import app.web.report.event.CreateReportForLineEvent;
 import app.web.weightModule.application.port.event.WeightModulePortEvent;
 import app.web.weightModule.domain.WeightModule;
 import app.web.weightModule.domain.WeightModuleAbstract;
@@ -27,6 +28,12 @@ class WeightModuleEventAdapterPublisher implements WeightModulePortEvent {
     @Override
     public void notifyAboutUpdateDosingDevice(long moduleId, List<? extends DosingDeviceUpdateData> dosingDeviceUpdateData, boolean isFirst) {
         DosingDeviceUpdateEvent event = new DosingDeviceUpdateEvent(this, moduleId, dosingDeviceUpdateData, isFirst);
+        publisher.publishEvent(event);
+    }
+
+    @Override
+    public void notifyAboutCreatingReportForLine(long lineId) {
+        CreateReportForLineEvent event = new CreateReportForLineEvent(this, lineId);
         publisher.publishEvent(event);
     }
 

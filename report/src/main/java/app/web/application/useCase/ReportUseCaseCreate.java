@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ReportUseCaseCreate {
     List<Report> createForAllLines(WorkShift workShift);
+
+    Report createForSingleLine(long lineId);
 }
