@@ -26,15 +26,9 @@ class WeightModuleUseCaseUpdateDataImpl implements WeightModuleUseCaseUpdateData
     @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
     public WeightModule updateWeightModuleData(long weightModuleId, WeightModuleUpdateDto dto) {
         WeightModule weightModuleToUpdate = portFindById.findByIdWeightModuleOrThrowException(weightModuleId);
-        final var dataChanged = weightModuleToUpdate.productDataChanged(dto.getProductDownRangeWeight(), dto.getProductUpRangeWeight());
-        if (dataChanged) {
-            reportCreator.createReportForLine(weightModuleToUpdate.getProductionLineId());
-            return weightModuleToUpdate;
-        } else {
-            WeightModule updatedWeightModule = weightModuleToUpdate.updateData(dto);
-            portEvent.notifyAboutUpdateDosingDevice(weightModuleId, dto.getDosingDevices(), true);
-            portSave.saveWeightModule(updatedWeightModule);
-            return updatedWeightModule;
-        }
+        WeightModule updatedWeightModule = weightModuleToUpdate.updateData(dto);
+        portEvent.notifyAboutUpdateDosingDevice(weightModuleId, dto.getDosingDevices(), true);
+        portSave.saveWeightModule(updatedWeightModule);
+        return updatedWeightModule;
     }
 }
