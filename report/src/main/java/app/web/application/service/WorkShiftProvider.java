@@ -4,7 +4,7 @@ import app.web.domain.WorkShift;
 
 import java.time.LocalTime;
 
-class WorkShiftProvider {
+public class WorkShiftProvider {
     public static WorkShift forTime(LocalTime localTime) {
         final var currentHour = localTime.getHour();
         if (currentHour >= 7 && currentHour < 15)
