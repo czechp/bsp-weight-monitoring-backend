@@ -4,7 +4,6 @@ import app.web.application.useCase.ReportUseCaseCreate;
 import app.web.report.event.CreateReportForLineEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.context.ApplicationListener;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
