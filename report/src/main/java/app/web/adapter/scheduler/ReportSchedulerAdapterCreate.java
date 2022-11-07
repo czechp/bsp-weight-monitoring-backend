@@ -23,19 +23,19 @@ class ReportSchedulerAdapterCreate {
     @Scheduled(cron = "0 58 6 * * *")
     @Transactional
     public void createReportForFirstWorkShift(){
-        createReports(WorkShift.I);
+        createReports(WorkShift.III);
     }
 
     @Scheduled(cron = "0 58 14 * * *")
     @Transactional
     public void createReportForSecondWorkShift(){
-        createReports(WorkShift.II);
+        createReports(WorkShift.I);
     }
 
     @Scheduled(cron = "0 58 2 * * *")
     @Transactional
     public void createReportForThirdWorkShift(){
-        createReports(WorkShift.III);
+        createReports(WorkShift.II);
     }
 
     public void createReports(WorkShift workShift){
