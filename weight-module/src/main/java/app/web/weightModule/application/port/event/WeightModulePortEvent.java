@@ -11,4 +11,6 @@ import java.util.List;
 public interface WeightModulePortEvent {
     void notifyAboutModuleCreating(WeightModuleAbstract weightModuleAbstract, int dosingDeviceAmount);
     void notifyAboutUpdateDosingDevice(long moduleId, List<? extends DosingDeviceUpdateData> dosingDeviceUpdateData, boolean isFirst);
+
+    void notifyAboutCreatingReportForLine(long lineId);
 }
