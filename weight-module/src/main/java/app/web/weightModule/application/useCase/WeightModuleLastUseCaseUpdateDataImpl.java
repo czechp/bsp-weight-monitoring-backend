@@ -22,7 +22,7 @@ class WeightModuleLastUseCaseUpdateDataImpl implements WeightModuleLastUseCaseUp
 
     private final WeightModuleReportCreator reportCreator;
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
+    @Transactional()
     public WeightModuleLast updateModuleData(long moduleId, WeightModuleUpdateDto moduleDataDto, WeightModuleLastUpdateDto lastData) {
         WeightModuleLast weightModuleLast = portFindByIdOrThrow.findByIdOrThrowException(moduleId);
         final var dataChanged = weightModuleLast.productDataChanged(moduleDataDto.getProductDownRangeWeight(),
