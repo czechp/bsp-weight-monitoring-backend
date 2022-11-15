@@ -22,7 +22,7 @@ class ReportRestAdapterQuery {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    List<ReportQueryDto> findAll(@PageableDefault(sort = {"reportDate", "lineName", "workShift"}, direction = Sort.Direction.DESC, size = Integer.MAX_VALUE) Pageable pageable) {
+    List<ReportQueryDto> findAll(@PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC, size = Integer.MAX_VALUE) Pageable pageable) {
         return reportQuery.findAll(pageable);
     }
 
